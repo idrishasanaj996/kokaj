@@ -1,0 +1,82 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Abschleppdienst KOKAJ München – 24/7 Pannenhilfe & Fahrzeugtransport',
+  description = 'Abschleppdienst KOKAJ München – 20+ Jahre Erfahrung. Pannenhilfe, Abschleppen, Fahrzeugtransport. 24/7 erreichbar: 0172 7776606. München & deutschlandweit.'
+} = Astro.props;
+
+const schemaOrg = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "Abschleppdienst KOKAJ",
+  "description": description,
+  "url": "https://www.abschleppdienstkokaj.de",
+  "telephone": "+4917277766060",
+  "email": "info@abschleppdienstkokaj.de",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Carl-Wery Straße 6",
+    "addressLocality": "München",
+    "postalCode": "81739",
+    "addressCountry": "DE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "48.1351",
+    "longitude": "11.5820"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "priceRange": "€€",
+  "areaServed": "München und Umgebung",
+  "sameAs": []
+});
+---
+
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#080c14" />
+    <title>{title}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:image" content="/images/truck-4.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.abschleppdienstkokaj.de" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Font: Plus Jakarta Sans (premium, modern) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={schemaOrg} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

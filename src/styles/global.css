@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+/* ── DESIGN TOKENS ─────────────────────────────────────────── */
+@theme {
+  --color-bg:        #080c14;
+  --color-surface:   #0e1420;
+  --color-surface-2: #141b26;
+  --color-surface-3: #1a2233;
+  --color-border:    rgba(255,255,255,0.07);
+  --color-amber:     #F59E0B;
+  --color-amber-2:   #EA580C;
+  --color-text:      #e8eaf0;
+  --color-muted:     #6b7280;
+}
+
+/* ── BASE ───────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background-color: #080c14;
+  color: #e8eaf0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── SCROLLBAR ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0e1420; }
+::-webkit-scrollbar-thumb { background: #F59E0B; border-radius: 3px; }
+
+/* ── GRADIENT TEXT ──────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── GLASS CARD ─────────────────────────────────────────────── */
+.glass {
+  background: rgba(14, 20, 32, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.glass-amber {
+  background: rgba(245, 158, 11, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+/* ── GRADIENT BORDER ────────────────────────────────────────── */
+.border-gradient {
+  position: relative;
+  border-radius: 16px;
+}
+.border-gradient::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 17px;
+  background: linear-gradient(135deg, rgba(245,158,11,0.4) 0%, rgba(234,88,12,0.1) 50%, rgba(255,255,255,0.05) 100%);
+  z-index: -1;
+}
+
+/* ── GRID PATTERN ───────────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(245,158,11,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,158,11,0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* ── NOISE TEXTURE ──────────────────────────────────────────── */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* ── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes pulse-amber {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
+  50%       { box-shadow: 0 0 0 14px rgba(245,158,11,0); }
+}
+.btn-pulse { animation: pulse-amber 2.5s infinite; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+.float { animation: float 3s ease-in-out infinite; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 25s linear infinite; }
+.animate-marquee:hover { animation-play-state: paused; }
+
+/* ── SCROLL ANIMATIONS ──────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+.reveal-left  { opacity: 0; transform: translateX(-32px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal-right { opacity: 0; transform: translateX(32px);  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal-left.in, .reveal-right.in { opacity: 1; transform: translateX(0); }
+
+/* ── NAV LINK ───────────────────────────────────────────────── */
+.nav-link { position: relative; }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, #F59E0B, #EA580C);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* ── STEP LINE ──────────────────────────────────────────────── */
+.step-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.16,1,0.3,1);
+}
+.step-line.drawn { stroke-dashoffset: 0; }
+
+/* ── FAQ ACCORDION ──────────────────────────────────────────── */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1), padding 0.3s;
+}
+.faq-answer.open { max-height: 400px; }
+.faq-icon { transition: transform 0.3s ease; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+
+/* ── MOBILE STICKY BAR ──────────────────────────────────────── */
+.mobile-call-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 99;
+  background: linear-gradient(90deg, #F59E0B, #EA580C);
+  padding: 14px 20px;
+  display: none;
+}
+@media (max-width: 768px) { .mobile-call-bar { display: flex; } }
+
+/* ── WHATSAPP BUTTON ────────────────────────────────────────── */
+.wa-btn {
+  position: fixed;
+  bottom: 90px; right: 20px;
+  z-index: 100;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+@media (min-width: 769px) {
+  .wa-btn { bottom: 30px; right: 30px; width: 60px; height: 60px; }
+}
+.wa-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+}
+
+/* ── HERO INITIAL STATES ────────────────────────────────────── */
+#hero-badge, #hero-headline, #hero-sub, #hero-ctas, #hero-trust {
+  opacity: 0;
+  transform: translateY(24px);
+}
