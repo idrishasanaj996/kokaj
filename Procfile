@@ -1,1 +1,1 @@
-web: npx serve dist --listen $PORT
+web: node server.mjs
