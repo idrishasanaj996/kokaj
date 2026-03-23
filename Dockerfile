@@ -7,5 +7,5 @@ RUN npm run build
 
 FROM caddy:2-alpine
 COPY --from=builder /app/dist /srv
-EXPOSE 80
-CMD sh -c "caddy file-server --root /srv --listen :${PORT:-80}"
+EXPOSE 3000
+CMD ["caddy", "file-server", "--root", "/srv", "--listen", ":3000"]
