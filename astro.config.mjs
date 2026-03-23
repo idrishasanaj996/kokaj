@@ -2,15 +2,9 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  site: 'https://idrishasanaj996.github.io',
+  base: '/kokaj',
   vite: {
     plugins: [tailwindcss()]
-  },
-  server: {
-    host: '0.0.0.0',
-    port: 3000,
-  },
-  preview: {
-    host: '0.0.0.0',
-    port: 3000,
   },
 });
