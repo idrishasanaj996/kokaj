@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "start": "serve dist -l $PORT"
+    "start": "astro preview --host 0.0.0.0 --port 3000"
   },
   "dependencies": {
     "serve": "^14.2.4",
