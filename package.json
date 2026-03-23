@@ -5,13 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
-  },
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
     "preview": "astro preview",
-    "start": "serve dist --listen ${PORT:-3000}"
+    "start": "serve dist -l $PORT"
   },
   "dependencies": {
     "serve": "^14.2.4",
