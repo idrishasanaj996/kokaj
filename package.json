@@ -5,11 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "start": "astro preview --host 0.0.0.0 --port 3000"
+    "preview": "astro preview"
   },
   "dependencies": {
-    "serve": "^14.2.4",
     "@tailwindcss/vite": "^4.0.0",
     "astro": "^5.0.0",
     "gsap": "^3.12.5",
