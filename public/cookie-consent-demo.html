@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<!--
+  GDPR + TTDSG compliant Cookie Consent Banner
+  ---------------------------------------------
+  Single-file reference implementation. Plain HTML / CSS / JS, no frameworks.
+
+  Legal basis:
+    - GDPR Art. 6(1)(a) + Art. 7  — freely given, specific, informed, unambiguous consent
+    - TTDSG § 25 (DE)             — explicit opt-in required before non-essential storage/access
+    - EDPB Guidelines 05/2020     — rejecting must be as easy as accepting, no pre-ticked boxes
+
+  This file is a drop-in demo. For production you would typically:
+    1. Move the <style> block to cookie-consent.css
+    2. Move the <script> block to cookie-consent.js (loaded with `defer`)
+    3. Include the <div id="kkj-cc-root"> markup on every page (e.g. in the global layout)
+-->
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie Consent Demo | KOKAJ</title>
+
+  <!--
+    ============================================================
+    GOOGLE CONSENT MODE v2 — default-deny state
+    ============================================================
+    Must run BEFORE gtag.js / any Google tag. We pre-declare denial
+    so Google tags remain silent until the user consents. The banner
+    script later calls gtag('consent', 'update', …) when the user
+    accepts a category.
+  -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      ad_storage:            'denied',
+      ad_user_data:          'denied',
+      ad_personalization:    'denied',
+      analytics_storage:     'denied',
+      functionality_storage: 'denied',
+      personalization_storage:'denied',
+      security_storage:      'granted',   // security cookies are essential
+      wait_for_update:       500          // ms the page waits before firing tags
+    });
+    gtag('set', 'ads_data_redaction', true);
+  </script>
+
+  <!--
+    ============================================================
+    STYLES — all scoped under .kkj-cc to avoid host-site bleed
+    ============================================================
+  -->
+  <style>
+    /* ---------- design tokens ---------- */
+    .kkj-cc {
+      --kkj-bg:        #0f1320;
+      --kkj-surface:   #161b2c;
+      --kkj-border:    rgba(255,255,255,.10);
+      --kkj-text:      #e7ebf3;
+      --kkj-muted:     #a4acbf;
+      --kkj-accent:    #f5b94a;
+      --kkj-accent-ink:#1a1406;
+      --kkj-danger:    #ff6b6b;
+      --kkj-radius:    14px;
+      --kkj-shadow:    0 20px 60px rgba(0,0,0,.45);
+      --kkj-focus:     0 0 0 3px rgba(245,185,74,.55);
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--kkj-text);
+      line-height: 1.5;
+    }
+    .kkj-cc *, .kkj-cc *::before, .kkj-cc *::after { box-sizing: border-box; }
+
+    /* ---------- hidden-by-default helpers ---------- */
+    .kkj-cc[hidden] { display: none !important; }
+    .kkj-cc-sr {
+      position: absolute !important;
+      width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ---------- banner (first-visit bar) ---------- */
+    .kkj-cc__banner {
+      position: fixed;
+      left: 16px; right: 16px; bottom: 16px;
+      z-index: 2147483646;
+      background: var(--kkj-bg);
+      border: 1px solid var(--kkj-border);
+      border-radius: var(--kkj-radius);
+      box-shadow: var(--kkj-shadow);
+      padding: 20px 22px;
+      max-width: 1040px;
+      margin: 0 auto;
+      animation: kkj-cc-in .28s ease-out both;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .kkj-cc__banner, .kkj-cc__modal { animation: none; }
+    }
+    @keyframes kkj-cc-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .kkj-cc__banner-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+    .kkj-cc__title {
+      font-size: 16px; font-weight: 700; margin: 0 0 4px;
+    }
+    .kkj-cc__text {
+      font-size: 14px; color: var(--kkj-muted); margin: 0;
+    }
+    .kkj-cc__text a {
+      color: var(--kkj-accent); text-decoration: underline; text-underline-offset: 2px;
+    }
+    .kkj-cc__text a:hover { color: #ffd27a; }
+    .kkj-cc__actions {
+      display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end;
+    }
+    .kkj-cc__lang {
+      display: inline-flex; gap: 6px; margin-bottom: 8px;
+    }
+    .kkj-cc__lang button {
+      background: transparent; border: 1px solid var(--kkj-border);
+      color: var(--kkj-muted); border-radius: 999px;
+      padding: 2px 10px; font-size: 11px; cursor: pointer;
+      letter-spacing: .04em;
+    }
+    .kkj-cc__lang button[aria-pressed="true"] {
+      background: var(--kkj-accent); color: var(--kkj-accent-ink);
+      border-color: var(--kkj-accent); font-weight: 700;
+    }
+
+    /* ---------- buttons ---------- */
+    .kkj-cc__btn {
+      appearance: none; border: 1px solid var(--kkj-border);
+      background: transparent; color: var(--kkj-text);
+      padding: 10px 16px; border-radius: 10px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: background .15s, border-color .15s, transform .05s;
+      font-family: inherit;
+    }
+    .kkj-cc__btn:hover { background: rgba(255,255,255,.05); }
+    .kkj-cc__btn:active { transform: translateY(1px); }
+    .kkj-cc__btn:focus-visible { outline: none; box-shadow: var(--kkj-focus); }
+    .kkj-cc__btn--primary {
+      background: var(--kkj-accent); color: var(--kkj-accent-ink);
+      border-color: var(--kkj-accent);
+    }
+    .kkj-cc__btn--primary:hover { background: #ffcc6b; }
+    .kkj-cc__btn--ghost { color: var(--kkj-muted); }
+
+    /* ---------- modal (granular settings) ---------- */
+    .kkj-cc__backdrop {
+      position: fixed; inset: 0; z-index: 2147483645;
+      background: rgba(6,8,15,.72); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+      animation: kkj-cc-fade .2s ease-out both;
+    }
+    @keyframes kkj-cc-fade { from { opacity:0 } to { opacity:1 } }
+    .kkj-cc__modal {
+      background: var(--kkj-bg);
+      border: 1px solid var(--kkj-border);
+      border-radius: var(--kkj-radius);
+      box-shadow: var(--kkj-shadow);
+      width: 100%; max-width: 620px;
+      max-height: calc(100vh - 32px);
+      overflow: auto;
+      padding: 26px;
+      animation: kkj-cc-in .22s ease-out both;
+    }
+    .kkj-cc__modal h2 { font-size: 20px; margin: 0 0 6px; }
+    .kkj-cc__modal p  { font-size: 14px; color: var(--kkj-muted); margin: 0 0 18px; }
+
+    .kkj-cc__cat {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--kkj-surface);
+      border: 1px solid var(--kkj-border);
+      border-radius: 12px;
+      padding: 14px 16px; margin-bottom: 10px;
+    }
+    .kkj-cc__cat-body { flex: 1; min-width: 0; }
+    .kkj-cc__cat-title {
+      font-size: 14px; font-weight: 700; margin: 0 0 2px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .kkj-cc__cat-desc {
+      font-size: 13px; color: var(--kkj-muted); margin: 0;
+    }
+    .kkj-cc__pill {
+      font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+      background: rgba(245,185,74,.15); color: var(--kkj-accent);
+      padding: 2px 8px; border-radius: 999px; font-weight: 700;
+    }
+
+    /* ---------- toggle switch ---------- */
+    .kkj-cc__toggle { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
+    .kkj-cc__toggle input {
+      position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer;
+    }
+    .kkj-cc__toggle input:disabled { cursor: not-allowed; }
+    .kkj-cc__toggle-track {
+      position: absolute; inset: 0; border-radius: 999px;
+      background: #2a3148; transition: background .15s;
+    }
+    .kkj-cc__toggle-thumb {
+      position: absolute; top: 3px; left: 3px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: #fff; transition: transform .15s;
+    }
+    .kkj-cc__toggle input:checked ~ .kkj-cc__toggle-track { background: var(--kkj-accent); }
+    .kkj-cc__toggle input:checked ~ .kkj-cc__toggle-thumb { transform: translateX(20px); }
+    .kkj-cc__toggle input:focus-visible ~ .kkj-cc__toggle-track { box-shadow: var(--kkj-focus); }
+    .kkj-cc__toggle input:disabled ~ .kkj-cc__toggle-track { background: #3a4262; opacity: .7; }
+
+    .kkj-cc__modal-actions {
+      display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end;
+      margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--kkj-border);
+    }
+
+    /* ---------- floating "re-open" button ---------- */
+    .kkj-cc__reopen {
+      position: fixed; left: 14px; bottom: 14px; z-index: 2147483644;
+      background: var(--kkj-bg); color: var(--kkj-text);
+      border: 1px solid var(--kkj-border);
+      border-radius: 999px; padding: 8px 14px;
+      font-size: 12px; font-family: inherit; cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,.35);
+    }
+    .kkj-cc__reopen:hover { background: #1b2236; }
+    .kkj-cc__reopen:focus-visible { outline: none; box-shadow: var(--kkj-focus); }
+
+    /* ---------- mobile ---------- */
+    @media (max-width: 640px) {
+      .kkj-cc__banner { left: 8px; right: 8px; bottom: 8px; padding: 16px; }
+      .kkj-cc__banner-grid { grid-template-columns: 1fr; }
+      .kkj-cc__actions { justify-content: stretch; }
+      .kkj-cc__actions .kkj-cc__btn { flex: 1 1 auto; }
+      .kkj-cc__modal { padding: 20px; }
+    }
+  </style>
+</head>
+
+<body style="margin:0;background:#080c14;color:#fff;font-family:system-ui,sans-serif;">
+  <!-- demo page content (irrelevant to the widget) -->
+  <main style="max-width:760px;margin:0 auto;padding:80px 24px;">
+    <h1 style="font-family:'Plus Jakarta Sans',sans-serif">Cookie Consent Demo</h1>
+    <p style="color:#a4acbf">
+      This page demonstrates the GDPR/TTDSG consent widget. Clear your
+      <code>localStorage</code> to see the banner again, or use the
+      <em>Cookie-Einstellungen</em> link at the bottom-left.
+    </p>
+    <p>
+      <button id="demo-open" style="padding:10px 16px">Open settings manually</button>
+    </p>
+  </main>
+
+  <!--
+    ============================================================
+    MARKUP — single root. Everything hidden until JS decides.
+    Put this once in your layout/footer so it renders on every page.
+    ============================================================
+  -->
+  <div class="kkj-cc" id="kkj-cc-root">
+
+    <!-- First-visit banner -->
+    <div
+      class="kkj-cc__banner"
+      id="kkj-cc-banner"
+      role="region"
+      aria-label="Cookie-Hinweis"
+      hidden
+    >
+      <div class="kkj-cc__lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <div class="kkj-cc__banner-grid">
+        <div>
+          <p class="kkj-cc__title" data-i18n="banner.title"></p>
+          <p class="kkj-cc__text">
+            <span data-i18n="banner.text"></span>
+            <a href="/datenschutz" data-i18n="link.privacy"></a> ·
+            <a href="/impressum"  data-i18n="link.imprint"></a>
+          </p>
+        </div>
+        <div class="kkj-cc__actions">
+          <button type="button" class="kkj-cc__btn kkj-cc__btn--ghost" data-action="customize" data-i18n="btn.customize"></button>
+          <button type="button" class="kkj-cc__btn"                   data-action="reject"    data-i18n="btn.reject"></button>
+          <button type="button" class="kkj-cc__btn kkj-cc__btn--primary" data-action="accept" data-i18n="btn.accept"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Granular settings modal -->
+    <div
+      class="kkj-cc__backdrop"
+      id="kkj-cc-backdrop"
+      hidden
+    >
+      <div
+        class="kkj-cc__modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="kkj-cc-modal-title"
+        aria-describedby="kkj-cc-modal-desc"
+        tabindex="-1"
+      >
+        <h2 id="kkj-cc-modal-title" data-i18n="modal.title"></h2>
+        <p  id="kkj-cc-modal-desc"  data-i18n="modal.desc"></p>
+
+        <!-- Essential: always on, input is disabled -->
+        <div class="kkj-cc__cat">
+          <div class="kkj-cc__cat-body">
+            <p class="kkj-cc__cat-title">
+              <span data-i18n="cat.essential.title"></span>
+              <span class="kkj-cc__pill" data-i18n="cat.alwaysOn"></span>
+            </p>
+            <p class="kkj-cc__cat-desc" data-i18n="cat.essential.desc"></p>
+          </div>
+          <label class="kkj-cc__toggle">
+            <span class="kkj-cc-sr" data-i18n="cat.essential.title"></span>
+            <input type="checkbox" checked disabled aria-disabled="true" />
+            <span class="kkj-cc__toggle-track"></span>
+            <span class="kkj-cc__toggle-thumb"></span>
+          </label>
+        </div>
+
+        <!-- Analytics: DEFAULT OFF -->
+        <div class="kkj-cc__cat">
+          <div class="kkj-cc__cat-body">
+            <p class="kkj-cc__cat-title" data-i18n="cat.analytics.title"></p>
+            <p class="kkj-cc__cat-desc"  data-i18n="cat.analytics.desc"></p>
+          </div>
+          <label class="kkj-cc__toggle">
+            <span class="kkj-cc-sr">Analytics</span>
+            <input type="checkbox" id="kkj-cc-analytics" />
+            <span class="kkj-cc__toggle-track"></span>
+            <span class="kkj-cc__toggle-thumb"></span>
+          </label>
+        </div>
+
+        <!-- Marketing: DEFAULT OFF -->
+        <div class="kkj-cc__cat">
+          <div class="kkj-cc__cat-body">
+            <p class="kkj-cc__cat-title" data-i18n="cat.marketing.title"></p>
+            <p class="kkj-cc__cat-desc"  data-i18n="cat.marketing.desc"></p>
+          </div>
+          <label class="kkj-cc__toggle">
+            <span class="kkj-cc-sr">Marketing</span>
+            <input type="checkbox" id="kkj-cc-marketing" />
+            <span class="kkj-cc__toggle-track"></span>
+            <span class="kkj-cc__toggle-thumb"></span>
+          </label>
+        </div>
+
+        <!-- Preferences: DEFAULT OFF -->
+        <div class="kkj-cc__cat">
+          <div class="kkj-cc__cat-body">
+            <p class="kkj-cc__cat-title" data-i18n="cat.preferences.title"></p>
+            <p class="kkj-cc__cat-desc"  data-i18n="cat.preferences.desc"></p>
+          </div>
+          <label class="kkj-cc__toggle">
+            <span class="kkj-cc-sr">Preferences</span>
+            <input type="checkbox" id="kkj-cc-preferences" />
+            <span class="kkj-cc__toggle-track"></span>
+            <span class="kkj-cc__toggle-thumb"></span>
+          </label>
+        </div>
+
+        <div class="kkj-cc__modal-actions">
+          <button type="button" class="kkj-cc__btn"                   data-action="reject"      data-i18n="btn.reject"></button>
+          <button type="button" class="kkj-cc__btn"                   data-action="save"        data-i18n="btn.save"></button>
+          <button type="button" class="kkj-cc__btn kkj-cc__btn--primary" data-action="acceptAll" data-i18n="btn.accept"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Persistent re-open button. Hide with CSS if you prefer a footer link. -->
+    <button
+      type="button"
+      class="kkj-cc__reopen"
+      id="kkj-cc-reopen"
+      hidden
+      data-i18n="btn.settings"
+    ></button>
+  </div>
+
+  <!--
+    ================================================================
+    EXAMPLE: non-essential scripts gated by consent
+    ================================================================
+    Scripts written with `type="text/plain"` are NOT executed by the
+    browser. We set `data-consent-category="analytics|marketing|…"`;
+    the consent engine later swaps them to `text/javascript` and
+    re-appends them, which triggers execution.
+  -->
+  <script type="text/plain" data-consent-category="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script type="text/plain" data-consent-category="analytics">
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX', { anonymize_ip: true });
+  </script>
+
+  <!--
+    ================================================================
+    CONSENT ENGINE
+    ================================================================
+  -->
+  <script>
+  (function () {
+    'use strict';
+
+    // ---------- configuration ----------
+    const STORAGE_KEY    = 'kkj_cookie_consent';
+    const CONSENT_VERSION = 1;                 // bump to re-prompt all users
+    const CONSENT_TTL_MS  = 1000 * 60 * 60 * 24 * 180; // 180 days (DSK guidance)
+    const DEFAULT_LANG    = 'de';
+
+    // Set to true to skip the banner for users clearly outside the EU.
+    // We use the browser timezone as a lightweight hint. For stronger
+    // geolocation use a server-side IP lookup.
+    const EU_GEO_GATE = false;
+
+    // ---------- i18n strings ----------
+    const I18N = {
+      de: {
+        'banner.title':      'Wir verwenden Cookies',
+        'banner.text':       'Wir setzen notwendige Cookies für den Betrieb der Seite ein. Mit Ihrer Einwilligung nutzen wir zusätzlich Cookies für Statistik, Marketing und Komfort. Sie können Ihre Auswahl jederzeit ändern oder widerrufen. Weitere Informationen in unserer ',
+        'link.privacy':      'Datenschutzerklärung',
+        'link.imprint':      'Impressum',
+        'btn.accept':        'Alle akzeptieren',
+        'btn.reject':        'Nur notwendige',
+        'btn.customize':     'Einstellungen',
+        'btn.save':          'Auswahl speichern',
+        'btn.settings':      'Cookie-Einstellungen',
+        'modal.title':       'Cookie-Einstellungen',
+        'modal.desc':        'Wählen Sie, welche Cookies Sie zulassen möchten. Notwendige Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden.',
+        'cat.alwaysOn':      'immer aktiv',
+        'cat.essential.title': 'Notwendig',
+        'cat.essential.desc':  'Erforderlich für Grundfunktionen wie Navigation, Sicherheit und Speicherung Ihrer Cookie-Auswahl. Rechtsgrundlage: § 25 Abs. 2 TTDSG.',
+        'cat.analytics.title': 'Statistik',
+        'cat.analytics.desc':  'Pseudonymisierte Auswertung des Nutzungsverhaltens, damit wir die Seite verbessern können (z. B. Google Analytics).',
+        'cat.marketing.title': 'Marketing',
+        'cat.marketing.desc':  'Personalisierte Werbung und Messung von Kampagnenerfolg über Partner wie Google Ads oder Meta.',
+        'cat.preferences.title':'Komfort',
+        'cat.preferences.desc': 'Speichert Ihre Einstellungen (z. B. Sprache, zuletzt gewählter Standort), damit die Seite bei Ihrem nächsten Besuch vertraut wirkt.'
+      },
+      en: {
+        'banner.title':      'We use cookies',
+        'banner.text':       'We use essential cookies to run this site. With your consent we also use cookies for analytics, marketing and comfort. You can change or withdraw your choice at any time. More in our ',
+        'link.privacy':      'Privacy Policy',
+        'link.imprint':      'Imprint',
+        'btn.accept':        'Accept all',
+        'btn.reject':        'Only essential',
+        'btn.customize':     'Customize',
+        'btn.save':          'Save selection',
+        'btn.settings':      'Cookie settings',
+        'modal.title':       'Cookie settings',
+        'modal.desc':        'Choose which cookies you want to allow. Essential cookies are required for core site functionality and cannot be disabled.',
+        'cat.alwaysOn':      'always on',
+        'cat.essential.title': 'Essential',
+        'cat.essential.desc':  'Required for core features such as navigation, security and storing your cookie selection. Legal basis: § 25 (2) TTDSG.',
+        'cat.analytics.title': 'Analytics',
+        'cat.analytics.desc':  'Pseudonymous usage analytics so we can improve the site (e.g. Google Analytics).',
+        'cat.marketing.title': 'Marketing',
+        'cat.marketing.desc':  'Personalised advertising and campaign measurement via partners such as Google Ads or Meta.',
+        'cat.preferences.title':'Preferences',
+        'cat.preferences.desc': 'Stores your preferences (e.g. language, last selected location) to make return visits feel familiar.'
+      }
+    };
+
+    // ---------- elements ----------
+    const $banner   = document.getElementById('kkj-cc-banner');
+    const $backdrop = document.getElementById('kkj-cc-backdrop');
+    const $modal    = $backdrop.querySelector('.kkj-cc__modal');
+    const $reopen   = document.getElementById('kkj-cc-reopen');
+    const $langBtns = document.querySelectorAll('.kkj-cc__lang button');
+    const $toggles  = {
+      analytics:   document.getElementById('kkj-cc-analytics'),
+      marketing:   document.getElementById('kkj-cc-marketing'),
+      preferences: document.getElementById('kkj-cc-preferences')
+    };
+
+    // ---------- state ----------
+    let currentLang = DEFAULT_LANG;
+    let lastFocused = null; // element that held focus before modal opened
+
+    // ---------- storage helpers ----------
+    // Prefer localStorage; fall back to a first-party cookie if storage is blocked
+    // (e.g. Safari private mode). Both scoped to the same origin.
+    function saveConsent(state) {
+      const payload = JSON.stringify(state);
+      try { localStorage.setItem(STORAGE_KEY, payload); }
+      catch (_) {
+        const maxAge = Math.floor(CONSENT_TTL_MS / 1000);
+        document.cookie = STORAGE_KEY + '=' + encodeURIComponent(payload)
+          + '; Max-Age=' + maxAge + '; Path=/; SameSite=Lax; Secure';
+      }
+    }
+    function loadConsent() {
+      let raw = null;
+      try { raw = localStorage.getItem(STORAGE_KEY); } catch (_) {}
+      if (!raw) {
+        const m = document.cookie.match(new RegExp('(?:^|; )' + STORAGE_KEY + '=([^;]*)'));
+        raw = m ? decodeURIComponent(m[1]) : null;
+      }
+      if (!raw) return null;
+      try {
+        const s = JSON.parse(raw);
+        if (s.version !== CONSENT_VERSION) return null;
+        if (Date.now() - new Date(s.timestamp).getTime() > CONSENT_TTL_MS) return null;
+        return s;
+      } catch (_) { return null; }
+    }
+
+    // ---------- i18n ----------
+    function applyI18n(lang) {
+      currentLang = I18N[lang] ? lang : DEFAULT_LANG;
+      document.documentElement.setAttribute('lang', currentLang);
+      const dict = I18N[currentLang];
+      document.querySelectorAll('#kkj-cc-root [data-i18n]').forEach(function (el) {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      $langBtns.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.lang === currentLang));
+      });
+    }
+
+    // ---------- script unlocking ----------
+    // Turns every <script type="text/plain" data-consent-category="X"> with X
+    // in `granted` into an executable script by cloning it with the correct
+    // type. data-src supports external tag URLs without triggering download
+    // before consent.
+    function unlockScripts(granted) {
+      const pending = document.querySelectorAll('script[type="text/plain"][data-consent-category]');
+      pending.forEach(function (tag) {
+        const cat = tag.getAttribute('data-consent-category');
+        if (!granted[cat]) return;
+        const clone = document.createElement('script');
+        // copy attributes, but swap type
+        for (const attr of tag.attributes) {
+          if (attr.name === 'type') continue;
+          if (attr.name === 'data-src') { clone.src = attr.value; continue; }
+          clone.setAttribute(attr.name, attr.value);
+        }
+        clone.type = 'text/javascript';
+        if (tag.textContent) clone.textContent = tag.textContent;
+        tag.parentNode.replaceChild(clone, tag);
+      });
+    }
+
+    // ---------- Google Consent Mode v2 bridge ----------
+    function pushGtagConsent(granted) {
+      if (typeof gtag !== 'function') return;
+      gtag('consent', 'update', {
+        ad_storage:             granted.marketing   ? 'granted' : 'denied',
+        ad_user_data:           granted.marketing   ? 'granted' : 'denied',
+        ad_personalization:     granted.marketing   ? 'granted' : 'denied',
+        analytics_storage:      granted.analytics   ? 'granted' : 'denied',
+        functionality_storage:  granted.preferences ? 'granted' : 'denied',
+        personalization_storage:granted.preferences ? 'granted' : 'denied'
+      });
+    }
+
+    // Optional: clean up cookies set by categories the user has withdrawn.
+    // Call with the previous state if you need to remove _ga etc. on revoke.
+    function purgeCookies(categories) {
+      const map = {
+        analytics: [/^_ga/, /^_gid$/, /^_gat/, /^_gcl/],
+        marketing: [/^_fbp$/, /^_fbc$/, /^fr$/, /^IDE$/, /^NID$/],
+        preferences: [] // fill with your own preference cookies
+      };
+      const patterns = [];
+      Object.keys(categories).forEach(function (c) {
+        if (categories[c] === false && map[c]) patterns.push.apply(patterns, map[c]);
+      });
+      if (!patterns.length) return;
+      document.cookie.split(';').forEach(function (c) {
+        const name = c.split('=')[0].trim();
+        if (patterns.some(function (re) { return re.test(name); })) {
+          // attempt delete on current + parent domain
+          const host = location.hostname;
+          const parent = host.split('.').slice(-2).join('.');
+          document.cookie = name + '=; Max-Age=0; Path=/;';
+          document.cookie = name + '=; Max-Age=0; Path=/; Domain=' + host + ';';
+          if (parent !== host) document.cookie = name + '=; Max-Age=0; Path=/; Domain=.' + parent + ';';
+        }
+      });
+    }
+
+    // ---------- apply decision ----------
+    function applyConsent(state, prevState) {
+      pushGtagConsent(state.categories);
+      unlockScripts(state.categories);
+      if (prevState) purgeCookies(state.categories);
+      // let the host app react (e.g. mount a chat widget on preferences)
+      document.dispatchEvent(new CustomEvent('kkj:consent', { detail: state }));
+    }
+
+    // ---------- decisions ----------
+    function persist(categories) {
+      const state = {
+        version:    CONSENT_VERSION,
+        timestamp:  new Date().toISOString(),
+        locale:     currentLang,
+        categories: Object.assign({ essential: true }, categories)
+      };
+      const prev = loadConsent();
+      saveConsent(state);
+      applyConsent(state, prev);
+      hideBanner();
+      closeModal();
+      showReopen();
+    }
+    function acceptAll()      { persist({ analytics: true,  marketing: true,  preferences: true  }); }
+    function rejectAll()      { persist({ analytics: false, marketing: false, preferences: false }); }
+    function saveFromToggles() {
+      persist({
+        analytics:   $toggles.analytics.checked,
+        marketing:   $toggles.marketing.checked,
+        preferences: $toggles.preferences.checked
+      });
+    }
+
+    // ---------- UI visibility ----------
+    function showBanner() { $banner.hidden = false; }
+    function hideBanner() { $banner.hidden = true; }
+    function showReopen() { $reopen.hidden = false; }
+
+    // ---------- modal + focus trap ----------
+    function openModal(fromState) {
+      // Pre-fill toggles from existing state (everything OFF on first visit).
+      const cats = (fromState && fromState.categories) || { analytics:false, marketing:false, preferences:false };
+      $toggles.analytics.checked   = !!cats.analytics;
+      $toggles.marketing.checked   = !!cats.marketing;
+      $toggles.preferences.checked = !!cats.preferences;
+
+      lastFocused = document.activeElement;
+      $backdrop.hidden = false;
+      $modal.focus();
+      document.addEventListener('keydown', trapFocus);
+    }
+    function closeModal() {
+      $backdrop.hidden = true;
+      document.removeEventListener('keydown', trapFocus);
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
+    function trapFocus(e) {
+      if (e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
+      if (e.key !== 'Tab') return;
+      const focusables = $modal.querySelectorAll(
+        'button, [href], input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusables.length) return;
+      const first = focusables[0], last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+
+    // ---------- event wiring ----------
+    function onClick(e) {
+      const t = e.target.closest('[data-action]');
+      if (!t) return;
+      switch (t.dataset.action) {
+        case 'accept':    acceptAll();                          break;
+        case 'acceptAll': acceptAll();                          break;
+        case 'reject':    rejectAll();                          break;
+        case 'customize': openModal(loadConsent());             break;
+        case 'save':      saveFromToggles();                    break;
+      }
+    }
+    document.getElementById('kkj-cc-root').addEventListener('click', onClick);
+    $backdrop.addEventListener('click', function (e) {
+      // click on backdrop (not on modal) = cancel
+      if (e.target === $backdrop) closeModal();
+    });
+    $langBtns.forEach(function (b) {
+      b.addEventListener('click', function () { applyI18n(b.dataset.lang); });
+    });
+    $reopen.addEventListener('click', function () { openModal(loadConsent()); });
+
+    // Public API — bind to a link elsewhere in the site, e.g. footer
+    window.KokajCookieConsent = {
+      open:   function () { openModal(loadConsent()); },
+      revoke: function () { rejectAll(); },
+      state:  function () { return loadConsent(); }
+    };
+    // Also auto-bind any anchor with href="#cookie-settings"
+    document.querySelectorAll('a[href="#cookie-settings"], [data-cookie-settings]').forEach(function (a) {
+      a.addEventListener('click', function (e) { e.preventDefault(); window.KokajCookieConsent.open(); });
+    });
+
+    // ---------- optional EU gate ----------
+    function isLikelyEU() {
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        // Europe/* covers EU + EEA + UK/CH. Good heuristic for client-side.
+        return tz.indexOf('Europe/') === 0;
+      } catch (_) { return true; }
+    }
+
+    // ---------- boot ----------
+    applyI18n((navigator.language || DEFAULT_LANG).slice(0, 2) === 'en' ? 'en' : 'de');
+
+    const existing = loadConsent();
+    if (existing) {
+      // Returning user with valid consent — apply silently, show re-open button.
+      applyConsent(existing, null);
+      showReopen();
+    } else if (!EU_GEO_GATE || isLikelyEU()) {
+      showBanner();
+      showReopen();
+    } else {
+      // Outside EU and gate enabled — treat as implicit accept (still legal in
+      // many jurisdictions, but check your own counsel). Comment this block
+      // out to be conservative and always show the banner.
+      applyConsent({
+        version: CONSENT_VERSION,
+        timestamp: new Date().toISOString(),
+        locale: currentLang,
+        categories: { essential:true, analytics:true, marketing:true, preferences:true }
+      }, null);
+    }
+
+    // Demo-only hook
+    const demoBtn = document.getElementById('demo-open');
+    if (demoBtn) demoBtn.addEventListener('click', function () { window.KokajCookieConsent.open(); });
+  })();
+  </script>
+</body>
+</html>

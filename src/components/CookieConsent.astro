@@ -1,0 +1,517 @@
+---
+// GDPR + TTDSG konformes Cookie-Consent-Banner (Deutsch)
+// Rechtsgrundlage: Art. 6(1)(a) DSGVO, Art. 7 DSGVO, § 25 TTDSG
+// - Keine nicht-notwendigen Cookies vor Einwilligung
+// - Ablehnen ist genauso einfach wie Zustimmen (1 Klick)
+// - Keine vorausgewählten Optionen für nicht-notwendige Kategorien
+---
+
+<div class="kkj-cc" id="kkj-cc-root">
+  <!-- Banner beim ersten Besuch -->
+  <div
+    class="kkj-cc__banner"
+    id="kkj-cc-banner"
+    role="region"
+    aria-label="Cookie-Hinweis"
+    hidden
+  >
+    <div class="kkj-cc__banner-grid">
+      <div>
+        <p class="kkj-cc__title">Wir verwenden Cookies</p>
+        <p class="kkj-cc__text">
+          Notwendige Cookies sind für den Betrieb der Seite erforderlich. Mit Ihrer Einwilligung nutzen wir zusätzlich Cookies für Statistik, Marketing und Komfort. Sie können Ihre Auswahl jederzeit ändern. Details in unserer
+          <a href="/datenschutz">Datenschutzerklärung</a> ·
+          <a href="/impressum">Impressum</a>.
+        </p>
+      </div>
+      <div class="kkj-cc__actions">
+        <button type="button" class="kkj-cc__btn kkj-cc__btn--ghost" data-action="customize">Einstellungen</button>
+        <button type="button" class="kkj-cc__btn" data-action="reject">Nur notwendige</button>
+        <button type="button" class="kkj-cc__btn kkj-cc__btn--primary kkj-cc__btn--hero" data-action="accept" id="kkj-cc-accept">Alle akzeptieren</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Granulare Einstellungen (Modal) -->
+  <div class="kkj-cc__backdrop" id="kkj-cc-backdrop" hidden>
+    <div
+      class="kkj-cc__modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="kkj-cc-modal-title"
+      aria-describedby="kkj-cc-modal-desc"
+      tabindex="-1"
+    >
+      <h2 id="kkj-cc-modal-title">Cookie-Einstellungen</h2>
+      <p id="kkj-cc-modal-desc">
+        Wählen Sie, welche Cookies Sie zulassen möchten. Notwendige Cookies sind für die Grundfunktionen erforderlich und können nicht deaktiviert werden.
+      </p>
+
+      <!-- Notwendig: immer an, disabled -->
+      <div class="kkj-cc__cat">
+        <div class="kkj-cc__cat-body">
+          <p class="kkj-cc__cat-title">
+            Notwendig
+            <span class="kkj-cc__pill">immer aktiv</span>
+          </p>
+          <p class="kkj-cc__cat-desc">
+            Erforderlich für Grundfunktionen wie Navigation, Sicherheit und Speicherung Ihrer Cookie-Auswahl. Rechtsgrundlage: § 25 Abs. 2 TTDSG.
+          </p>
+        </div>
+        <label class="kkj-cc__toggle">
+          <span class="kkj-cc-sr">Notwendig</span>
+          <input type="checkbox" checked disabled aria-disabled="true" />
+          <span class="kkj-cc__toggle-track"></span>
+          <span class="kkj-cc__toggle-thumb"></span>
+        </label>
+      </div>
+
+      <!-- Statistik: STANDARDMÄSSIG AUS -->
+      <div class="kkj-cc__cat">
+        <div class="kkj-cc__cat-body">
+          <p class="kkj-cc__cat-title">Statistik</p>
+          <p class="kkj-cc__cat-desc">
+            Pseudonymisierte Auswertung des Nutzungsverhaltens, damit wir die Seite verbessern können (z. B. Google Analytics).
+          </p>
+        </div>
+        <label class="kkj-cc__toggle">
+          <span class="kkj-cc-sr">Statistik</span>
+          <input type="checkbox" id="kkj-cc-analytics" />
+          <span class="kkj-cc__toggle-track"></span>
+          <span class="kkj-cc__toggle-thumb"></span>
+        </label>
+      </div>
+
+      <!-- Marketing: STANDARDMÄSSIG AUS -->
+      <div class="kkj-cc__cat">
+        <div class="kkj-cc__cat-body">
+          <p class="kkj-cc__cat-title">Marketing</p>
+          <p class="kkj-cc__cat-desc">
+            Personalisierte Werbung und Messung von Kampagnenerfolg über Partner wie Google Ads oder Meta.
+          </p>
+        </div>
+        <label class="kkj-cc__toggle">
+          <span class="kkj-cc-sr">Marketing</span>
+          <input type="checkbox" id="kkj-cc-marketing" />
+          <span class="kkj-cc__toggle-track"></span>
+          <span class="kkj-cc__toggle-thumb"></span>
+        </label>
+      </div>
+
+      <!-- Komfort: STANDARDMÄSSIG AUS -->
+      <div class="kkj-cc__cat">
+        <div class="kkj-cc__cat-body">
+          <p class="kkj-cc__cat-title">Komfort</p>
+          <p class="kkj-cc__cat-desc">
+            Speichert Ihre Einstellungen (z. B. Sprache, zuletzt gewählter Standort) für vertraute Folgebesuche.
+          </p>
+        </div>
+        <label class="kkj-cc__toggle">
+          <span class="kkj-cc-sr">Komfort</span>
+          <input type="checkbox" id="kkj-cc-preferences" />
+          <span class="kkj-cc__toggle-track"></span>
+          <span class="kkj-cc__toggle-thumb"></span>
+        </label>
+      </div>
+
+      <div class="kkj-cc__modal-actions">
+        <button type="button" class="kkj-cc__btn" data-action="reject">Nur notwendige</button>
+        <button type="button" class="kkj-cc__btn" data-action="save">Auswahl speichern</button>
+        <button type="button" class="kkj-cc__btn kkj-cc__btn--primary" data-action="acceptAll">Alle akzeptieren</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dauerhafter "Cookie-Einstellungen"-Button -->
+  <button
+    type="button"
+    class="kkj-cc__reopen"
+    id="kkj-cc-reopen"
+    hidden
+    aria-label="Cookie-Einstellungen öffnen"
+  >Cookie-Einstellungen</button>
+</div>
+
+<!--
+  Beispiele für blockierte Drittanbieter-Skripte.
+  Vor Einwilligung NICHT ausgeführt — `type="text/plain"` verhindert Ausführung.
+  Das Einwilligungs-Skript ersetzt den Typ bei passender Kategorie.
+-->
+<script
+  type="text/plain"
+  data-consent-category="analytics"
+  data-src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+></script>
+<script type="text/plain" data-consent-category="analytics">
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX', { anonymize_ip: true });
+</script>
+
+<style is:global>
+  /* Alle Regeln sind unter .kkj-cc isoliert, um Konflikte mit der Host-Seite zu vermeiden. */
+  .kkj-cc {
+    --kkj-bg:        #0f1320;
+    --kkj-surface:   #161b2c;
+    --kkj-border:    rgba(255,255,255,.10);
+    --kkj-text:      #e7ebf3;
+    --kkj-muted:     #a4acbf;
+    --kkj-accent:    #f5b94a;
+    --kkj-accent-ink:#1a1406;
+    --kkj-radius:    14px;
+    --kkj-shadow:    0 20px 60px rgba(0,0,0,.45);
+    --kkj-focus:     0 0 0 3px rgba(245,185,74,.55);
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    color: var(--kkj-text);
+    line-height: 1.5;
+  }
+  .kkj-cc *, .kkj-cc *::before, .kkj-cc *::after { box-sizing: border-box; }
+  .kkj-cc[hidden] { display: none !important; }
+  .kkj-cc-sr {
+    position: absolute !important;
+    width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+
+  /* Banner */
+  .kkj-cc__banner {
+    position: fixed;
+    left: 16px; right: 16px; bottom: 16px;
+    z-index: 2147483646;
+    background: var(--kkj-bg);
+    border: 1px solid var(--kkj-border);
+    border-radius: var(--kkj-radius);
+    box-shadow: var(--kkj-shadow);
+    padding: 20px 22px;
+    max-width: 1040px;
+    margin: 0 auto;
+    animation: kkj-cc-in .28s ease-out both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .kkj-cc__banner, .kkj-cc__modal, .kkj-cc__backdrop { animation: none; }
+  }
+  @keyframes kkj-cc-in { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform:none; } }
+  @keyframes kkj-cc-fade { from { opacity:0 } to { opacity:1 } }
+  .kkj-cc__banner-grid { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; }
+  .kkj-cc__title { font-size: 16px; font-weight: 700; margin: 0 0 4px; }
+  .kkj-cc__text  { font-size: 14px; color: var(--kkj-muted); margin: 0; }
+  .kkj-cc__text a { color: var(--kkj-accent); text-decoration: underline; text-underline-offset: 2px; }
+  .kkj-cc__text a:hover { color: #ffd27a; }
+  .kkj-cc__actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; align-items: center; }
+
+  /* Buttons */
+  .kkj-cc__btn {
+    appearance: none; border: 1px solid var(--kkj-border);
+    background: transparent; color: var(--kkj-text);
+    padding: 10px 16px; border-radius: 10px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    transition: background .15s, border-color .15s, transform .05s, box-shadow .15s;
+    font-family: inherit;
+  }
+  .kkj-cc__btn:hover  { background: rgba(255,255,255,.05); }
+  .kkj-cc__btn:active { transform: translateY(1px); }
+  .kkj-cc__btn:focus-visible { outline: none; box-shadow: var(--kkj-focus); }
+  .kkj-cc__btn--primary { background: var(--kkj-accent); color: var(--kkj-accent-ink); border-color: var(--kkj-accent); }
+  .kkj-cc__btn--primary:hover { background: #ffcc6b; }
+  .kkj-cc__btn--ghost { color: var(--kkj-muted); }
+  /* "Alle akzeptieren" im Banner: größer, auffälliger */
+  .kkj-cc__btn--hero {
+    padding: 13px 24px; font-size: 15px; font-weight: 800;
+    box-shadow: 0 8px 22px rgba(245,185,74,.35);
+    letter-spacing: .01em;
+  }
+  .kkj-cc__btn--hero:hover { background: #ffd27a; box-shadow: 0 10px 26px rgba(245,185,74,.45); }
+
+  /* Modal */
+  .kkj-cc__backdrop {
+    position: fixed; inset: 0; z-index: 2147483645;
+    background: rgba(6,8,15,.72); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center; padding: 16px;
+    animation: kkj-cc-fade .2s ease-out both;
+  }
+  .kkj-cc__modal {
+    background: var(--kkj-bg); border: 1px solid var(--kkj-border);
+    border-radius: var(--kkj-radius); box-shadow: var(--kkj-shadow);
+    width: 100%; max-width: 620px; max-height: calc(100vh - 32px);
+    overflow: auto; padding: 26px;
+    animation: kkj-cc-in .22s ease-out both;
+  }
+  .kkj-cc__modal h2 { font-size: 20px; margin: 0 0 6px; }
+  .kkj-cc__modal p  { font-size: 14px; color: var(--kkj-muted); margin: 0 0 18px; }
+
+  .kkj-cc__cat {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--kkj-surface); border: 1px solid var(--kkj-border);
+    border-radius: 12px; padding: 14px 16px; margin-bottom: 10px;
+  }
+  .kkj-cc__cat-body { flex: 1; min-width: 0; }
+  .kkj-cc__cat-title { font-size: 14px; font-weight: 700; margin: 0 0 2px; display: flex; align-items: center; gap: 8px; }
+  .kkj-cc__cat-desc  { font-size: 13px; color: var(--kkj-muted); margin: 0; }
+  .kkj-cc__pill {
+    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    background: rgba(245,185,74,.15); color: var(--kkj-accent);
+    padding: 2px 8px; border-radius: 999px; font-weight: 700;
+  }
+
+  /* Toggle */
+  .kkj-cc__toggle { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
+  .kkj-cc__toggle input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+  .kkj-cc__toggle input:disabled { cursor: not-allowed; }
+  .kkj-cc__toggle-track { position: absolute; inset: 0; border-radius: 999px; background: #2a3148; transition: background .15s; }
+  .kkj-cc__toggle-thumb { position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform .15s; }
+  .kkj-cc__toggle input:checked ~ .kkj-cc__toggle-track { background: var(--kkj-accent); }
+  .kkj-cc__toggle input:checked ~ .kkj-cc__toggle-thumb { transform: translateX(20px); }
+  .kkj-cc__toggle input:focus-visible ~ .kkj-cc__toggle-track { box-shadow: var(--kkj-focus); }
+  .kkj-cc__toggle input:disabled ~ .kkj-cc__toggle-track { background: #3a4262; opacity: .7; }
+
+  .kkj-cc__modal-actions {
+    display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end;
+    margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--kkj-border);
+  }
+
+  .kkj-cc__reopen {
+    position: fixed; left: 14px; bottom: 14px; z-index: 2147483644;
+    background: var(--kkj-bg); color: var(--kkj-text);
+    border: 1px solid var(--kkj-border);
+    border-radius: 999px; padding: 8px 14px;
+    font-size: 12px; font-family: inherit; cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  }
+  .kkj-cc__reopen:hover { background: #1b2236; }
+  .kkj-cc__reopen:focus-visible { outline: none; box-shadow: var(--kkj-focus); }
+
+  @media (max-width: 640px) {
+    .kkj-cc__banner { left: 8px; right: 8px; bottom: 8px; padding: 16px; }
+    .kkj-cc__banner-grid { grid-template-columns: 1fr; }
+    .kkj-cc__actions { justify-content: stretch; }
+    .kkj-cc__actions .kkj-cc__btn { flex: 1 1 auto; }
+    .kkj-cc__btn--hero { order: -1; flex-basis: 100%; padding: 14px 20px; } /* auf Mobile: volle Breite und zuerst */
+    .kkj-cc__modal { padding: 20px; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    'use strict';
+
+    // -------- Konfiguration --------
+    const STORAGE_KEY     = 'kkj_cookie_consent';
+    const CONSENT_VERSION = 1;                             // bei Schema-Änderung erhöhen → erneut fragen
+    const CONSENT_TTL_MS  = 1000 * 60 * 60 * 24 * 180;     // 180 Tage (DSK-Empfehlung)
+    const EU_GEO_GATE     = false;                         // true: Banner nur für EU/EWR-Zeitzonen
+
+    // -------- Elemente --------
+    const $banner   = document.getElementById('kkj-cc-banner');
+    const $backdrop = document.getElementById('kkj-cc-backdrop');
+    const $modal    = $backdrop.querySelector('.kkj-cc__modal');
+    const $reopen   = document.getElementById('kkj-cc-reopen');
+    const $accept   = document.getElementById('kkj-cc-accept');
+    const $toggles  = {
+      analytics:   document.getElementById('kkj-cc-analytics'),
+      marketing:   document.getElementById('kkj-cc-marketing'),
+      preferences: document.getElementById('kkj-cc-preferences')
+    };
+
+    let lastFocused = null;
+
+    // -------- Speicher (localStorage + Cookie-Fallback) --------
+    function saveConsent(state) {
+      const payload = JSON.stringify(state);
+      try { localStorage.setItem(STORAGE_KEY, payload); }
+      catch (_) {
+        const maxAge = Math.floor(CONSENT_TTL_MS / 1000);
+        document.cookie = STORAGE_KEY + '=' + encodeURIComponent(payload)
+          + '; Max-Age=' + maxAge + '; Path=/; SameSite=Lax; Secure';
+      }
+    }
+    function loadConsent() {
+      let raw = null;
+      try { raw = localStorage.getItem(STORAGE_KEY); } catch (_) {}
+      if (!raw) {
+        const m = document.cookie.match(new RegExp('(?:^|; )' + STORAGE_KEY + '=([^;]*)'));
+        raw = m ? decodeURIComponent(m[1]) : null;
+      }
+      if (!raw) return null;
+      try {
+        const s = JSON.parse(raw);
+        if (s.version !== CONSENT_VERSION) return null;
+        if (Date.now() - new Date(s.timestamp).getTime() > CONSENT_TTL_MS) return null;
+        return s;
+      } catch (_) { return null; }
+    }
+
+    // -------- Skripte nach Einwilligung freischalten --------
+    // Jedes <script type="text/plain" data-consent-category="X"> wird geklont,
+    // auf text/javascript umgestellt und erneut eingefügt → Ausführung erst jetzt.
+    function unlockScripts(granted) {
+      document.querySelectorAll('script[type="text/plain"][data-consent-category]').forEach(function (tag) {
+        const cat = tag.getAttribute('data-consent-category');
+        if (!granted[cat]) return;
+        const clone = document.createElement('script');
+        for (const attr of tag.attributes) {
+          if (attr.name === 'type') continue;
+          if (attr.name === 'data-src') { clone.src = attr.value; continue; }
+          clone.setAttribute(attr.name, attr.value);
+        }
+        clone.type = 'text/javascript';
+        if (tag.textContent) clone.textContent = tag.textContent;
+        tag.parentNode.replaceChild(clone, tag);
+      });
+    }
+
+    // -------- Google Consent Mode v2 --------
+    function pushGtagConsent(granted) {
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('consent', 'update', {
+        ad_storage:             granted.marketing   ? 'granted' : 'denied',
+        ad_user_data:           granted.marketing   ? 'granted' : 'denied',
+        ad_personalization:     granted.marketing   ? 'granted' : 'denied',
+        analytics_storage:      granted.analytics   ? 'granted' : 'denied',
+        functionality_storage:  granted.preferences ? 'granted' : 'denied',
+        personalization_storage:granted.preferences ? 'granted' : 'denied'
+      });
+    }
+
+    // Cookies widerrufener Kategorien löschen
+    function purgeCookies(categories) {
+      const map = {
+        analytics:   [/^_ga/, /^_gid$/, /^_gat/, /^_gcl/],
+        marketing:   [/^_fbp$/, /^_fbc$/, /^fr$/, /^IDE$/, /^NID$/],
+        preferences: []
+      };
+      const patterns = [];
+      Object.keys(categories).forEach(function (c) {
+        if (categories[c] === false && map[c]) patterns.push.apply(patterns, map[c]);
+      });
+      if (!patterns.length) return;
+      document.cookie.split(';').forEach(function (c) {
+        const name = c.split('=')[0].trim();
+        if (patterns.some(function (re) { return re.test(name); })) {
+          const host = location.hostname;
+          const parent = host.split('.').slice(-2).join('.');
+          document.cookie = name + '=; Max-Age=0; Path=/;';
+          document.cookie = name + '=; Max-Age=0; Path=/; Domain=' + host + ';';
+          if (parent !== host) document.cookie = name + '=; Max-Age=0; Path=/; Domain=.' + parent + ';';
+        }
+      });
+    }
+
+    function applyConsent(state, prevState) {
+      pushGtagConsent(state.categories);
+      unlockScripts(state.categories);
+      if (prevState) purgeCookies(state.categories);
+      document.dispatchEvent(new CustomEvent('kkj:consent', { detail: state }));
+    }
+
+    function persist(categories) {
+      const state = {
+        version:    CONSENT_VERSION,
+        timestamp:  new Date().toISOString(),
+        locale:     'de',
+        categories: Object.assign({ essential: true }, categories)
+      };
+      const prev = loadConsent();
+      saveConsent(state);
+      applyConsent(state, prev);
+      hideBanner();
+      closeModal();
+      showReopen();
+    }
+    function acceptAll()       { persist({ analytics: true,  marketing: true,  preferences: true  }); }
+    function rejectAll()       { persist({ analytics: false, marketing: false, preferences: false }); }
+    function saveFromToggles() {
+      persist({
+        analytics:   $toggles.analytics.checked,
+        marketing:   $toggles.marketing.checked,
+        preferences: $toggles.preferences.checked
+      });
+    }
+
+    // -------- UI --------
+    function showBanner() {
+      $banner.hidden = false;
+      // "Alle akzeptieren" per Tab/Enter direkt erreichbar
+      if ($accept) {
+        try { $accept.focus({ preventScroll: true }); } catch (_) { $accept.focus(); }
+      }
+    }
+    function hideBanner() { $banner.hidden = true; }
+    function showReopen() { $reopen.hidden = false; }
+
+    function openModal(fromState) {
+      const cats = (fromState && fromState.categories) || { analytics:false, marketing:false, preferences:false };
+      $toggles.analytics.checked   = !!cats.analytics;
+      $toggles.marketing.checked   = !!cats.marketing;
+      $toggles.preferences.checked = !!cats.preferences;
+
+      lastFocused = document.activeElement;
+      $backdrop.hidden = false;
+      $modal.focus();
+      document.addEventListener('keydown', trapFocus);
+    }
+    function closeModal() {
+      $backdrop.hidden = true;
+      document.removeEventListener('keydown', trapFocus);
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
+    function trapFocus(e) {
+      if (e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
+      if (e.key !== 'Tab') return;
+      const focusables = $modal.querySelectorAll(
+        'button, [href], input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusables.length) return;
+      const first = focusables[0], last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+
+    // -------- Events --------
+    document.getElementById('kkj-cc-root').addEventListener('click', function (e) {
+      const t = e.target.closest('[data-action]');
+      if (!t) return;
+      switch (t.dataset.action) {
+        case 'accept':
+        case 'acceptAll': acceptAll(); break;
+        case 'reject':    rejectAll(); break;
+        case 'customize': openModal(loadConsent()); break;
+        case 'save':      saveFromToggles(); break;
+      }
+    });
+    $backdrop.addEventListener('click', function (e) { if (e.target === $backdrop) closeModal(); });
+    $reopen.addEventListener('click', function () { openModal(loadConsent()); });
+
+    // Öffentliche API — z. B. in Footer-Links einbindbar
+    window.KokajCookieConsent = {
+      open:   function () { openModal(loadConsent()); },
+      revoke: function () { rejectAll(); },
+      state:  function () { return loadConsent(); }
+    };
+    document.querySelectorAll('a[href="#cookie-settings"], [data-cookie-settings]').forEach(function (a) {
+      a.addEventListener('click', function (e) { e.preventDefault(); window.KokajCookieConsent.open(); });
+    });
+
+    // Optionale EU-Erkennung per Browser-Zeitzone (grobe Heuristik)
+    function isLikelyEU() {
+      try { return (Intl.DateTimeFormat().resolvedOptions().timeZone || '').indexOf('Europe/') === 0; }
+      catch (_) { return true; }
+    }
+
+    // -------- Start --------
+    const existing = loadConsent();
+    if (existing) {
+      applyConsent(existing, null);
+      showReopen();
+    } else if (!EU_GEO_GATE || isLikelyEU()) {
+      showBanner();
+      showReopen();
+    } else {
+      // Außerhalb EU + Gate aktiv → still zustimmen (ggf. mit Rechtsberatung abstimmen)
+      applyConsent({
+        version: CONSENT_VERSION,
+        timestamp: new Date().toISOString(),
+        locale: 'de',
+        categories: { essential:true, analytics:true, marketing:true, preferences:true }
+      }, null);
+    }
+  })();
+</script>

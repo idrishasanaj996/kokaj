@@ -1,4 +1,6 @@
 ---
+import CookieConsent from '../components/CookieConsent.astro';
+
 interface Props {
   title?: string;
   description?: string;
@@ -47,6 +49,23 @@ const schemaOrg = JSON.stringify({
 <!DOCTYPE html>
 <html lang="de">
   <head>
+    <!-- Google Consent Mode v2: vor allen Tags ausführen, Default = alles verweigert -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'denied',
+        personalization_storage: 'denied',
+        security_storage: 'granted',
+        wait_for_update: 500
+      });
+      gtag('set', 'ads_data_redaction', true);
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
@@ -84,5 +103,6 @@ const schemaOrg = JSON.stringify({
   </head>
   <body>
     <slot />
+    <CookieConsent />
   </body>
 </html>
