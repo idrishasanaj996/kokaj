@@ -2,10 +2,14 @@
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
+  ogImage?: string;
 }
 const {
   title = 'Abschleppdienst KOKAJ München – 24/7 Pannenhilfe & Fahrzeugtransport',
-  description = 'Abschleppdienst KOKAJ München – 20+ Jahre Erfahrung. Pannenhilfe, Abschleppen, Fahrzeugtransport. 24/7 erreichbar: 0172 7776606. München & deutschlandweit.'
+  description = 'Abschleppdienst KOKAJ München – 20+ Jahre Erfahrung. Pannenhilfe, Abschleppen, Fahrzeugtransport. 24/7 erreichbar: 0172 7776606. München & deutschlandweit.',
+  canonical = 'https://www.abschleppdienstkokaj.de',
+  ogImage = '/images/truck-hero.jpg'
 } = Astro.props;
 
 const schemaOrg = JSON.stringify({
@@ -14,7 +18,7 @@ const schemaOrg = JSON.stringify({
   "name": "Abschleppdienst KOKAJ",
   "description": description,
   "url": "https://www.abschleppdienstkokaj.de",
-  "telephone": "+4917277766060",
+  "telephone": "+491727776606",
   "email": "info@abschleppdienstkokaj.de",
   "address": {
     "@type": "PostalAddress",
@@ -55,15 +59,17 @@ const schemaOrg = JSON.stringify({
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_DE" />
-    <meta property="og:image" content="/images/truck-4.jpg" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://www.abschleppdienstkokaj.de" />
+    <link rel="canonical" href={canonical} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
