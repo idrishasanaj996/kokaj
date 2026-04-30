@@ -1,0 +1,426 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+
+const phoneMobile = '0172 7776606';
+const phoneMobileHref = 'tel:+491727776606';
+const phoneLandline = '089 21906996';
+const phoneLandlineHref = 'tel:+498921906996';
+const email = 'info@abschleppdienstkokaj.de';
+const whatsappUrl = 'https://wa.me/491727776606?text=Hallo%20Abschleppdienst%20KOKAJ%2C%20ich%20m%C3%B6chte%20einen%20Falschparker%20melden%20und%20den%20Einsatz%20pr%C3%BCfen%20lassen.';
+const canonical = 'https://www.abschleppdienstkokaj.de/falschparker-abschleppen-muenchen';
+
+const metaTitle = 'Falschparker abschleppen München | Privatparkplatz & Einfahrt | KOKAJ';
+const metaDescription = 'Falschparker in München abschleppen lassen: KOKAJ prüft Einsätze auf Privatparkplätzen, Einfahrten, Kundenparkplätzen, Tiefgaragen und für Hausverwaltungen. 24/7 erreichbar.';
+
+const services = [
+  ['Privatparkplatz', 'Wenn ein fremdes Fahrzeug Ihren privaten Stellplatz blockiert, prüfen wir Situation, Standort und nächste sinnvolle Schritte.'],
+  ['Zugeparkte Einfahrt', 'Bei blockierten Einfahrten unterstützen wir schnell, strukturiert und mit sauberer Dokumentation der Lage vor Ort.'],
+  ['Kundenparkplätze', 'Für Supermärkte, Hotels, Praxen, Kanzleien und Gewerbeflächen mit wiederkehrenden Falschparkern.'],
+  ['Hausverwaltungen', 'Professionelle Einsatzprüfung für Wohnanlagen, Tiefgaragen, Besucherplätze und vermietete Stellflächen.'],
+  ['Firmenparkplätze', 'Diskrete Hilfe für Unternehmen, Sicherheitsdienste, Ladezonen und reservierte Mitarbeiterstellplätze.'],
+  ['Tiefgaragen', 'Prüfung von Zufahrt, Durchfahrtshöhe, Rangierfläche und passender Lösung für enge Parkbereiche.'],
+  ['Wiederkehrende Fälle', 'Strukturierte Abstimmung für Objekte, bei denen Falschparker regelmäßig Abläufe blockieren.'],
+  ['Dokumentation', 'Wir unterstützen bei Fotos, Standortdaten, Beschilderung und nachvollziehbarer Einsatzprüfung.'],
+];
+
+const steps = [
+  ['01', 'Anrufen oder melden', 'Rufen Sie direkt an oder senden Sie die wichtigsten Informationen per WhatsApp.'],
+  ['02', 'Situation schildern', 'Standort, Fahrzeugposition, Beschilderung und Art der Blockade werden aufgenommen.'],
+  ['03', 'Einsatz prüfen', 'Wir prüfen, ob und wie eine Abschleppung oder Lösung vor Ort möglich ist.'],
+  ['04', 'Professionell lösen', 'Je nach Situation erfolgt die Abschleppung, Dokumentation oder eine geeignete Abstimmung vor Ort.'],
+];
+
+const munichDistricts = ['Innenstadt','Schwabing','Maxvorstadt','Sendling','Glockenbachviertel','Haidhausen','Bogenhausen','Neuhausen','Nymphenburg','Pasing','Laim','Trudering','Ramersdorf','Giesing','Moosach','Milbertshofen','Freimann','Obersendling'];
+
+const faq = [
+  ['Darf ich einen Falschparker auf meinem Privatparkplatz abschleppen lassen?', 'Grundsätzlich können Eigentümer oder berechtigte Nutzer eines Privatparkplatzes gegen unberechtigt abgestellte Fahrzeuge vorgehen. Ob eine Abschleppung im konkreten Fall möglich und sinnvoll ist, hängt unter anderem von Beschilderung, Besitzverhältnissen, Beweislage und Situation vor Ort ab. Wir prüfen den Einsatz direkt und unterstützen bei einer sauberen Dokumentation.'],
+  ['Was tun, wenn meine Einfahrt zugeparkt ist?', 'Dokumentieren Sie die Situation möglichst mit Fotos, notieren Sie Standort, Kennzeichen und Uhrzeit und rufen Sie uns an. Wir prüfen, welche Lösung vor Ort möglich ist und ob ein Abschleppen in Betracht kommt.'],
+  ['Wie schnell kann ein Abschleppdienst in München vor Ort sein?', 'Die Ankunftszeit hängt von Standort, Verkehr, laufenden Einsätzen und Verfügbarkeit ab. KOKAJ ist 24/7 erreichbar und je nach Situation schnell im Münchner Stadtgebiet und Umland im Einsatz.'],
+  ['Was kostet das Abschleppen eines Falschparkers?', 'Die Kosten hängen von Standort, Fahrzeug, Zugänglichkeit, Aufwand und rechtlicher bzw. organisatorischer Situation ab. Rufen Sie uns an – wir geben Ihnen nach der Einsatzprüfung eine transparente Einschätzung.'],
+  ['Können Hausverwaltungen Falschparker abschleppen lassen?', 'Ja, Hausverwaltungen, Vermieter und Objektbetreiber können sich bei blockierten Stellplätzen, Besucherparkplätzen, Feuerwehrzufahrten oder Tiefgaragenzufahrten an uns wenden. Wir stimmen die konkrete Vorgehensweise und Dokumentation professionell ab.'],
+  ['Was brauche ich, um einen Falschparker melden zu können?', 'Hilfreich sind genaue Adresse, Standort auf dem Grundstück, Fotos der Situation, Kennzeichen, Uhrzeit, Informationen zur Beschilderung und Ihre Berechtigung am Stellplatz oder Objekt.'],
+  ['Funktioniert das auch bei Tiefgaragen oder Kundenparkplätzen?', 'Ja, Einsätze in Tiefgaragen, Parkhäusern und auf Kundenparkplätzen können geprüft werden. Entscheidend sind Zufahrtshöhe, Rangierfläche, Position des Fahrzeugs, Beschilderung und die konkrete Rechts- und Besitzlage.'],
+  ['Ist der Service in ganz Bayern verfügbar?', 'Der Fokus liegt auf München und dem Münchner Umland. Einsätze in Bayern können je nach Standort, Verfügbarkeit und Situation geprüft und koordiniert werden. Deutschlandweite Fahrzeugtransporte sind auf Anfrage möglich, bleiben hier aber untergeordnet.'],
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'AutoRepair'],
+  name: 'Abschleppdienst KOKAJ',
+  description: metaDescription,
+  url: canonical,
+  telephone: '+491727776606',
+  email,
+  image: 'https://www.abschleppdienstkokaj.de/images/truck-hero.jpg',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Carl-Wery-Straße 6',
+    postalCode: '81739',
+    addressLocality: 'München',
+    addressCountry: 'DE',
+  },
+  areaServed: ['München', 'Münchner Umland', 'Bayern'],
+  openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '00:00', closes: '23:59' }],
+  priceRange: '€€',
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Falschparker abschleppen München',
+  serviceType: 'Abschleppdienst für Falschparker auf Privatparkplätzen, Einfahrten und Kundenparkplätzen',
+  provider: { '@type': 'LocalBusiness', name: 'Abschleppdienst KOKAJ', telephone: '+491727776606' },
+  areaServed: [{ '@type': 'City', name: 'München' }, { '@type': 'AdministrativeArea', name: 'Bayern' }],
+  availableChannel: { '@type': 'ServiceChannel', servicePhone: { '@type': 'ContactPoint', telephone: '+491727776606', contactType: 'customer service', areaServed: 'DE' } },
+};
+---
+
+<Layout title={metaTitle} description={metaDescription} canonical={canonical} ogImage="/images/truck-hero.jpg">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="flex items-center justify-between h-[72px]">
+        <a href="/" class="flex items-center gap-3 group shrink-0" aria-label="Abschleppdienst KOKAJ Startseite">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-black font-black text-lg shadow-lg group-hover:scale-105 transition-transform">K</div>
+          <div class="hidden sm:block">
+            <div class="text-white font-extrabold text-sm leading-none">Abschleppdienst</div>
+            <div class="gradient-text font-black text-base leading-none mt-0.5">KOKAJ</div>
+          </div>
+        </a>
+        <nav class="hidden lg:flex items-center gap-7">
+          <a href="#leistungen" class="nav-link text-gray-400 hover:text-white text-sm font-medium transition-colors">Leistungen</a>
+          <a href="#ablauf" class="nav-link text-gray-400 hover:text-white text-sm font-medium transition-colors">Ablauf</a>
+          <a href="#muenchen" class="nav-link text-gray-400 hover:text-white text-sm font-medium transition-colors">München</a>
+          <a href="#faq" class="nav-link text-gray-400 hover:text-white text-sm font-medium transition-colors">FAQ</a>
+          <a href="/" class="nav-link text-gray-400 hover:text-white text-sm font-medium transition-colors">Hauptseite</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-3">
+          <a href={phoneLandlineHref} class="text-gray-400 hover:text-white text-sm font-medium transition-colors">{phoneLandline}</a>
+          <a href={phoneMobileHref} class="btn-pulse bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-black font-bold px-5 py-2.5 rounded-full transition-all text-sm flex items-center gap-2 shadow-lg shadow-amber-500/20">{phoneMobile}</a>
+        </div>
+        <div class="flex lg:hidden items-center gap-2">
+          <a href={phoneMobileHref} class="bg-gradient-to-r from-amber-400 to-orange-500 text-black px-4 py-2.5 rounded-xl text-sm font-black shadow-lg">Anrufen</a>
+          <button id="menu-btn" aria-label="Menü öffnen" class="text-white p-2 hover:text-amber-400 transition-colors">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-nav" class="hidden lg:hidden border-t border-white/5 px-5 pb-5 bg-[#080c14]/95 backdrop-blur-2xl">
+      <nav class="flex flex-col gap-1 pt-4">
+        {['#leistungen:Leistungen','#ablauf:Ablauf','#muenchen:München','#bayern:Bayern','#faq:FAQ','/:Hauptseite'].map(item => {
+          const [href, label] = item.split(':');
+          return <a href={href} class="mobile-nav-link text-gray-300 hover:text-amber-400 font-medium py-3 border-b border-white/5 transition-colors">{label}</a>;
+        })}
+        <a href={whatsappUrl} target="_blank" rel="noopener" class="bg-gradient-to-r from-amber-400 to-orange-500 text-black font-bold py-3.5 rounded-xl text-center mt-4">Falschparker melden</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden noise">
+      <div class="absolute inset-0 bg-[#070a11]"></div>
+      <div class="absolute inset-0 grid-bg opacity-40"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(245,158,11,0.18),transparent_32%),radial-gradient(circle_at_15%_80%,rgba(234,88,12,0.10),transparent_28%)]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#080c14]/70 via-transparent to-[#080c14]"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full pt-28 pb-16">
+        <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 items-center">
+          <div class="max-w-2xl">
+            <div id="hero-badge" class="inline-flex items-center gap-2.5 glass-amber rounded-full px-4 py-2 mb-8">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              <span class="text-amber-300 text-sm font-semibold">Falschparker-Service · München & Bayern · 24/7 erreichbar</span>
+            </div>
+            <h1 id="hero-headline" class="text-4xl sm:text-6xl lg:text-7xl font-black leading-[1.04] tracking-tight mb-6">
+              Falschparker in München abschleppen lassen.
+            </h1>
+            <p id="hero-sub" class="text-gray-300 text-lg sm:text-xl max-w-xl mb-8 leading-relaxed">
+              Schnelle Einsatzprüfung für Privatparkplätze, Einfahrten, Kundenparkplätze, Tiefgaragen und Hausverwaltungen. Seriös, diskret und professionell dokumentiert.
+            </p>
+            <div id="hero-ctas" class="flex flex-col sm:flex-row gap-4 mb-8">
+              <a href={phoneMobileHref} class="btn-pulse inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-black font-black text-lg px-8 py-4.5 rounded-2xl transition-all hover:scale-[1.03] shadow-2xl shadow-amber-500/30">
+                Jetzt anrufen · {phoneMobile}
+              </a>
+              <a href={whatsappUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 glass border border-white/10 hover:border-amber-500/30 text-white font-bold text-lg px-8 py-4.5 rounded-2xl transition-all">
+                Einsatz prüfen lassen
+              </a>
+            </div>
+            <div id="hero-trust" class="grid grid-cols-2 sm:flex sm:flex-wrap gap-3">
+              {['24/7 erreichbar','20+ Jahre Erfahrung','Privat & Gewerbe','Keine falschen Garantien'].map(t => <span class="glass text-gray-300 text-sm font-semibold px-3.5 py-2 rounded-full">{t}</span>)}
+            </div>
+          </div>
+
+          <div class="relative lg:min-h-[620px]" aria-label="Scroll-Animation Abschleppwagen entfernt Falschparker">
+            <div class="absolute -inset-6 bg-amber-500/10 blur-3xl rounded-full"></div>
+            <div id="parking-stage" class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0b111c]/85 shadow-2xl shadow-black/40 min-h-[500px] lg:min-h-[620px]">
+              <div class="absolute inset-0 opacity-60" style="background:linear-gradient(115deg,rgba(255,255,255,0.05),transparent 35%),repeating-linear-gradient(90deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 90px);"></div>
+              <div id="parking-lines" class="absolute left-10 right-10 bottom-24 h-[250px] border-2 border-amber-400/55 rounded-xl">
+                <div class="absolute top-4 left-4 text-amber-300/70 text-xs font-black tracking-[0.25em] uppercase">Privatparkplatz</div>
+                <div class="absolute inset-x-6 top-1/2 border-t border-dashed border-amber-400/30"></div>
+                <div class="absolute inset-y-6 left-1/2 border-l border-dashed border-amber-400/30"></div>
+              </div>
+
+              <svg id="wrong-car" class="absolute left-[23%] bottom-[190px] w-[240px] max-w-[48vw]" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="38" y="52" width="238" height="34" rx="12" fill="#182234" stroke="#2a3b55" stroke-width="2"/>
+                <path d="M82 52C96 25 126 18 180 18C222 18 248 30 262 52H82Z" fill="#101927" stroke="#25364e" stroke-width="2"/>
+                <path d="M105 49C116 31 137 27 159 27V49H105Z" fill="#234361"/>
+                <path d="M169 27C202 27 223 34 238 49H169V27Z" fill="#1e3a55"/>
+                <circle cx="92" cy="88" r="20" fill="#05080d" stroke="#27364a" stroke-width="5"/>
+                <circle cx="226" cy="88" r="20" fill="#05080d" stroke="#27364a" stroke-width="5"/>
+                <rect x="42" y="65" width="10" height="9" rx="3" fill="#ef4444"/>
+                <rect x="265" y="63" width="12" height="10" rx="3" fill="#fde68a"/>
+                <text x="120" y="74" fill="#F59E0B" font-size="14" font-weight="900" font-family="Plus Jakarta Sans">FALSCHPARKER</text>
+              </svg>
+
+              <svg id="tow-svg" class="absolute -left-[65%] bottom-[152px] w-[480px] max-w-none" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="towCab" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#223246"/><stop offset="1" stop-color="#0a1220"/></linearGradient>
+                  <linearGradient id="towAmber" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#F59E0B"/><stop offset="1" stop-color="#EA580C"/></linearGradient>
+                </defs>
+                <path id="tow-lift" d="M40 92L294 80L300 105L40 116Z" fill="#111827" stroke="#334155" stroke-width="3"/>
+                <rect x="284" y="48" width="220" height="72" rx="10" fill="url(#towCab)" stroke="#26364d" stroke-width="3"/>
+                <path d="M320 46C342 20 430 20 488 48H320Z" fill="#101927" stroke="#2a3a52" stroke-width="3"/>
+                <path d="M334 45C350 29 386 27 410 30V45H334Z" fill="#21415f"/>
+                <path d="M420 31C448 34 470 38 486 47H420V31Z" fill="#1c3852"/>
+                <rect x="284" y="96" width="222" height="12" fill="url(#towAmber)"/>
+                <text x="335" y="82" fill="#F59E0B" font-size="18" font-weight="900" letter-spacing="4" font-family="Plus Jakarta Sans">KOKAJ</text>
+                <text x="336" y="95" fill="rgba(255,255,255,.48)" font-size="8" font-weight="700" letter-spacing="2" font-family="Plus Jakarta Sans">ABSCHLEPPDIENST MÜNCHEN</text>
+                <rect x="337" y="20" width="96" height="10" rx="5" fill="#0f172a" stroke="#334155"/>
+                <rect class="tow-flash-a" x="346" y="21" width="18" height="8" rx="4" fill="#F59E0B"/>
+                <rect class="tow-flash-b" x="371" y="21" width="18" height="8" rx="4" fill="#F59E0B"/>
+                <rect class="tow-flash-a" x="396" y="21" width="18" height="8" rx="4" fill="#F59E0B"/>
+                <circle cx="106" cy="124" r="25" fill="#05080d" stroke="#26364d" stroke-width="7"/>
+                <circle cx="350" cy="124" r="27" fill="#05080d" stroke="#26364d" stroke-width="7"/>
+                <circle cx="470" cy="124" r="27" fill="#05080d" stroke="#26364d" stroke-width="7"/>
+                <path d="M505 72L585 54L585 102L505 92Z" fill="#fde68a" opacity="0.12"/>
+                <line id="tow-cable" x1="64" y1="84" x2="132" y2="84" stroke="#F59E0B" stroke-width="3" stroke-dasharray="7 5" opacity="0"/>
+              </svg>
+
+              <div class="absolute left-0 right-0 bottom-0 h-28 bg-[#111318] border-t border-white/10">
+                <div class="absolute top-10 left-0 right-0 h-1 overflow-hidden"><div id="road-lines" class="h-full w-[200%]" style="background:repeating-linear-gradient(90deg,rgba(255,255,255,.22) 0 70px,transparent 70px 125px);"></div></div>
+              </div>
+              <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-xs text-gray-500 uppercase tracking-[0.18em]"><span>Scroll</span><span>Einsatzprüfung</span><span>Abtransport</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bg-[#0e1420] border-y border-white/5 py-5 overflow-hidden">
+      <div class="flex animate-marquee whitespace-nowrap select-none">
+        {Array.from({length: 2}).map(() => <div class="flex items-center gap-12 px-6">{['Privatparkplatz blockiert','Einfahrt zugeparkt','Kundenparkplatz besetzt','Tiefgarage prüfen','Hausverwaltung & Gewerbe','München im Fokus','Bayern nach Prüfung'].map(item => <span class="text-gray-500 text-sm font-medium tracking-wide">{item}</span>)}</div>)}
+      </div>
+    </div>
+
+    <section id="sofort" class="py-24 px-5 sm:px-8">
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-center">
+        <div class="reveal-left">
+          <span class="gradient-text font-bold text-sm uppercase tracking-widest">Sofort-Hilfe für Falschparker</span>
+          <h2 class="text-4xl sm:text-5xl font-black mt-3 mb-6">Blockierter Stellplatz? Wir prüfen den Einsatz direkt.</h2>
+          <p class="text-gray-400 text-lg leading-relaxed mb-6">Ob Privatparkplatz, Einfahrt, Firmenparkplatz oder Tiefgarage: Entscheidend ist die konkrete Situation. KOKAJ verbindet schnelle Erreichbarkeit mit professioneller Dokumentation und klarer Abstimmung.</p>
+          <div class="glass-amber rounded-2xl p-5 border border-amber-500/20">
+            <p class="text-amber-100 font-semibold">Wichtig: Ob eine Abschleppung möglich ist, hängt von Berechtigung, Beschilderung, Zugänglichkeit, Verfügbarkeit und der Lage vor Ort ab. Wir geben keine pauschalen Garantien, sondern prüfen Ihren Fall seriös.</p>
+          </div>
+        </div>
+        <div class="reveal-right grid sm:grid-cols-3 gap-4">
+          {[
+            ['01','Fotos sichern','Fahrzeugposition, Kennzeichen, Beschilderung und Blockade dokumentieren.'],
+            ['02','Anrufen','Standort und Situation telefonisch oder per WhatsApp durchgeben.'],
+            ['03','Prüfen lassen','Wir stimmen ab, welche Lösung vor Ort fachgerecht möglich ist.'],
+          ].map(card => <div class="border-gradient p-px rounded-2xl"><div class="bg-[#0e1420] rounded-2xl p-6 h-full"><div class="text-amber-400 font-black text-3xl mb-5">{card[0]}</div><h3 class="text-white font-bold text-lg mb-2">{card[1]}</h3><p class="text-gray-500 text-sm leading-relaxed">{card[2]}</p></div></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="leistungen" class="py-24 px-5 sm:px-8 bg-[#0e1420]">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal">
+          <span class="gradient-text font-bold text-sm uppercase tracking-widest">Leistungsbereiche</span>
+          <h2 class="text-4xl sm:text-5xl font-black mt-3 mb-4">Falschparker abschleppen lassen: Fälle, bei denen KOKAJ hilft</h2>
+          <p class="text-gray-400 max-w-3xl mx-auto text-lg">Für private Stellplätze, Gewerbeflächen, Wohnanlagen und Objekte mit wiederkehrenden Parkplatzproblemen in München und Bayern.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {services.map((s, i) => <div class="reveal border-gradient p-px rounded-2xl" style={`transition-delay:${i*55}ms`}><div class="bg-[#101723] hover:bg-[#141b26] rounded-2xl p-6 h-full transition-all duration-300 hover:-translate-y-1"><div class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-5 text-amber-400 font-black">{String(i+1).padStart(2,'0')}</div><h3 class="text-white font-bold text-lg mb-3">{s[0]}</h3><p class="text-gray-500 text-sm leading-relaxed">{s[1]}</p></div></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="ablauf" class="py-24 px-5 sm:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 reveal">
+          <span class="gradient-text font-bold text-sm uppercase tracking-widest">Ablauf</span>
+          <h2 class="text-4xl sm:text-5xl font-black mt-3 mb-4">In 4 Schritten zur geprüften Lösung</h2>
+        </div>
+        <div class="grid md:grid-cols-4 gap-5">
+          {steps.map((step, i) => <div class="reveal relative" style={`transition-delay:${i*90}ms`}><div class="glass rounded-2xl p-6 h-full"><div class="text-amber-400 font-black text-4xl mb-6">{step[0]}</div><h3 class="text-white text-xl font-bold mb-3">{step[1]}</h3><p class="text-gray-500 text-sm leading-relaxed">{step[2]}</p></div></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="muenchen" class="py-24 px-5 sm:px-8 bg-[#0e1420] overflow-hidden">
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal-left">
+          <span class="gradient-text font-bold text-sm uppercase tracking-widest">Lokaler Fokus</span>
+          <h2 class="text-4xl sm:text-5xl font-black mt-3 mb-6">Falschparker abschleppen in München</h2>
+          <p class="text-gray-400 text-lg leading-relaxed mb-6">München ist der klare Schwerpunkt dieser Landingpage. KOKAJ unterstützt private Parkplatzbesitzer, Unternehmen, Vermieter, Wohnanlagen und Hausverwaltungen bei blockierten Stellplätzen und Einfahrten im Stadtgebiet und Umland.</p>
+          <p class="text-gray-500 leading-relaxed">Typische Fälle sind Einfahrten in Wohngebieten, reservierte Kundenparkplätze, Tiefgaragenzufahrten, Innenhofstellplätze oder dauerhaft blockierte Flächen in Objektverwaltungen. Wir prüfen jeden Einsatz individuell und ohne übertriebene Versprechen.</p>
+        </div>
+        <div class="reveal-right glass rounded-[2rem] p-6 relative overflow-hidden">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,158,11,.16),transparent_42%)]"></div>
+          <div class="relative aspect-square rounded-[1.5rem] bg-[#080c14] border border-white/10 overflow-hidden">
+            <div class="absolute inset-8 rounded-full border border-amber-500/20"></div>
+            <div class="absolute inset-20 rounded-full border border-amber-500/30"></div>
+            <div class="absolute left-1/2 top-1/2 w-4 h-4 -translate-x-1/2 -translate-y-1/2 bg-amber-400 rounded-full shadow-[0_0_40px_rgba(245,158,11,.8)]"></div>
+            {munichDistricts.map((d, i) => {
+              const angle = (i / munichDistricts.length) * Math.PI * 2;
+              const radius = i % 2 ? 39 : 31;
+              const x = 50 + Math.cos(angle) * radius;
+              const y = 50 + Math.sin(angle) * radius;
+              return <span class="absolute text-[10px] sm:text-xs text-gray-300 bg-white/5 border border-white/10 rounded-full px-2.5 py-1 backdrop-blur" style={`left:${x}%;top:${y}%;transform:translate(-50%,-50%)`}>{d}</span>;
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bayern" class="py-24 px-5 sm:px-8">
+      <div class="max-w-6xl mx-auto text-center reveal">
+        <span class="gradient-text font-bold text-sm uppercase tracking-widest">Bayern</span>
+        <h2 class="text-4xl sm:text-5xl font-black mt-3 mb-6">Abschleppdienst für Falschparker in Bayern</h2>
+        <p class="text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto mb-10">Neben München können Einsätze in Bayern je nach Standort, Verfügbarkeit und konkreter Situation geprüft und koordiniert werden. Der Fokus bleibt klar regional: München zuerst, Bayern nach Prüfung, deutschlandweite Transporte nur auf Anfrage.</p>
+        <div class="grid sm:grid-cols-3 gap-5 text-left">
+          {['Standort & Verfügbarkeit prüfen','Zufahrt & Fahrzeugposition bewerten','Dokumentation professionell vorbereiten'].map(item => <div class="glass rounded-2xl p-6"><div class="w-2 h-2 rounded-full bg-amber-400 mb-5"></div><h3 class="text-white font-bold">{item}</h3></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="trust" class="py-24 px-5 sm:px-8 bg-[#0e1420]">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-14 reveal"><span class="gradient-text font-bold text-sm uppercase tracking-widest">Vertrauen</span><h2 class="text-4xl sm:text-5xl font-black mt-3">Seriös statt laut. Schnell statt unklar.</h2></div>
+        <div class="grid md:grid-cols-4 gap-5">
+          {[
+            ['20+ Jahre Erfahrung','Bestehendes Trust-Element der Marke KOKAJ, passend für professionelle Einsätze.'],
+            ['24/7 erreichbar','Telefonisch und per WhatsApp erreichbar – besonders wichtig bei blockierten Zufahrten.'],
+            ['Dokumentation','Unterstützung bei nachvollziehbarer Prüfung, Fotos und Situationsaufnahme.'],
+            ['Privat & Gewerbe','Für Stellplatzbesitzer, Unternehmen, Hausverwaltungen und Objektbetreiber.'],
+          ].map(t => <div class="border-gradient p-px rounded-2xl"><div class="bg-[#101723] rounded-2xl p-6 h-full"><h3 class="text-white font-bold text-xl mb-3">{t[0]}</h3><p class="text-gray-500 text-sm leading-relaxed">{t[1]}</p></div></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="py-24 px-5 sm:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16 reveal"><span class="gradient-text font-bold text-sm uppercase tracking-widest">FAQ</span><h2 class="text-4xl sm:text-5xl font-black mt-3 mb-4">Häufige Fragen zu Falschparkern</h2></div>
+        <div class="space-y-3 reveal">
+          {faq.map((item, i) => <div class="faq-item glass rounded-xl overflow-hidden" data-index={i}><button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/3 transition-colors"><span class="text-white font-semibold text-sm sm:text-base">{item[0]}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="faq-icon w-5 h-5 text-amber-400 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></button><div class="faq-answer"><p class="text-gray-400 text-sm leading-relaxed px-5 pb-5">{item[1]}</p></div></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="py-24 px-5 sm:px-8 bg-[#0e1420] relative overflow-hidden">
+      <div class="absolute inset-0 grid-bg opacity-30"></div>
+      <div class="relative max-w-5xl mx-auto text-center reveal">
+        <span class="gradient-text font-bold text-sm uppercase tracking-widest">Einsatz prüfen</span>
+        <h2 class="text-4xl sm:text-6xl font-black mt-4 mb-6">Falschparker melden. Situation prüfen. Professionell lösen.</h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10">Rufen Sie KOKAJ direkt an oder senden Sie die Situation per WhatsApp. Wir prüfen Verfügbarkeit, Standort und Möglichkeiten ohne falsche Versprechen.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+          <a href={phoneMobileHref} class="btn-pulse inline-flex items-center justify-center bg-gradient-to-r from-amber-400 to-orange-500 text-black font-black text-xl px-10 py-5 rounded-2xl shadow-2xl shadow-amber-500/25">Jetzt anrufen · {phoneMobile}</a>
+          <a href={whatsappUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center glass border border-white/10 text-white font-bold text-xl px-10 py-5 rounded-2xl hover:border-amber-500/40 transition-colors">Falschparker melden</a>
+        </div>
+        <div class="grid sm:grid-cols-3 gap-5 text-left">
+          <div class="glass rounded-xl p-6"><div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">Telefon</div><a href={phoneMobileHref} class="text-white font-bold hover:text-amber-400">{phoneMobile}</a><br/><a href={phoneLandlineHref} class="text-gray-400 hover:text-amber-400">{phoneLandline}</a></div>
+          <div class="glass rounded-xl p-6"><div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">E-Mail</div><a href={`mailto:${email}`} class="text-white font-bold hover:text-amber-400 break-all">{email}</a></div>
+          <div class="glass rounded-xl p-6"><div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">Adresse</div><div class="text-white font-medium">Carl-Wery-Straße 6<br/>81739 München</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#050810] border-t border-white/5 py-14 pb-28 sm:pb-14">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <a href="/" class="flex items-center gap-3 mb-5"><div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-black font-black text-xl">K</div><div><div class="text-white font-extrabold text-sm">Abschleppdienst</div><div class="gradient-text font-black text-base">KOKAJ</div></div></a>
+          <p class="text-gray-500 text-sm leading-relaxed">Premium-Abschleppdienst für München: Pannenhilfe, Fahrzeugtransport und Einsatzprüfung bei Falschparkern.</p>
+        </div>
+        <div><h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Interne Links</h4><ul class="space-y-2.5 text-sm"><li><a href="/" class="text-gray-500 hover:text-amber-400">Abschleppdienst München</a></li><li><a href="/#leistungen" class="text-gray-500 hover:text-amber-400">Leistungen</a></li><li><a href="/#einsatzgebiet" class="text-gray-500 hover:text-amber-400">Einsatzgebiet</a></li><li><a href="/#faq" class="text-gray-500 hover:text-amber-400">FAQ Hauptseite</a></li></ul></div>
+        <div><h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Falschparker</h4><ul class="space-y-2.5 text-sm"><li><a href="#muenchen" class="text-gray-500 hover:text-amber-400">Falschparker München</a></li><li><a href="#bayern" class="text-gray-500 hover:text-amber-400">Falschparker Bayern</a></li><li><a href="#leistungen" class="text-gray-500 hover:text-amber-400">Privatparkplatz</a></li><li><a href="#ablauf" class="text-gray-500 hover:text-amber-400">Einsatzprüfung</a></li></ul></div>
+        <div><h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Kontakt</h4><ul class="space-y-3 text-sm"><li><a href={phoneMobileHref} class="text-white font-bold hover:text-amber-400">{phoneMobile}</a><div class="text-gray-500 text-xs mt-0.5">Mobil · auch WhatsApp</div></li><li><a href={phoneLandlineHref} class="text-gray-300 hover:text-amber-400">{phoneLandline}</a></li><li><a href={`mailto:${email}`} class="text-gray-500 hover:text-amber-400 break-all">{email}</a></li><li class="text-gray-500">Carl-Wery Str. 6<br/>81739 München</li></ul></div>
+      </div>
+      <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600"><span>&copy; {new Date().getFullYear()} Abschleppdienst KOKAJ München. Alle Rechte vorbehalten.</span><div class="flex gap-5"><a href="/impressum" class="hover:text-gray-400">Impressum</a><a href="/datenschutz" class="hover:text-gray-400">Datenschutz</a></div></div>
+    </div>
+  </footer>
+
+  <a href={whatsappUrl} target="_blank" rel="noopener" class="wa-btn float hidden sm:flex" aria-label="WhatsApp Kontakt"><svg viewBox="0 0 24 24" fill="white" class="w-7 h-7"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+  <div class="mobile-call-bar items-center justify-between gap-2 px-3 sm:hidden">
+    <a href={phoneMobileHref} class="flex-1 bg-black text-amber-400 font-black text-xs px-3 py-3 rounded-xl text-center">Jetzt anrufen</a>
+    <a href={whatsappUrl} target="_blank" rel="noopener" class="flex-1 bg-black/80 text-white font-black text-xs px-3 py-3 rounded-xl text-center">Falschparker melden</a>
+    <a href="#sofort" class="flex-1 bg-white/15 text-black font-black text-xs px-3 py-3 rounded-xl text-center">Einsatz prüfen</a>
+  </div>
+
+  <style>
+    @keyframes towFlashA { 0%,45%,100%{opacity:1;filter:drop-shadow(0 0 7px #F59E0B)} 50%,95%{opacity:.2;filter:none} }
+    @keyframes towFlashB { 0%,45%,100%{opacity:.2;filter:none} 50%,95%{opacity:1;filter:drop-shadow(0 0 7px #F59E0B)} }
+    .tow-flash-a { animation: towFlashA .8s ease-in-out infinite; }
+    .tow-flash-b { animation: towFlashB .8s ease-in-out infinite; }
+    @media (max-width: 768px) {
+      #parking-stage { min-height: 430px; }
+      #tow-svg { width: 390px; bottom: 130px; }
+      #wrong-car { width: 190px; bottom: 165px; left: 26%; }
+      #parking-lines { left: 24px; right: 24px; bottom: 84px; height: 220px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .btn-pulse, .float, .animate-marquee, .tow-flash-a, .tow-flash-b { animation: none !important; } }
+  </style>
+
+  <script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    gsap.registerPlugin(ScrollTrigger);
+
+    const heroTl = gsap.timeline({ delay: 0.12 });
+    heroTl.to('#hero-badge',{opacity:1,y:0,duration:.55,ease:'power2.out'}).to('#hero-headline',{opacity:1,y:0,duration:.72,ease:'power3.out'},'-=.25').to('#hero-sub',{opacity:1,y:0,duration:.58,ease:'power2.out'},'-=.35').to('#hero-ctas',{opacity:1,y:0,duration:.55,ease:'power2.out'},'-=.28').to('#hero-trust',{opacity:1,y:0,duration:.5,ease:'power2.out'},'-=.2');
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const stage = document.getElementById('parking-stage');
+    const tow = document.getElementById('tow-svg');
+    const car = document.getElementById('wrong-car');
+    const cable = document.getElementById('tow-cable');
+    const lines = document.getElementById('road-lines');
+    if (stage && tow && car && !reduceMotion) {
+      const tl = gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.4 } });
+      tl.to(tow, { x: '78vw', duration: .42, ease: 'none' }, 0)
+        .to(cable, { opacity: 1, duration: .08 }, .22)
+        .to(car, { y: -18, rotation: -2, transformOrigin: '50% 80%', duration: .16 }, .30)
+        .to([tow, car], { x: '+=34vw', duration: .42, ease: 'none' }, .48)
+        .to(car, { opacity: .85, duration: .2 }, .78);
+      gsap.to('#parking-lines', { y: 18, opacity: .65, scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.8 } });
+      if (lines) gsap.to(lines, { xPercent: -50, duration: 1.2, repeat: -1, ease: 'linear' });
+    }
+
+    const header = document.getElementById('header');
+    ScrollTrigger.create({ start: 'top -60', onUpdate: ({ progress }) => { if (progress > 0) header?.classList.add('bg-[#080c14]/95','backdrop-blur-2xl','shadow-2xl','border-b','border-white/5'); else header?.classList.remove('bg-[#080c14]/95','backdrop-blur-2xl','shadow-2xl','border-b','border-white/5'); } });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => ScrollTrigger.create({ trigger: el, start: 'top 88%', onEnter: () => el.classList.add('in') }));
+
+    document.querySelectorAll('.faq-btn').forEach(btn => btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item?.querySelector('.faq-answer');
+      const isOpen = item?.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); (i.querySelector('.faq-answer') as HTMLElement)?.classList.remove('open'); });
+      if (!isOpen) { item?.classList.add('open'); answer?.classList.add('open'); }
+    }));
+    document.getElementById('menu-btn')?.addEventListener('click', () => document.getElementById('mobile-nav')?.classList.toggle('hidden'));
+    document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', () => document.getElementById('mobile-nav')?.classList.add('hidden')));
+  </script>
+</Layout>

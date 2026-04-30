@@ -150,6 +150,7 @@ const testimonials = [
         <!-- Desktop Nav -->
         <nav class="hidden lg:flex items-center gap-7">
           <a href="#leistungen" class="nav-link text-gray-400 hover:text-white text-sm font-medium transition-colors">Leistungen</a>
+          <a href="/falschparker-abschleppen-muenchen" class="nav-link text-gray-400 hover:text-white text-sm font-medium transition-colors">Falschparker</a>
           <a href="#uber-uns" class="nav-link text-gray-400 hover:text-white text-sm font-medium transition-colors">Über uns</a>
           <a href="#einsatzgebiet" class="nav-link text-gray-400 hover:text-white text-sm font-medium transition-colors">Einsatzgebiet</a>
           <a href="#faq" class="nav-link text-gray-400 hover:text-white text-sm font-medium transition-colors">FAQ</a>
@@ -182,7 +183,7 @@ const testimonials = [
     <!-- Mobile menu -->
     <div id="mobile-nav" class="hidden lg:hidden border-t border-white/5 px-5 pb-5">
       <nav class="flex flex-col gap-1 pt-4">
-        {['#leistungen:Leistungen', '#uber-uns:Über uns', '#einsatzgebiet:Einsatzgebiet', '#faq:FAQ', '#kontakt:Kontakt'].map(item => {
+        {['#leistungen:Leistungen', '/falschparker-abschleppen-muenchen:Falschparker', '#uber-uns:Über uns', '#einsatzgebiet:Einsatzgebiet', '#faq:FAQ', '#kontakt:Kontakt'].map(item => {
           const [href, label] = item.split(':');
           return (
             <a href={href} class="mobile-nav-link text-gray-300 hover:text-amber-400 font-medium py-3 border-b border-white/5 transition-colors">{label}</a>
@@ -1060,8 +1061,8 @@ const testimonials = [
         <div>
           <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Leistungen</h4>
           <ul class="space-y-2.5 text-sm">
-            {['Abschleppdienst', 'Pannenhilfe vor Ort', 'Fahrzeugtransport', 'Fahrzeugüberführung', 'Unfallbergung'].map(l => (
-              <li><a href="#leistungen" class="text-gray-500 hover:text-amber-400 transition-colors">{l}</a></li>
+            {['Abschleppdienst', 'Falschparker abschleppen', 'Pannenhilfe vor Ort', 'Fahrzeugtransport', 'Fahrzeugüberführung', 'Unfallbergung'].map(l => (
+              <li><a href={l === 'Falschparker abschleppen' ? '/falschparker-abschleppen-muenchen' : '#leistungen'} class="text-gray-500 hover:text-amber-400 transition-colors">{l}</a></li>
             ))}
           </ul>
         </div>
