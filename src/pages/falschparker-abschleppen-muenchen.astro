@@ -462,6 +462,9 @@ const serviceSchema = {
       .mobile-conversion-card__secondary-row { display:grid; grid-template-columns:1fr 1fr; gap:.55rem; }
       .mobile-conversion-card__secondary { display:flex; align-items:center; justify-content:center; min-height:2.85rem; padding:.72rem .65rem; border-radius:.95rem; color:#e0f7ff; background:rgba(255,255,255,.055); border:1px solid rgba(125,211,252,.14); font-size:.78rem; font-weight:900; text-align:center; line-height:1.15; }
     }
+    @media (max-width: 360px) {
+      #hero-trust span:nth-child(n+3) { display: none; }
+    }
     @keyframes mobilePulse { 0%,100%{ opacity:.65; transform:scale(.92); } 50%{ opacity:1; transform:scale(1.15); } }
     @media (prefers-reduced-motion: reduce) { .btn-pulse, .float, .animate-marquee, .tow-flash-a, .tow-flash-b { animation: none !important; } }
   </style>
