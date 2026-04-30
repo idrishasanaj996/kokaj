@@ -87,7 +87,7 @@ const serviceSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
 
-  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-[#06111f] border-b border-white/5 shadow-[0_18px_70px_rgba(0,0,0,.28)] transition-all duration-500">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="flex items-center justify-between h-[72px]">
         <a href="/" class="flex items-center gap-3 group shrink-0" aria-label="Abschleppdienst KOKAJ Startseite">
@@ -134,24 +134,24 @@ const serviceSchema = {
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(34,211,238,0.18),transparent_32%),radial-gradient(circle_at_15%_80%,rgba(59,130,246,0.10),transparent_28%)]"></div>
       <div class="absolute inset-0 bg-gradient-to-b from-[#06111f]/70 via-transparent to-[#06111f]"></div>
 
-      <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full pt-28 pb-16">
-        <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 items-center">
+      <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full pt-24 pb-14">
+        <div class="grid lg:grid-cols-[1.08fr_0.92fr] gap-10 items-center">
           <div class="max-w-2xl">
-            <div id="hero-badge" class="inline-flex items-center gap-2.5 glass-ice rounded-full px-4 py-2 mb-8">
+            <div id="hero-badge" class="inline-flex items-center gap-2.5 glass-ice rounded-full px-4 py-2 mb-6">
               <span class="w-2 h-2 rounded-full bg-cyan-300 animate-pulse"></span>
               <span class="text-cyan-200 text-sm font-semibold">Private-Parking Response · München & Bayern · 24/7 erreichbar</span>
             </div>
-            <h1 id="hero-headline" class="text-4xl sm:text-6xl lg:text-7xl font-black leading-[1.04] tracking-tight mb-6">
+            <h1 id="hero-headline" class="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black leading-[1.04] tracking-tight mb-5">
               Falschparker in München abschleppen lassen.
             </h1>
-            <p id="hero-sub" class="text-gray-300 text-lg sm:text-xl max-w-xl mb-8 leading-relaxed">
+            <p id="hero-sub" class="text-gray-300 text-lg sm:text-xl max-w-xl mb-6 leading-relaxed">
               Schnelle Einsatzprüfung für Privatparkplätze, Einfahrten, Kundenparkplätze, Tiefgaragen und Hausverwaltungen. Seriös, diskret und professionell dokumentiert.
             </p>
-            <div id="hero-ctas" class="flex flex-col sm:flex-row gap-4 mb-8">
-              <a href={phoneMobileHref} class="btn-pulse inline-flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-300 to-blue-500 hover:from-cyan-200 hover:to-blue-400 text-black font-black text-lg px-8 py-4.5 rounded-2xl transition-all hover:scale-[1.03] shadow-2xl shadow-cyan-500/30">
+            <div id="hero-ctas" class="flex flex-col sm:flex-row gap-4 mb-6">
+              <a href={phoneMobileHref} class="btn-pulse inline-flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-300 to-blue-500 hover:from-cyan-200 hover:to-blue-400 text-black font-black text-base sm:text-lg px-7 lg:px-6 xl:px-8 py-4.5 rounded-2xl transition-all hover:scale-[1.03] shadow-2xl shadow-cyan-500/30 whitespace-nowrap">
                 Jetzt anrufen · {phoneMobile}
               </a>
-              <a href={whatsappUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 glass border border-white/10 hover:border-cyan-400/30 text-white font-bold text-lg px-8 py-4.5 rounded-2xl transition-all">
+              <a href={whatsappUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 glass border border-white/10 hover:border-cyan-400/30 text-white font-bold text-base sm:text-lg px-7 lg:px-6 xl:px-8 py-4.5 rounded-2xl transition-all whitespace-nowrap">
                 Einsatz prüfen lassen
               </a>
             </div>
@@ -160,17 +160,17 @@ const serviceSchema = {
             </div>
           </div>
 
-          <div class="relative lg:min-h-[620px]" aria-label="Scroll-Animation Abschleppwagen entfernt Falschparker">
+          <div class="relative lg:min-h-[560px]" aria-label="Scroll-Animation Abschleppwagen entfernt Falschparker">
             <div class="absolute -inset-6 bg-cyan-400/10 blur-3xl rounded-full"></div>
-            <div id="parking-stage" class="parking-stage-pro relative overflow-hidden rounded-[2.25rem] border border-white/10 bg-[#092033]/85 shadow-2xl shadow-black/40 min-h-[500px] lg:min-h-[620px]">
+            <div id="parking-stage" class="parking-stage-pro relative overflow-hidden rounded-[2.25rem] border border-white/10 bg-[#092033]/85 shadow-2xl shadow-black/40 min-h-[480px] lg:min-h-[560px]">
               <div class="absolute inset-0 opacity-60" style="background:linear-gradient(115deg,rgba(255,255,255,0.05),transparent 35%),repeating-linear-gradient(90deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 90px);"></div>
-              <div id="parking-lines" class="absolute left-10 right-10 bottom-24 h-[250px] border-2 border-cyan-300/55 rounded-xl">
+              <div id="parking-lines" class="absolute left-10 right-10 bottom-[108px] h-[285px] border-2 border-cyan-300/55 rounded-xl">
                 <div class="absolute top-4 left-4 text-cyan-200/70 text-xs font-black tracking-[0.25em] uppercase">Privatparkplatz</div>
-                <div class="absolute inset-x-6 top-1/2 border-t border-dashed border-cyan-300/30"></div>
-                <div class="absolute inset-y-6 left-1/2 border-l border-dashed border-cyan-300/30"></div>
+                <div class="absolute inset-x-6 top-1/2 border-t border-dashed border-cyan-300/12"></div>
+                
               </div>
 
-              <svg id="wrong-car" class="absolute left-[23%] bottom-[190px] w-[240px] max-w-[48vw]" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg id="wrong-car" class="absolute left-[38%] bottom-[214px] w-[310px] max-w-[56vw]" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="38" y="52" width="238" height="34" rx="12" fill="#182234" stroke="#2a3b55" stroke-width="2"/>
                 <path d="M82 52C96 25 126 18 180 18C222 18 248 30 262 52H82Z" fill="#101927" stroke="#25364e" stroke-width="2"/>
                 <path d="M105 49C116 31 137 27 159 27V49H105Z" fill="#234361"/>
@@ -182,7 +182,7 @@ const serviceSchema = {
                 <text x="120" y="74" fill="#22D3EE" font-size="14" font-weight="900" font-family="Plus Jakarta Sans">FALSCHPARKER</text>
               </svg>
 
-              <svg id="tow-svg" class="absolute -left-[65%] bottom-[152px] w-[480px] max-w-none" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg id="tow-svg" class="absolute left-[-240px] bottom-[168px] w-[500px] max-w-none" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="towCab" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#223246"/><stop offset="1" stop-color="#0a1220"/></linearGradient>
                   <linearGradient id="towAmber" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#22D3EE"/><stop offset="1" stop-color="#2563EB"/></linearGradient>
@@ -203,10 +203,10 @@ const serviceSchema = {
                 <circle cx="350" cy="124" r="27" fill="#05080d" stroke="#26364d" stroke-width="7"/>
                 <circle cx="470" cy="124" r="27" fill="#05080d" stroke="#26364d" stroke-width="7"/>
                 <path d="M505 72L585 54L585 102L505 92Z" fill="#BAE6FD" opacity="0.12"/>
-                <line id="tow-cable" x1="64" y1="84" x2="132" y2="84" stroke="#22D3EE" stroke-width="3" stroke-dasharray="7 5" opacity="0"/>
+                <line id="tow-cable" x1="64" y1="84" x2="292" y2="84" stroke="#22D3EE" stroke-width="3" stroke-dasharray="7 5" opacity="0"/>
               </svg>
 
-              <div class="absolute left-0 right-0 bottom-0 h-28 bg-[#0c1622] border-t border-white/10">
+              <div class="absolute left-0 right-0 bottom-0 h-[104px] bg-[#0c1622] border-t border-white/10">
                 <div class="absolute top-10 left-0 right-0 h-1 overflow-hidden"><div id="road-lines" class="h-full w-[200%]" style="background:repeating-linear-gradient(90deg,rgba(255,255,255,.22) 0 70px,transparent 70px 125px);"></div></div>
               </div>
               <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-xs text-gray-500 uppercase tracking-[0.18em]"><span>Scroll</span><span>Einsatzprüfung</span><span>Abtransport</span></div>
@@ -357,7 +357,7 @@ const serviceSchema = {
         <div><h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Falschparker</h4><ul class="space-y-2.5 text-sm"><li><a href="#muenchen" class="text-gray-500 hover:text-cyan-300">Falschparker München</a></li><li><a href="#bayern" class="text-gray-500 hover:text-cyan-300">Falschparker Bayern</a></li><li><a href="#leistungen" class="text-gray-500 hover:text-cyan-300">Privatparkplatz</a></li><li><a href="#ablauf" class="text-gray-500 hover:text-cyan-300">Einsatzprüfung</a></li></ul></div>
         <div><h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Kontakt</h4><ul class="space-y-3 text-sm"><li><a href={phoneMobileHref} class="text-white font-bold hover:text-cyan-300">{phoneMobile}</a><div class="text-gray-500 text-xs mt-0.5">Mobil · auch WhatsApp</div></li><li><a href={phoneLandlineHref} class="text-gray-300 hover:text-cyan-300">{phoneLandline}</a></li><li><a href={`mailto:${email}`} class="text-gray-500 hover:text-cyan-300 break-all">{email}</a></li><li class="text-gray-500">Carl-Wery Str. 6<br/>81739 München</li></ul></div>
       </div>
-      <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600"><span>&copy; {new Date().getFullYear()} Abschleppdienst KOKAJ München. Alle Rechte vorbehalten.</span><div class="flex gap-5"><a href="/impressum" class="hover:text-gray-400">Impressum</a><a href="/datenschutz" class="hover:text-gray-400">Datenschutz</a></div></div>
+      <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600"><span>&copy; {new Date().getFullYear()} Abschleppdienst KOKAJ München. Alle Rechte vorbehalten.</span><div class="flex flex-wrap justify-center gap-5"><a href="/impressum" class="hover:text-gray-400">Impressum</a><a href="/datenschutz" class="hover:text-gray-400">Datenschutz</a><button type="button" data-cookie-settings class="hover:text-gray-400">Cookie-Einstellungen</button></div></div>
     </div>
   </footer>
 
@@ -370,7 +370,12 @@ const serviceSchema = {
   </div>
 
   <style>
+    :global(html) { scroll-padding-top: 92px; }
     :global(body) { background: #06111f; }
+    :global(section[id]) { scroll-margin-top: 92px; }
+    :global(#kkj-cc-reopen) { display: none !important; }
+    :global(body:has(#kkj-cc-banner:not([hidden])) .mobile-call-bar) { display: none !important; }
+    :global(.wa-btn) { right: 22px !important; bottom: 96px !important; }
     :global(.gradient-text) { background: linear-gradient(115deg,#e0f7ff 0%,#22d3ee 42%,#60a5fa 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .fp-premium::before { content:""; position:absolute; inset:0; pointer-events:none; background: radial-gradient(circle at 22% 18%, rgba(34,211,238,.18), transparent 30%), radial-gradient(circle at 84% 26%, rgba(99,102,241,.16), transparent 34%), linear-gradient(120deg, rgba(255,255,255,.04), transparent 42%); }
     .fp-premium::after { content:""; position:absolute; inset:auto -10% 0 -10%; height:42%; background: linear-gradient(180deg, transparent, rgba(13,148,136,.08) 46%, #06111f); pointer-events:none; }
@@ -383,11 +388,19 @@ const serviceSchema = {
     .tow-flash-a { animation: towFlashA .72s ease-in-out infinite; }
     .tow-flash-b { animation: towFlashB .72s ease-in-out infinite; }
     @media (max-width: 768px) {
-      #parking-stage { min-height: 430px; }
-      #tow-svg { width: 390px; bottom: 130px; }
-      #wrong-car { width: 190px; bottom: 165px; left: 26%; }
-      #parking-lines { left: 24px; right: 24px; bottom: 84px; height: 220px; }
+      :global(.wa-btn) { display: none !important; }
+      :global(.mobile-call-bar) { padding: 10px 12px calc(10px + env(safe-area-inset-bottom)) !important; gap: 8px !important; }
+      #parking-stage { min-height: 390px; border-radius: 1.75rem; }
+      #tow-svg { width: 360px; left: calc(50% - 180px); bottom: 104px; max-width: none; animation: mobileTowIdle 3.8s ease-in-out infinite; }
+      #wrong-car { width: 214px; left: calc(50% - 107px); bottom: 220px; max-width: none; animation: mobileCarFloat 3.8s ease-in-out infinite; }
+      #tow-cable { opacity: .55; stroke-dashoffset: 0; }
+      #parking-lines { left: 24px; right: 24px; bottom: 76px; height: 238px; }
+      #parking-lines .absolute.top-4 { font-size: 10px; letter-spacing: .22em; }
+      #parking-stage > .absolute.left-0.right-0.bottom-0 { height: 86px; }
+      #parking-stage > .absolute.bottom-6 { bottom: 18px; left: 18px; right: 18px; font-size: 9px; letter-spacing: .18em; }
     }
+    @keyframes mobileTowIdle { 0%,100%{ transform: translate3d(0,0,0); } 50%{ transform: translate3d(5px,-2px,0); } }
+    @keyframes mobileCarFloat { 0%,100%{ transform: translate3d(0,0,0) rotate(-1deg); } 50%{ transform: translate3d(0,-4px,0) rotate(-2deg); } }
     @media (prefers-reduced-motion: reduce) { .btn-pulse, .float, .animate-marquee, .tow-flash-a, .tow-flash-b { animation: none !important; } }
   </style>
 
@@ -400,27 +413,55 @@ const serviceSchema = {
     heroTl.to('#hero-badge',{opacity:1,y:0,duration:.55,ease:'power2.out'}).to('#hero-headline',{opacity:1,y:0,duration:.72,ease:'power3.out'},'-=.25').to('#hero-sub',{opacity:1,y:0,duration:.58,ease:'power2.out'},'-=.35').to('#hero-ctas',{opacity:1,y:0,duration:.55,ease:'power2.out'},'-=.28').to('#hero-trust',{opacity:1,y:0,duration:.5,ease:'power2.out'},'-=.2');
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion) {
+      const heroCopy = ['hero-badge','hero-headline','hero-sub','hero-ctas','hero-trust']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+      const updateHeroCopy = () => {
+        const p = Math.min(Math.max((window.scrollY - 70) / 170, 0), 1);
+        heroCopy.forEach((el) => {
+          el.style.opacity = String(1 - p);
+          el.style.transform = `translate3d(0, ${-26 * p}px, 0)`;
+          el.style.pointerEvents = p > 0.82 ? 'none' : '';
+        });
+      };
+      window.addEventListener('scroll', updateHeroCopy, { passive: true });
+      window.addEventListener('resize', updateHeroCopy, { passive: true });
+      requestAnimationFrame(updateHeroCopy);
+    }
     const stage = document.getElementById('parking-stage');
     const tow = document.getElementById('tow-svg');
     const car = document.getElementById('wrong-car');
     const cable = document.getElementById('tow-cable');
     const lines = document.getElementById('road-lines');
+    const isMobileScene = window.matchMedia('(max-width: 767px)').matches;
     if (stage && tow && car && !reduceMotion) {
-      gsap.set(tow, { xPercent: -8, y: 8, force3D: true, transformOrigin: '50% 80%' });
-      gsap.set(car, { force3D: true, transformOrigin: '50% 82%' });
-      gsap.set(cable, { opacity: 0, strokeDasharray: 46, strokeDashoffset: 46 });
-      gsap.to(tow, { y: '+=5', duration: 1.8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
       const wheels = tow.querySelectorAll('circle');
-      const tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 2.2 } });
-      tl.to(tow, { x: '67vw', duration: .38 }, 0)
-        .to(wheels, { rotation: 270, svgOrigin: '50% 50%', duration: .38 }, 0)
-        .to(cable, { opacity: 1, strokeDashoffset: 0, duration: .11, ease: 'power2.out' }, .22)
-        .to(car, { y: -24, rotation: -3.5, duration: .16, ease: 'sine.inOut' }, .31)
-        .to([tow, car], { x: '+=38vw', duration: .46 }, .49)
-        .to(wheels, { rotation: 720, svgOrigin: '50% 50%', duration: .46 }, .49)
-        .to(car, { y: -18, rotation: -1.5, opacity: .92, duration: .28, ease: 'sine.inOut' }, .66);
-      gsap.to('#parking-lines', { y: 22, scale: .985, opacity: .72, scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 2.4 } });
-      if (lines) gsap.to(lines, { xPercent: -50, duration: .95, repeat: -1, ease: 'linear' });
+      if (isMobileScene) {
+        // Mobile: bewusst reduzierte Szene. Keine Scroll-Verschiebung von Truck + Auto,
+        // damit der Abschlepparm nicht unlogisch durch das Fahrzeug läuft.
+        gsap.set(tow, { x: 0, y: 0, autoAlpha: 1, clearProps: 'transform' });
+        gsap.set(car, { x: 0, y: 0, rotation: -1, autoAlpha: 1, clearProps: 'transform' });
+        gsap.set(cable, { opacity: 0.55, strokeDasharray: 238, strokeDashoffset: 0 });
+        gsap.to(wheels, { rotation: 360, svgOrigin: '50% 50%', duration: 4.5, repeat: -1, ease: 'linear' });
+        if (lines) gsap.to(lines, { xPercent: -50, duration: 1.2, repeat: -1, ease: 'linear' });
+      } else {
+        const stageWidth = () => stage.getBoundingClientRect().width;
+        gsap.set(tow, { x: 0, y: 6, autoAlpha: 0.92, force3D: true, transformOrigin: '50% 80%' });
+        gsap.set(car, { x: 0, y: 0, rotation: 0, force3D: true, transformOrigin: '50% 82%' });
+        gsap.set(cable, { opacity: 0, strokeDasharray: 238, strokeDashoffset: 238 });
+        gsap.to(tow, { y: '+=4', duration: 2.1, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+        const tl = gsap.timeline({ defaults: { ease: 'power1.inOut' }, scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 2.8, invalidateOnRefresh: true } });
+        tl.to(tow, { x: () => stageWidth() * 0.36, autoAlpha: 1, duration: .42 }, 0)
+          .to(wheels, { rotation: 360, svgOrigin: '50% 50%', duration: .42 }, 0)
+          .to(cable, { opacity: 1, strokeDashoffset: 0, duration: .10, ease: 'power2.out' }, .28)
+          .to(car, { y: -28, rotation: -3.2, duration: .18, ease: 'sine.inOut' }, .36)
+          .to([tow, car], { x: () => `+=${stageWidth() * 0.66}`, duration: .46, ease: 'power1.inOut' }, .54)
+          .to(wheels, { rotation: 840, svgOrigin: '50% 50%', duration: .46 }, .54)
+          .to(car, { y: -20, rotation: -1.4, opacity: .9, duration: .26, ease: 'sine.inOut' }, .72);
+        gsap.to('#parking-lines', { y: 20, scale: .985, opacity: .72, scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 2.4 } });
+        if (lines) gsap.to(lines, { xPercent: -50, duration: .95, repeat: -1, ease: 'linear' });
+      }
     }
 
     const header = document.getElementById('header');
