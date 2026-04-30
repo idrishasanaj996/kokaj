@@ -91,7 +91,7 @@ const serviceSchema = {
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="flex items-center justify-between h-[72px]">
         <a href="/" class="flex items-center gap-3 group shrink-0" aria-label="Abschleppdienst KOKAJ Startseite">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-black font-black text-lg shadow-lg group-hover:scale-105 transition-transform">K</div>
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-300 to-blue-500 flex items-center justify-center text-black font-black text-lg shadow-lg group-hover:scale-105 transition-transform">K</div>
           <div class="hidden sm:block">
             <div class="text-white font-extrabold text-sm leading-none">Abschleppdienst</div>
             <div class="gradient-text font-black text-base leading-none mt-0.5">KOKAJ</div>
@@ -106,40 +106,40 @@ const serviceSchema = {
         </nav>
         <div class="hidden lg:flex items-center gap-3">
           <a href={phoneLandlineHref} class="text-gray-400 hover:text-white text-sm font-medium transition-colors">{phoneLandline}</a>
-          <a href={phoneMobileHref} class="btn-pulse bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-black font-bold px-5 py-2.5 rounded-full transition-all text-sm flex items-center gap-2 shadow-lg shadow-amber-500/20">{phoneMobile}</a>
+          <a href={phoneMobileHref} class="btn-pulse bg-gradient-to-r from-cyan-300 to-blue-500 hover:from-cyan-200 hover:to-blue-400 text-black font-bold px-5 py-2.5 rounded-full transition-all text-sm flex items-center gap-2 shadow-lg shadow-cyan-500/20">{phoneMobile}</a>
         </div>
         <div class="flex lg:hidden items-center gap-2">
-          <a href={phoneMobileHref} class="bg-gradient-to-r from-amber-400 to-orange-500 text-black px-4 py-2.5 rounded-xl text-sm font-black shadow-lg">Anrufen</a>
-          <button id="menu-btn" aria-label="Menü öffnen" class="text-white p-2 hover:text-amber-400 transition-colors">
+          <a href={phoneMobileHref} class="bg-gradient-to-r from-cyan-300 to-blue-500 text-black px-4 py-2.5 rounded-xl text-sm font-black shadow-lg">Anrufen</a>
+          <button id="menu-btn" aria-label="Menü öffnen" class="text-white p-2 hover:text-cyan-300 transition-colors">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
           </button>
         </div>
       </div>
     </div>
-    <div id="mobile-nav" class="hidden lg:hidden border-t border-white/5 px-5 pb-5 bg-[#080c14]/95 backdrop-blur-2xl">
+    <div id="mobile-nav" class="hidden lg:hidden border-t border-white/5 px-5 pb-5 bg-[#06111f]/95 backdrop-blur-2xl">
       <nav class="flex flex-col gap-1 pt-4">
         {['#leistungen:Leistungen','#ablauf:Ablauf','#muenchen:München','#bayern:Bayern','#faq:FAQ','/:Hauptseite'].map(item => {
           const [href, label] = item.split(':');
-          return <a href={href} class="mobile-nav-link text-gray-300 hover:text-amber-400 font-medium py-3 border-b border-white/5 transition-colors">{label}</a>;
+          return <a href={href} class="mobile-nav-link text-gray-300 hover:text-cyan-300 font-medium py-3 border-b border-white/5 transition-colors">{label}</a>;
         })}
-        <a href={whatsappUrl} target="_blank" rel="noopener" class="bg-gradient-to-r from-amber-400 to-orange-500 text-black font-bold py-3.5 rounded-xl text-center mt-4">Falschparker melden</a>
+        <a href={whatsappUrl} target="_blank" rel="noopener" class="bg-gradient-to-r from-cyan-300 to-blue-500 text-black font-bold py-3.5 rounded-xl text-center mt-4">Falschparker melden</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden noise">
-      <div class="absolute inset-0 bg-[#070a11]"></div>
+    <section id="hero" class="fp-premium relative min-h-screen flex items-center overflow-hidden noise">
+      <div class="absolute inset-0 bg-[#06111f]"></div>
       <div class="absolute inset-0 grid-bg opacity-40"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(245,158,11,0.18),transparent_32%),radial-gradient(circle_at_15%_80%,rgba(234,88,12,0.10),transparent_28%)]"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-[#080c14]/70 via-transparent to-[#080c14]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(34,211,238,0.18),transparent_32%),radial-gradient(circle_at_15%_80%,rgba(59,130,246,0.10),transparent_28%)]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#06111f]/70 via-transparent to-[#06111f]"></div>
 
       <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full pt-28 pb-16">
         <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 items-center">
           <div class="max-w-2xl">
-            <div id="hero-badge" class="inline-flex items-center gap-2.5 glass-amber rounded-full px-4 py-2 mb-8">
-              <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-              <span class="text-amber-300 text-sm font-semibold">Falschparker-Service · München & Bayern · 24/7 erreichbar</span>
+            <div id="hero-badge" class="inline-flex items-center gap-2.5 glass-ice rounded-full px-4 py-2 mb-8">
+              <span class="w-2 h-2 rounded-full bg-cyan-300 animate-pulse"></span>
+              <span class="text-cyan-200 text-sm font-semibold">Private-Parking Response · München & Bayern · 24/7 erreichbar</span>
             </div>
             <h1 id="hero-headline" class="text-4xl sm:text-6xl lg:text-7xl font-black leading-[1.04] tracking-tight mb-6">
               Falschparker in München abschleppen lassen.
@@ -148,10 +148,10 @@ const serviceSchema = {
               Schnelle Einsatzprüfung für Privatparkplätze, Einfahrten, Kundenparkplätze, Tiefgaragen und Hausverwaltungen. Seriös, diskret und professionell dokumentiert.
             </p>
             <div id="hero-ctas" class="flex flex-col sm:flex-row gap-4 mb-8">
-              <a href={phoneMobileHref} class="btn-pulse inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-black font-black text-lg px-8 py-4.5 rounded-2xl transition-all hover:scale-[1.03] shadow-2xl shadow-amber-500/30">
+              <a href={phoneMobileHref} class="btn-pulse inline-flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-300 to-blue-500 hover:from-cyan-200 hover:to-blue-400 text-black font-black text-lg px-8 py-4.5 rounded-2xl transition-all hover:scale-[1.03] shadow-2xl shadow-cyan-500/30">
                 Jetzt anrufen · {phoneMobile}
               </a>
-              <a href={whatsappUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 glass border border-white/10 hover:border-amber-500/30 text-white font-bold text-lg px-8 py-4.5 rounded-2xl transition-all">
+              <a href={whatsappUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-3 glass border border-white/10 hover:border-cyan-400/30 text-white font-bold text-lg px-8 py-4.5 rounded-2xl transition-all">
                 Einsatz prüfen lassen
               </a>
             </div>
@@ -161,13 +161,13 @@ const serviceSchema = {
           </div>
 
           <div class="relative lg:min-h-[620px]" aria-label="Scroll-Animation Abschleppwagen entfernt Falschparker">
-            <div class="absolute -inset-6 bg-amber-500/10 blur-3xl rounded-full"></div>
-            <div id="parking-stage" class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0b111c]/85 shadow-2xl shadow-black/40 min-h-[500px] lg:min-h-[620px]">
+            <div class="absolute -inset-6 bg-cyan-400/10 blur-3xl rounded-full"></div>
+            <div id="parking-stage" class="parking-stage-pro relative overflow-hidden rounded-[2.25rem] border border-white/10 bg-[#092033]/85 shadow-2xl shadow-black/40 min-h-[500px] lg:min-h-[620px]">
               <div class="absolute inset-0 opacity-60" style="background:linear-gradient(115deg,rgba(255,255,255,0.05),transparent 35%),repeating-linear-gradient(90deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 90px);"></div>
-              <div id="parking-lines" class="absolute left-10 right-10 bottom-24 h-[250px] border-2 border-amber-400/55 rounded-xl">
-                <div class="absolute top-4 left-4 text-amber-300/70 text-xs font-black tracking-[0.25em] uppercase">Privatparkplatz</div>
-                <div class="absolute inset-x-6 top-1/2 border-t border-dashed border-amber-400/30"></div>
-                <div class="absolute inset-y-6 left-1/2 border-l border-dashed border-amber-400/30"></div>
+              <div id="parking-lines" class="absolute left-10 right-10 bottom-24 h-[250px] border-2 border-cyan-300/55 rounded-xl">
+                <div class="absolute top-4 left-4 text-cyan-200/70 text-xs font-black tracking-[0.25em] uppercase">Privatparkplatz</div>
+                <div class="absolute inset-x-6 top-1/2 border-t border-dashed border-cyan-300/30"></div>
+                <div class="absolute inset-y-6 left-1/2 border-l border-dashed border-cyan-300/30"></div>
               </div>
 
               <svg id="wrong-car" class="absolute left-[23%] bottom-[190px] w-[240px] max-w-[48vw]" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -178,14 +178,14 @@ const serviceSchema = {
                 <circle cx="92" cy="88" r="20" fill="#05080d" stroke="#27364a" stroke-width="5"/>
                 <circle cx="226" cy="88" r="20" fill="#05080d" stroke="#27364a" stroke-width="5"/>
                 <rect x="42" y="65" width="10" height="9" rx="3" fill="#ef4444"/>
-                <rect x="265" y="63" width="12" height="10" rx="3" fill="#fde68a"/>
-                <text x="120" y="74" fill="#F59E0B" font-size="14" font-weight="900" font-family="Plus Jakarta Sans">FALSCHPARKER</text>
+                <rect x="265" y="63" width="12" height="10" rx="3" fill="#BAE6FD"/>
+                <text x="120" y="74" fill="#22D3EE" font-size="14" font-weight="900" font-family="Plus Jakarta Sans">FALSCHPARKER</text>
               </svg>
 
               <svg id="tow-svg" class="absolute -left-[65%] bottom-[152px] w-[480px] max-w-none" viewBox="0 0 600 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="towCab" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#223246"/><stop offset="1" stop-color="#0a1220"/></linearGradient>
-                  <linearGradient id="towAmber" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#F59E0B"/><stop offset="1" stop-color="#EA580C"/></linearGradient>
+                  <linearGradient id="towAmber" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#22D3EE"/><stop offset="1" stop-color="#2563EB"/></linearGradient>
                 </defs>
                 <path id="tow-lift" d="M40 92L294 80L300 105L40 116Z" fill="#111827" stroke="#334155" stroke-width="3"/>
                 <rect x="284" y="48" width="220" height="72" rx="10" fill="url(#towCab)" stroke="#26364d" stroke-width="3"/>
@@ -193,20 +193,20 @@ const serviceSchema = {
                 <path d="M334 45C350 29 386 27 410 30V45H334Z" fill="#21415f"/>
                 <path d="M420 31C448 34 470 38 486 47H420V31Z" fill="#1c3852"/>
                 <rect x="284" y="96" width="222" height="12" fill="url(#towAmber)"/>
-                <text x="335" y="82" fill="#F59E0B" font-size="18" font-weight="900" letter-spacing="4" font-family="Plus Jakarta Sans">KOKAJ</text>
+                <text x="335" y="82" fill="#22D3EE" font-size="18" font-weight="900" letter-spacing="4" font-family="Plus Jakarta Sans">KOKAJ</text>
                 <text x="336" y="95" fill="rgba(255,255,255,.48)" font-size="8" font-weight="700" letter-spacing="2" font-family="Plus Jakarta Sans">ABSCHLEPPDIENST MÜNCHEN</text>
                 <rect x="337" y="20" width="96" height="10" rx="5" fill="#0f172a" stroke="#334155"/>
-                <rect class="tow-flash-a" x="346" y="21" width="18" height="8" rx="4" fill="#F59E0B"/>
-                <rect class="tow-flash-b" x="371" y="21" width="18" height="8" rx="4" fill="#F59E0B"/>
-                <rect class="tow-flash-a" x="396" y="21" width="18" height="8" rx="4" fill="#F59E0B"/>
+                <rect class="tow-flash-a" x="346" y="21" width="18" height="8" rx="4" fill="#22D3EE"/>
+                <rect class="tow-flash-b" x="371" y="21" width="18" height="8" rx="4" fill="#22D3EE"/>
+                <rect class="tow-flash-a" x="396" y="21" width="18" height="8" rx="4" fill="#22D3EE"/>
                 <circle cx="106" cy="124" r="25" fill="#05080d" stroke="#26364d" stroke-width="7"/>
                 <circle cx="350" cy="124" r="27" fill="#05080d" stroke="#26364d" stroke-width="7"/>
                 <circle cx="470" cy="124" r="27" fill="#05080d" stroke="#26364d" stroke-width="7"/>
-                <path d="M505 72L585 54L585 102L505 92Z" fill="#fde68a" opacity="0.12"/>
-                <line id="tow-cable" x1="64" y1="84" x2="132" y2="84" stroke="#F59E0B" stroke-width="3" stroke-dasharray="7 5" opacity="0"/>
+                <path d="M505 72L585 54L585 102L505 92Z" fill="#BAE6FD" opacity="0.12"/>
+                <line id="tow-cable" x1="64" y1="84" x2="132" y2="84" stroke="#22D3EE" stroke-width="3" stroke-dasharray="7 5" opacity="0"/>
               </svg>
 
-              <div class="absolute left-0 right-0 bottom-0 h-28 bg-[#111318] border-t border-white/10">
+              <div class="absolute left-0 right-0 bottom-0 h-28 bg-[#0c1622] border-t border-white/10">
                 <div class="absolute top-10 left-0 right-0 h-1 overflow-hidden"><div id="road-lines" class="h-full w-[200%]" style="background:repeating-linear-gradient(90deg,rgba(255,255,255,.22) 0 70px,transparent 70px 125px);"></div></div>
               </div>
               <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-xs text-gray-500 uppercase tracking-[0.18em]"><span>Scroll</span><span>Einsatzprüfung</span><span>Abtransport</span></div>
@@ -216,7 +216,7 @@ const serviceSchema = {
       </div>
     </section>
 
-    <div class="bg-[#0e1420] border-y border-white/5 py-5 overflow-hidden">
+    <div class="bg-[#071827] border-y border-white/5 py-5 overflow-hidden">
       <div class="flex animate-marquee whitespace-nowrap select-none">
         {Array.from({length: 2}).map(() => <div class="flex items-center gap-12 px-6">{['Privatparkplatz blockiert','Einfahrt zugeparkt','Kundenparkplatz besetzt','Tiefgarage prüfen','Hausverwaltung & Gewerbe','München im Fokus','Bayern nach Prüfung'].map(item => <span class="text-gray-500 text-sm font-medium tracking-wide">{item}</span>)}</div>)}
       </div>
@@ -228,8 +228,8 @@ const serviceSchema = {
           <span class="gradient-text font-bold text-sm uppercase tracking-widest">Sofort-Hilfe für Falschparker</span>
           <h2 class="text-4xl sm:text-5xl font-black mt-3 mb-6">Blockierter Stellplatz? Wir prüfen den Einsatz direkt.</h2>
           <p class="text-gray-400 text-lg leading-relaxed mb-6">Ob Privatparkplatz, Einfahrt, Firmenparkplatz oder Tiefgarage: Entscheidend ist die konkrete Situation. KOKAJ verbindet schnelle Erreichbarkeit mit professioneller Dokumentation und klarer Abstimmung.</p>
-          <div class="glass-amber rounded-2xl p-5 border border-amber-500/20">
-            <p class="text-amber-100 font-semibold">Wichtig: Ob eine Abschleppung möglich ist, hängt von Berechtigung, Beschilderung, Zugänglichkeit, Verfügbarkeit und der Lage vor Ort ab. Wir geben keine pauschalen Garantien, sondern prüfen Ihren Fall seriös.</p>
+          <div class="glass-ice rounded-2xl p-5 border border-cyan-400/20">
+            <p class="text-cyan-50 font-semibold">Wichtig: Ob eine Abschleppung möglich ist, hängt von Berechtigung, Beschilderung, Zugänglichkeit, Verfügbarkeit und der Lage vor Ort ab. Wir geben keine pauschalen Garantien, sondern prüfen Ihren Fall seriös.</p>
           </div>
         </div>
         <div class="reveal-right grid sm:grid-cols-3 gap-4">
@@ -237,12 +237,12 @@ const serviceSchema = {
             ['01','Fotos sichern','Fahrzeugposition, Kennzeichen, Beschilderung und Blockade dokumentieren.'],
             ['02','Anrufen','Standort und Situation telefonisch oder per WhatsApp durchgeben.'],
             ['03','Prüfen lassen','Wir stimmen ab, welche Lösung vor Ort fachgerecht möglich ist.'],
-          ].map(card => <div class="border-gradient p-px rounded-2xl"><div class="bg-[#0e1420] rounded-2xl p-6 h-full"><div class="text-amber-400 font-black text-3xl mb-5">{card[0]}</div><h3 class="text-white font-bold text-lg mb-2">{card[1]}</h3><p class="text-gray-500 text-sm leading-relaxed">{card[2]}</p></div></div>)}
+          ].map(card => <div class="border-gradient p-px rounded-2xl"><div class="bg-[#071827] rounded-2xl p-6 h-full"><div class="text-cyan-300 font-black text-3xl mb-5">{card[0]}</div><h3 class="text-white font-bold text-lg mb-2">{card[1]}</h3><p class="text-gray-500 text-sm leading-relaxed">{card[2]}</p></div></div>)}
         </div>
       </div>
     </section>
 
-    <section id="leistungen" class="py-24 px-5 sm:px-8 bg-[#0e1420]">
+    <section id="leistungen" class="py-24 px-5 sm:px-8 bg-[#071827]">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16 reveal">
           <span class="gradient-text font-bold text-sm uppercase tracking-widest">Leistungsbereiche</span>
@@ -250,7 +250,7 @@ const serviceSchema = {
           <p class="text-gray-400 max-w-3xl mx-auto text-lg">Für private Stellplätze, Gewerbeflächen, Wohnanlagen und Objekte mit wiederkehrenden Parkplatzproblemen in München und Bayern.</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {services.map((s, i) => <div class="reveal border-gradient p-px rounded-2xl" style={`transition-delay:${i*55}ms`}><div class="bg-[#101723] hover:bg-[#141b26] rounded-2xl p-6 h-full transition-all duration-300 hover:-translate-y-1"><div class="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-5 text-amber-400 font-black">{String(i+1).padStart(2,'0')}</div><h3 class="text-white font-bold text-lg mb-3">{s[0]}</h3><p class="text-gray-500 text-sm leading-relaxed">{s[1]}</p></div></div>)}
+          {services.map((s, i) => <div class="reveal border-gradient p-px rounded-2xl" style={`transition-delay:${i*55}ms`}><div class="bg-[#0b2135] hover:bg-[#0f2d46] rounded-2xl p-6 h-full transition-all duration-300 hover:-translate-y-1"><div class="w-11 h-11 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-5 text-cyan-300 font-black">{String(i+1).padStart(2,'0')}</div><h3 class="text-white font-bold text-lg mb-3">{s[0]}</h3><p class="text-gray-500 text-sm leading-relaxed">{s[1]}</p></div></div>)}
         </div>
       </div>
     </section>
@@ -262,12 +262,12 @@ const serviceSchema = {
           <h2 class="text-4xl sm:text-5xl font-black mt-3 mb-4">In 4 Schritten zur geprüften Lösung</h2>
         </div>
         <div class="grid md:grid-cols-4 gap-5">
-          {steps.map((step, i) => <div class="reveal relative" style={`transition-delay:${i*90}ms`}><div class="glass rounded-2xl p-6 h-full"><div class="text-amber-400 font-black text-4xl mb-6">{step[0]}</div><h3 class="text-white text-xl font-bold mb-3">{step[1]}</h3><p class="text-gray-500 text-sm leading-relaxed">{step[2]}</p></div></div>)}
+          {steps.map((step, i) => <div class="reveal relative" style={`transition-delay:${i*90}ms`}><div class="glass rounded-2xl p-6 h-full"><div class="text-cyan-300 font-black text-4xl mb-6">{step[0]}</div><h3 class="text-white text-xl font-bold mb-3">{step[1]}</h3><p class="text-gray-500 text-sm leading-relaxed">{step[2]}</p></div></div>)}
         </div>
       </div>
     </section>
 
-    <section id="muenchen" class="py-24 px-5 sm:px-8 bg-[#0e1420] overflow-hidden">
+    <section id="muenchen" class="py-24 px-5 sm:px-8 bg-[#071827] overflow-hidden">
       <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div class="reveal-left">
           <span class="gradient-text font-bold text-sm uppercase tracking-widest">Lokaler Fokus</span>
@@ -276,11 +276,11 @@ const serviceSchema = {
           <p class="text-gray-500 leading-relaxed">Typische Fälle sind Einfahrten in Wohngebieten, reservierte Kundenparkplätze, Tiefgaragenzufahrten, Innenhofstellplätze oder dauerhaft blockierte Flächen in Objektverwaltungen. Wir prüfen jeden Einsatz individuell und ohne übertriebene Versprechen.</p>
         </div>
         <div class="reveal-right glass rounded-[2rem] p-6 relative overflow-hidden">
-          <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,158,11,.16),transparent_42%)]"></div>
-          <div class="relative aspect-square rounded-[1.5rem] bg-[#080c14] border border-white/10 overflow-hidden">
-            <div class="absolute inset-8 rounded-full border border-amber-500/20"></div>
-            <div class="absolute inset-20 rounded-full border border-amber-500/30"></div>
-            <div class="absolute left-1/2 top-1/2 w-4 h-4 -translate-x-1/2 -translate-y-1/2 bg-amber-400 rounded-full shadow-[0_0_40px_rgba(245,158,11,.8)]"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,.16),transparent_42%)]"></div>
+          <div class="relative aspect-square rounded-[1.5rem] bg-[#06111f] border border-white/10 overflow-hidden">
+            <div class="absolute inset-8 rounded-full border border-cyan-400/20"></div>
+            <div class="absolute inset-20 rounded-full border border-cyan-400/30"></div>
+            <div class="absolute left-1/2 top-1/2 w-4 h-4 -translate-x-1/2 -translate-y-1/2 bg-cyan-300 rounded-full shadow-[0_0_40px_rgba(34,211,238,.8)]"></div>
             {munichDistricts.map((d, i) => {
               const angle = (i / munichDistricts.length) * Math.PI * 2;
               const radius = i % 2 ? 39 : 31;
@@ -299,12 +299,12 @@ const serviceSchema = {
         <h2 class="text-4xl sm:text-5xl font-black mt-3 mb-6">Abschleppdienst für Falschparker in Bayern</h2>
         <p class="text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto mb-10">Neben München können Einsätze in Bayern je nach Standort, Verfügbarkeit und konkreter Situation geprüft und koordiniert werden. Der Fokus bleibt klar regional: München zuerst, Bayern nach Prüfung, deutschlandweite Transporte nur auf Anfrage.</p>
         <div class="grid sm:grid-cols-3 gap-5 text-left">
-          {['Standort & Verfügbarkeit prüfen','Zufahrt & Fahrzeugposition bewerten','Dokumentation professionell vorbereiten'].map(item => <div class="glass rounded-2xl p-6"><div class="w-2 h-2 rounded-full bg-amber-400 mb-5"></div><h3 class="text-white font-bold">{item}</h3></div>)}
+          {['Standort & Verfügbarkeit prüfen','Zufahrt & Fahrzeugposition bewerten','Dokumentation professionell vorbereiten'].map(item => <div class="glass rounded-2xl p-6"><div class="w-2 h-2 rounded-full bg-cyan-300 mb-5"></div><h3 class="text-white font-bold">{item}</h3></div>)}
         </div>
       </div>
     </section>
 
-    <section id="trust" class="py-24 px-5 sm:px-8 bg-[#0e1420]">
+    <section id="trust" class="py-24 px-5 sm:px-8 bg-[#071827]">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-14 reveal"><span class="gradient-text font-bold text-sm uppercase tracking-widest">Vertrauen</span><h2 class="text-4xl sm:text-5xl font-black mt-3">Seriös statt laut. Schnell statt unklar.</h2></div>
         <div class="grid md:grid-cols-4 gap-5">
@@ -313,7 +313,7 @@ const serviceSchema = {
             ['24/7 erreichbar','Telefonisch und per WhatsApp erreichbar – besonders wichtig bei blockierten Zufahrten.'],
             ['Dokumentation','Unterstützung bei nachvollziehbarer Prüfung, Fotos und Situationsaufnahme.'],
             ['Privat & Gewerbe','Für Stellplatzbesitzer, Unternehmen, Hausverwaltungen und Objektbetreiber.'],
-          ].map(t => <div class="border-gradient p-px rounded-2xl"><div class="bg-[#101723] rounded-2xl p-6 h-full"><h3 class="text-white font-bold text-xl mb-3">{t[0]}</h3><p class="text-gray-500 text-sm leading-relaxed">{t[1]}</p></div></div>)}
+          ].map(t => <div class="border-gradient p-px rounded-2xl"><div class="bg-[#0b2135] rounded-2xl p-6 h-full"><h3 class="text-white font-bold text-xl mb-3">{t[0]}</h3><p class="text-gray-500 text-sm leading-relaxed">{t[1]}</p></div></div>)}
         </div>
       </div>
     </section>
@@ -322,40 +322,40 @@ const serviceSchema = {
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-16 reveal"><span class="gradient-text font-bold text-sm uppercase tracking-widest">FAQ</span><h2 class="text-4xl sm:text-5xl font-black mt-3 mb-4">Häufige Fragen zu Falschparkern</h2></div>
         <div class="space-y-3 reveal">
-          {faq.map((item, i) => <div class="faq-item glass rounded-xl overflow-hidden" data-index={i}><button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/3 transition-colors"><span class="text-white font-semibold text-sm sm:text-base">{item[0]}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="faq-icon w-5 h-5 text-amber-400 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></button><div class="faq-answer"><p class="text-gray-400 text-sm leading-relaxed px-5 pb-5">{item[1]}</p></div></div>)}
+          {faq.map((item, i) => <div class="faq-item glass rounded-xl overflow-hidden" data-index={i}><button class="faq-btn w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/3 transition-colors"><span class="text-white font-semibold text-sm sm:text-base">{item[0]}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="faq-icon w-5 h-5 text-cyan-300 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg></button><div class="faq-answer"><p class="text-gray-400 text-sm leading-relaxed px-5 pb-5">{item[1]}</p></div></div>)}
         </div>
       </div>
     </section>
 
-    <section id="kontakt" class="py-24 px-5 sm:px-8 bg-[#0e1420] relative overflow-hidden">
+    <section id="kontakt" class="py-24 px-5 sm:px-8 bg-[#071827] relative overflow-hidden">
       <div class="absolute inset-0 grid-bg opacity-30"></div>
       <div class="relative max-w-5xl mx-auto text-center reveal">
         <span class="gradient-text font-bold text-sm uppercase tracking-widest">Einsatz prüfen</span>
         <h2 class="text-4xl sm:text-6xl font-black mt-4 mb-6">Falschparker melden. Situation prüfen. Professionell lösen.</h2>
         <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10">Rufen Sie KOKAJ direkt an oder senden Sie die Situation per WhatsApp. Wir prüfen Verfügbarkeit, Standort und Möglichkeiten ohne falsche Versprechen.</p>
         <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-          <a href={phoneMobileHref} class="btn-pulse inline-flex items-center justify-center bg-gradient-to-r from-amber-400 to-orange-500 text-black font-black text-xl px-10 py-5 rounded-2xl shadow-2xl shadow-amber-500/25">Jetzt anrufen · {phoneMobile}</a>
-          <a href={whatsappUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center glass border border-white/10 text-white font-bold text-xl px-10 py-5 rounded-2xl hover:border-amber-500/40 transition-colors">Falschparker melden</a>
+          <a href={phoneMobileHref} class="btn-pulse inline-flex items-center justify-center bg-gradient-to-r from-cyan-300 to-blue-500 text-black font-black text-xl px-10 py-5 rounded-2xl shadow-2xl shadow-cyan-500/25">Jetzt anrufen · {phoneMobile}</a>
+          <a href={whatsappUrl} target="_blank" rel="noopener" class="inline-flex items-center justify-center glass border border-white/10 text-white font-bold text-xl px-10 py-5 rounded-2xl hover:border-cyan-400/40 transition-colors">Falschparker melden</a>
         </div>
         <div class="grid sm:grid-cols-3 gap-5 text-left">
-          <div class="glass rounded-xl p-6"><div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">Telefon</div><a href={phoneMobileHref} class="text-white font-bold hover:text-amber-400">{phoneMobile}</a><br/><a href={phoneLandlineHref} class="text-gray-400 hover:text-amber-400">{phoneLandline}</a></div>
-          <div class="glass rounded-xl p-6"><div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">E-Mail</div><a href={`mailto:${email}`} class="text-white font-bold hover:text-amber-400 break-all">{email}</a></div>
+          <div class="glass rounded-xl p-6"><div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">Telefon</div><a href={phoneMobileHref} class="text-white font-bold hover:text-cyan-300">{phoneMobile}</a><br/><a href={phoneLandlineHref} class="text-gray-400 hover:text-cyan-300">{phoneLandline}</a></div>
+          <div class="glass rounded-xl p-6"><div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">E-Mail</div><a href={`mailto:${email}`} class="text-white font-bold hover:text-cyan-300 break-all">{email}</a></div>
           <div class="glass rounded-xl p-6"><div class="text-xs text-gray-500 uppercase tracking-wider mb-1.5 font-semibold">Adresse</div><div class="text-white font-medium">Carl-Wery-Straße 6<br/>81739 München</div></div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="bg-[#050810] border-t border-white/5 py-14 pb-28 sm:pb-14">
+  <footer class="bg-[#030b14] border-t border-white/5 py-14 pb-28 sm:pb-14">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
         <div>
-          <a href="/" class="flex items-center gap-3 mb-5"><div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-black font-black text-xl">K</div><div><div class="text-white font-extrabold text-sm">Abschleppdienst</div><div class="gradient-text font-black text-base">KOKAJ</div></div></a>
+          <a href="/" class="flex items-center gap-3 mb-5"><div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-300 to-blue-500 flex items-center justify-center text-black font-black text-xl">K</div><div><div class="text-white font-extrabold text-sm">Abschleppdienst</div><div class="gradient-text font-black text-base">KOKAJ</div></div></a>
           <p class="text-gray-500 text-sm leading-relaxed">Premium-Abschleppdienst für München: Pannenhilfe, Fahrzeugtransport und Einsatzprüfung bei Falschparkern.</p>
         </div>
-        <div><h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Interne Links</h4><ul class="space-y-2.5 text-sm"><li><a href="/" class="text-gray-500 hover:text-amber-400">Abschleppdienst München</a></li><li><a href="/#leistungen" class="text-gray-500 hover:text-amber-400">Leistungen</a></li><li><a href="/#einsatzgebiet" class="text-gray-500 hover:text-amber-400">Einsatzgebiet</a></li><li><a href="/#faq" class="text-gray-500 hover:text-amber-400">FAQ Hauptseite</a></li></ul></div>
-        <div><h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Falschparker</h4><ul class="space-y-2.5 text-sm"><li><a href="#muenchen" class="text-gray-500 hover:text-amber-400">Falschparker München</a></li><li><a href="#bayern" class="text-gray-500 hover:text-amber-400">Falschparker Bayern</a></li><li><a href="#leistungen" class="text-gray-500 hover:text-amber-400">Privatparkplatz</a></li><li><a href="#ablauf" class="text-gray-500 hover:text-amber-400">Einsatzprüfung</a></li></ul></div>
-        <div><h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Kontakt</h4><ul class="space-y-3 text-sm"><li><a href={phoneMobileHref} class="text-white font-bold hover:text-amber-400">{phoneMobile}</a><div class="text-gray-500 text-xs mt-0.5">Mobil · auch WhatsApp</div></li><li><a href={phoneLandlineHref} class="text-gray-300 hover:text-amber-400">{phoneLandline}</a></li><li><a href={`mailto:${email}`} class="text-gray-500 hover:text-amber-400 break-all">{email}</a></li><li class="text-gray-500">Carl-Wery Str. 6<br/>81739 München</li></ul></div>
+        <div><h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Interne Links</h4><ul class="space-y-2.5 text-sm"><li><a href="/" class="text-gray-500 hover:text-cyan-300">Abschleppdienst München</a></li><li><a href="/#leistungen" class="text-gray-500 hover:text-cyan-300">Leistungen</a></li><li><a href="/#einsatzgebiet" class="text-gray-500 hover:text-cyan-300">Einsatzgebiet</a></li><li><a href="/#faq" class="text-gray-500 hover:text-cyan-300">FAQ Hauptseite</a></li></ul></div>
+        <div><h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Falschparker</h4><ul class="space-y-2.5 text-sm"><li><a href="#muenchen" class="text-gray-500 hover:text-cyan-300">Falschparker München</a></li><li><a href="#bayern" class="text-gray-500 hover:text-cyan-300">Falschparker Bayern</a></li><li><a href="#leistungen" class="text-gray-500 hover:text-cyan-300">Privatparkplatz</a></li><li><a href="#ablauf" class="text-gray-500 hover:text-cyan-300">Einsatzprüfung</a></li></ul></div>
+        <div><h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Kontakt</h4><ul class="space-y-3 text-sm"><li><a href={phoneMobileHref} class="text-white font-bold hover:text-cyan-300">{phoneMobile}</a><div class="text-gray-500 text-xs mt-0.5">Mobil · auch WhatsApp</div></li><li><a href={phoneLandlineHref} class="text-gray-300 hover:text-cyan-300">{phoneLandline}</a></li><li><a href={`mailto:${email}`} class="text-gray-500 hover:text-cyan-300 break-all">{email}</a></li><li class="text-gray-500">Carl-Wery Str. 6<br/>81739 München</li></ul></div>
       </div>
       <div class="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600"><span>&copy; {new Date().getFullYear()} Abschleppdienst KOKAJ München. Alle Rechte vorbehalten.</span><div class="flex gap-5"><a href="/impressum" class="hover:text-gray-400">Impressum</a><a href="/datenschutz" class="hover:text-gray-400">Datenschutz</a></div></div>
     </div>
@@ -364,16 +364,24 @@ const serviceSchema = {
   <a href={whatsappUrl} target="_blank" rel="noopener" class="wa-btn float hidden sm:flex" aria-label="WhatsApp Kontakt"><svg viewBox="0 0 24 24" fill="white" class="w-7 h-7"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
   <div class="mobile-call-bar items-center justify-between gap-2 px-3 sm:hidden">
-    <a href={phoneMobileHref} class="flex-1 bg-black text-amber-400 font-black text-xs px-3 py-3 rounded-xl text-center">Jetzt anrufen</a>
+    <a href={phoneMobileHref} class="flex-1 bg-black text-cyan-300 font-black text-xs px-3 py-3 rounded-xl text-center">Jetzt anrufen</a>
     <a href={whatsappUrl} target="_blank" rel="noopener" class="flex-1 bg-black/80 text-white font-black text-xs px-3 py-3 rounded-xl text-center">Falschparker melden</a>
     <a href="#sofort" class="flex-1 bg-white/15 text-black font-black text-xs px-3 py-3 rounded-xl text-center">Einsatz prüfen</a>
   </div>
 
   <style>
-    @keyframes towFlashA { 0%,45%,100%{opacity:1;filter:drop-shadow(0 0 7px #F59E0B)} 50%,95%{opacity:.2;filter:none} }
-    @keyframes towFlashB { 0%,45%,100%{opacity:.2;filter:none} 50%,95%{opacity:1;filter:drop-shadow(0 0 7px #F59E0B)} }
-    .tow-flash-a { animation: towFlashA .8s ease-in-out infinite; }
-    .tow-flash-b { animation: towFlashB .8s ease-in-out infinite; }
+    :global(body) { background: #06111f; }
+    :global(.gradient-text) { background: linear-gradient(115deg,#e0f7ff 0%,#22d3ee 42%,#60a5fa 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .fp-premium::before { content:""; position:absolute; inset:0; pointer-events:none; background: radial-gradient(circle at 22% 18%, rgba(34,211,238,.18), transparent 30%), radial-gradient(circle at 84% 26%, rgba(99,102,241,.16), transparent 34%), linear-gradient(120deg, rgba(255,255,255,.04), transparent 42%); }
+    .fp-premium::after { content:""; position:absolute; inset:auto -10% 0 -10%; height:42%; background: linear-gradient(180deg, transparent, rgba(13,148,136,.08) 46%, #06111f); pointer-events:none; }
+    .glass-ice { background: linear-gradient(135deg, rgba(224,247,255,.13), rgba(59,130,246,.07)); border: 1px solid rgba(125,211,252,.22); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 18px 70px rgba(14,165,233,.08); backdrop-filter: blur(18px); }
+    .parking-stage-pro { box-shadow: 0 42px 120px rgba(0,0,0,.46), 0 0 0 1px rgba(125,211,252,.08), inset 0 1px 0 rgba(255,255,255,.12); }
+    .parking-stage-pro::after { content:""; position:absolute; inset:0; pointer-events:none; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.13) 38%, transparent 52%); transform: translateX(-120%); animation: stageSheen 7s cubic-bezier(.2,.8,.2,1) infinite; }
+    @keyframes stageSheen { 0%,42%{transform:translateX(-120%)} 72%,100%{transform:translateX(120%)} }
+    @keyframes towFlashA { 0%,45%,100%{opacity:1;filter:drop-shadow(0 0 10px #22D3EE)} 50%,95%{opacity:.2;filter:none} }
+    @keyframes towFlashB { 0%,45%,100%{opacity:.2;filter:none} 50%,95%{opacity:1;filter:drop-shadow(0 0 10px #22D3EE)} }
+    .tow-flash-a { animation: towFlashA .72s ease-in-out infinite; }
+    .tow-flash-b { animation: towFlashB .72s ease-in-out infinite; }
     @media (max-width: 768px) {
       #parking-stage { min-height: 430px; }
       #tow-svg { width: 390px; bottom: 130px; }
@@ -398,18 +406,25 @@ const serviceSchema = {
     const cable = document.getElementById('tow-cable');
     const lines = document.getElementById('road-lines');
     if (stage && tow && car && !reduceMotion) {
-      const tl = gsap.timeline({ scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.4 } });
-      tl.to(tow, { x: '78vw', duration: .42, ease: 'none' }, 0)
-        .to(cable, { opacity: 1, duration: .08 }, .22)
-        .to(car, { y: -18, rotation: -2, transformOrigin: '50% 80%', duration: .16 }, .30)
-        .to([tow, car], { x: '+=34vw', duration: .42, ease: 'none' }, .48)
-        .to(car, { opacity: .85, duration: .2 }, .78);
-      gsap.to('#parking-lines', { y: 18, opacity: .65, scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.8 } });
-      if (lines) gsap.to(lines, { xPercent: -50, duration: 1.2, repeat: -1, ease: 'linear' });
+      gsap.set(tow, { xPercent: -8, y: 8, force3D: true, transformOrigin: '50% 80%' });
+      gsap.set(car, { force3D: true, transformOrigin: '50% 82%' });
+      gsap.set(cable, { opacity: 0, strokeDasharray: 46, strokeDashoffset: 46 });
+      gsap.to(tow, { y: '+=5', duration: 1.8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+      const wheels = tow.querySelectorAll('circle');
+      const tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 2.2 } });
+      tl.to(tow, { x: '67vw', duration: .38 }, 0)
+        .to(wheels, { rotation: 270, svgOrigin: '50% 50%', duration: .38 }, 0)
+        .to(cable, { opacity: 1, strokeDashoffset: 0, duration: .11, ease: 'power2.out' }, .22)
+        .to(car, { y: -24, rotation: -3.5, duration: .16, ease: 'sine.inOut' }, .31)
+        .to([tow, car], { x: '+=38vw', duration: .46 }, .49)
+        .to(wheels, { rotation: 720, svgOrigin: '50% 50%', duration: .46 }, .49)
+        .to(car, { y: -18, rotation: -1.5, opacity: .92, duration: .28, ease: 'sine.inOut' }, .66);
+      gsap.to('#parking-lines', { y: 22, scale: .985, opacity: .72, scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 2.4 } });
+      if (lines) gsap.to(lines, { xPercent: -50, duration: .95, repeat: -1, ease: 'linear' });
     }
 
     const header = document.getElementById('header');
-    ScrollTrigger.create({ start: 'top -60', onUpdate: ({ progress }) => { if (progress > 0) header?.classList.add('bg-[#080c14]/95','backdrop-blur-2xl','shadow-2xl','border-b','border-white/5'); else header?.classList.remove('bg-[#080c14]/95','backdrop-blur-2xl','shadow-2xl','border-b','border-white/5'); } });
+    ScrollTrigger.create({ start: 'top -60', onUpdate: ({ progress }) => { if (progress > 0) header?.classList.add('bg-[#06111f]/95','backdrop-blur-2xl','shadow-2xl','border-b','border-white/5'); else header?.classList.remove('bg-[#06111f]/95','backdrop-blur-2xl','shadow-2xl','border-b','border-white/5'); } });
 
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => ScrollTrigger.create({ trigger: el, start: 'top 88%', onEnter: () => el.classList.add('in') }));
 
