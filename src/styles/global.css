@@ -14,7 +14,17 @@
 }
 
 /* ── BASE ───────────────────────────────────────────────────── */
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+section[id] { scroll-margin-top: 88px; }
+
+@media (min-width: 640px) {
+  html { scroll-padding-top: 96px; }
+  section[id] { scroll-margin-top: 96px; }
+}
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -181,8 +191,8 @@ body {
 
 /* ── HERO INITIAL STATES ────────────────────────────────────── */
 #hero-badge, #hero-headline, #hero-sub, #hero-ctas, #hero-trust {
-  opacity: 0;
-  transform: translateY(24px);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ── TRUCK ANIMATION ────────────────────────────────────────── */

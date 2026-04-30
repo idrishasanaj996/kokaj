@@ -280,12 +280,35 @@
   .kkj-cc__reopen:focus-visible { outline: none; box-shadow: var(--kkj-focus); }
 
   @media (max-width: 640px) {
-    .kkj-cc__banner { left: 8px; right: 8px; bottom: 8px; padding: 16px; }
-    .kkj-cc__banner-grid { grid-template-columns: 1fr; }
-    .kkj-cc__actions { justify-content: stretch; }
-    .kkj-cc__actions .kkj-cc__btn { flex: 1 1 auto; }
-    .kkj-cc__btn--hero { order: -1; flex-basis: 100%; padding: 14px 20px; } /* auf Mobile: volle Breite und zuerst */
-    .kkj-cc__modal { padding: 20px; }
+    .kkj-cc__banner {
+      left: 10px;
+      right: 10px;
+      bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+      padding: 12px;
+      max-height: min(42dvh, 330px);
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .kkj-cc__banner-grid { grid-template-columns: 1fr; gap: 10px; }
+    .kkj-cc__title { font-size: 14px; margin-bottom: 2px; }
+    .kkj-cc__text {
+      font-size: 12px;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .kkj-cc__actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+      justify-content: stretch;
+    }
+    .kkj-cc__actions .kkj-cc__btn { width: 100%; padding: 10px 9px; font-size: 12px; border-radius: 10px; }
+    .kkj-cc__btn--hero { order: -1; grid-column: 1 / -1; padding: 11px 14px; font-size: 13px; } /* auf Mobile: volle Breite und zuerst */
+    .kkj-cc__backdrop { padding: calc(14px + env(safe-area-inset-top, 0px)) 14px calc(14px + env(safe-area-inset-bottom, 0px)); }
+    .kkj-cc__modal { padding: 18px; max-height: calc(100dvh - 28px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); }
   }
 </style>
 
