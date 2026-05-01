@@ -24,6 +24,17 @@ const services = [
   ['Dokumentation', 'Wir unterstützen bei Fotos, Standortdaten, Beschilderung und nachvollziehbarer Einsatzprüfung.'],
 ];
 
+const serviceIcons = [
+  '<path d="M4 10.5 12 4l8 6.5"/><path d="M6.5 10v8.5h11V10"/><path d="M9.5 18.5v-5h5v5"/>',
+  '<path d="M3.5 12h17"/><path d="M7 8.5 3.5 12 7 15.5"/><path d="M17 8.5 20.5 12 17 15.5"/><path d="M9 6h6"/><path d="M9 18h6"/>',
+  '<path d="M6 8.5h12l1.5 4v5h-15v-5L6 8.5Z"/><path d="M7.5 8.5l1-3h7l1 3"/><circle cx="8" cy="18" r="1.5"/><circle cx="16" cy="18" r="1.5"/>',
+  '<path d="M4.5 19V7.5L12 4l7.5 3.5V19"/><path d="M8 19v-7h8v7"/><path d="M9 8.5h.01M12 8.5h.01M15 8.5h.01"/>',
+  '<path d="M4 18.5V8l8-4 8 4v10.5"/><path d="M7.5 18.5v-7h9v7"/><path d="M10 14h4"/>',
+  '<path d="M4 17.5h16"/><path d="M6 17.5V8.8A2.8 2.8 0 0 1 8.8 6h6.4A2.8 2.8 0 0 1 18 8.8v8.7"/><path d="M8.5 11h7"/><path d="M8.5 14h7"/>',
+  '<path d="M12 5v14"/><path d="M7 9a5 5 0 0 1 10 0c0 4-5 4-5 8"/><path d="M8 18h8"/>',
+  '<path d="M8 4.5h6l3 3V19.5H8z"/><path d="M14 4.5v3h3"/><path d="M10.5 12h4"/><path d="M10.5 15h4"/><path d="M6 7.5v14h9"/>',
+];
+
 const steps = [
   ['01', 'Anrufen oder melden', 'Rufen Sie direkt an oder senden Sie die wichtigsten Informationen per WhatsApp.'],
   ['02', 'Situation schildern', 'Standort, Fahrzeugposition, Beschilderung und Art der Blockade werden aufgenommen.'],
@@ -226,7 +237,7 @@ const serviceSchema = {
           <p class="text-gray-400 max-w-3xl mx-auto text-base sm:text-lg leading-[1.65]">Für private Stellplätze, Gewerbeflächen, Wohnanlagen und Objekte mit wiederkehrenden Parkplatzproblemen in München und Bayern.</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {services.map((s, i) => <div class="reveal border-gradient p-px rounded-2xl" style={`transition-delay:${i*55}ms`}><div class="bg-[#0b2135] hover:bg-[#0f2d46] rounded-2xl p-4 sm:p-6 h-full transition-all duration-300 hover:-translate-y-1"><div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-3 sm:mb-5 text-cyan-300 font-black">{String(i+1).padStart(2,'0')}</div><h3 class="text-white font-bold text-lg mb-3">{s[0]}</h3><p class="text-gray-500 text-sm leading-relaxed">{s[1]}</p></div></div>)}
+          {services.map((s, i) => <div class="reveal border-gradient p-px rounded-2xl" style={`transition-delay:${i*55}ms`}><div class="service-card bg-[#0b2135] hover:bg-[#0f2d46] rounded-2xl p-4 sm:p-6 h-full transition-all duration-300 hover:-translate-y-1"><div class="service-icon mb-3 sm:mb-5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><Fragment set:html={serviceIcons[i]} /></svg></div><h3 class="text-white font-bold text-lg mb-3">{s[0]}</h3><p class="text-gray-500 text-sm leading-relaxed">{s[1]}</p></div></div>)}
         </div>
       </div>
     </section>
@@ -346,6 +357,12 @@ const serviceSchema = {
     .hero-clean-row a, .hero-clean-row strong { color:white; font-size:18px; font-weight:900; letter-spacing:-.02em; text-align:right; }
     .hero-clean-row a { color:#a5f3fc; }
     .parking-stage-pro { box-shadow: 0 42px 120px rgba(0,0,0,.46), 0 0 0 1px rgba(125,211,252,.08), inset 0 1px 0 rgba(255,255,255,.12); }
+    .service-card { position:relative; overflow:hidden; }
+    .service-card::before { content:""; position:absolute; inset:0; pointer-events:none; background:radial-gradient(circle at 18% 0%, rgba(34,211,238,.12), transparent 34%); opacity:.85; transition:opacity .3s ease; }
+    .service-card:hover::before { opacity:1; }
+    .service-card > * { position:relative; z-index:1; }
+    .service-icon { width:2.75rem; height:2.75rem; border-radius:1rem; display:grid; place-items:center; color:#a5f3fc; background:linear-gradient(145deg, rgba(34,211,238,.14), rgba(59,130,246,.08)); border:1px solid rgba(125,211,252,.22); box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 14px 34px rgba(34,211,238,.08); }
+    .service-icon svg { width:1.35rem; height:1.35rem; filter:drop-shadow(0 0 14px rgba(34,211,238,.22)); }
     .mobile-clarity-card { position:relative; overflow:hidden; border-radius:1.75rem; border:1px solid rgba(125,211,252,.18); background:radial-gradient(circle at 16% 0%, rgba(34,211,238,.20), transparent 35%), linear-gradient(145deg, rgba(9,32,51,.92), rgba(3,11,20,.98)); box-shadow:0 32px 90px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.10); padding:1.2rem; }
     .mobile-clarity-card::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(115deg,rgba(255,255,255,.07),transparent 42%); opacity:.55; }
     .mobile-clarity-card > * { position:relative; z-index:1; }
