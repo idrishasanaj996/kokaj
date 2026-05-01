@@ -135,7 +135,7 @@ const serviceSchema = {
       <div class="absolute inset-0 bg-gradient-to-b from-[#06111f]/70 via-transparent to-[#06111f]"></div>
 
       <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full pt-20 pb-8 sm:pt-24 sm:pb-14 lg:pt-24">
-        <div class="grid lg:grid-cols-[1.08fr_0.92fr] gap-6 lg:gap-10 items-center">
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div class="max-w-2xl">
             <div id="hero-badge" class="inline-flex items-center gap-2.5 glass-ice rounded-full px-3.5 sm:px-4 py-2 mb-4 sm:mb-6">
               <span class="w-2 h-2 rounded-full bg-cyan-300 animate-pulse"></span>
@@ -144,7 +144,7 @@ const serviceSchema = {
             <h1 id="hero-headline" class="text-[2rem] min-[390px]:text-[2.125rem] sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black leading-[1.08] sm:leading-[1.04] tracking-[-0.035em] mb-4 sm:mb-5">
               Falschparker in München abschleppen lassen.
             </h1>
-            <p id="hero-sub" class="text-gray-300 text-base sm:text-xl max-w-xl mb-5 sm:mb-6 leading-relaxed">
+            <p id="hero-sub" class="text-slate-200/90 text-base sm:text-xl max-w-xl mb-5 sm:mb-6 leading-relaxed">
               Schnelle Einsatzprüfung für Privatparkplätze, Einfahrten, Kundenparkplätze, Tiefgaragen und Hausverwaltungen. Seriös, diskret und professionell dokumentiert.
             </p>
             <div id="hero-ctas" class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-5 sm:mb-6">
@@ -160,15 +160,15 @@ const serviceSchema = {
             </div>
           </div>
 
-          <div class="relative lg:min-h-[560px]" aria-label="Scroll-Animation Abschleppwagen entfernt Falschparker">
+          <div class="relative lg:min-h-[520px]" aria-label="KOKAJ Einsatzprüfung bei blockiertem Privatparkplatz">
             <div class="absolute -inset-6 bg-cyan-400/10 blur-3xl rounded-full"></div>
-            <div id="parking-stage" class="parking-stage-pro relative overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem] border border-white/10 bg-[#092033]/85 shadow-2xl shadow-black/40 min-h-[310px] sm:min-h-[420px] lg:min-h-[560px]">
+            <div id="parking-stage" class="parking-stage-pro relative overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem] border border-white/10 bg-[#092033]/85 shadow-2xl shadow-black/40 min-h-[310px] sm:min-h-[420px] lg:min-h-[520px]">
               <div class="absolute inset-0 opacity-60" style="background:linear-gradient(115deg,rgba(255,255,255,0.05),transparent 35%),repeating-linear-gradient(90deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 90px);"></div>
               <div id="mobile-parking-scene" class="mobile-parking-scene" aria-hidden="true">
                 <div class="mobile-scene-header"><span class="mobile-live-dot"></span><span>Privatparkplatz · München</span></div>
                 <div class="mobile-parking-bay">
                   <span class="mobile-bay-label">Reserviert</span>
-                  <span class="mobile-scroll-chip">Scrollen = Abschleppen</span>
+                  <span class="mobile-scroll-chip">Einsatz prüfen</span>
                   <div class="mobile-blocked-car"><span>Falschparker</span></div>
                   <div class="mobile-tow-truck" aria-hidden="true"><span>K</span><b>ABSCHLEPP</b></div>
                   <div class="mobile-tow-cable" aria-hidden="true"></div>
@@ -185,7 +185,11 @@ const serviceSchema = {
               <div id="parking-lines" class="absolute left-10 right-10 bottom-[108px] h-[285px] border-2 border-cyan-300/55 rounded-xl">
                 <div class="absolute top-4 left-4 text-cyan-200/70 text-xs font-black tracking-[0.25em] uppercase">Privatparkplatz</div>
                 <div class="absolute inset-x-6 top-1/2 border-t border-dashed border-cyan-300/12"></div>
-                
+                <div class="desktop-status-panel absolute left-6 right-6 bottom-6 grid grid-cols-3 gap-3">
+                  <div><span>01</span><strong>Anruf</strong></div>
+                  <div><span>02</span><strong>Prüfung</strong></div>
+                  <div><span>03</span><strong>Lösung</strong></div>
+                </div>
               </div>
 
               <svg id="wrong-car" class="absolute left-[38%] bottom-[214px] w-[310px] max-w-[56vw]" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -227,16 +231,16 @@ const serviceSchema = {
               <div class="absolute left-0 right-0 bottom-0 h-[104px] bg-[#0c1622] border-t border-white/10">
                 <div class="absolute top-10 left-0 right-0 h-1 overflow-hidden"><div id="road-lines" class="h-full w-[200%]" style="background:repeating-linear-gradient(90deg,rgba(255,255,255,.22) 0 70px,transparent 70px 125px);"></div></div>
               </div>
-              <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-xs text-gray-500 uppercase tracking-[0.18em]"><span>Scroll</span><span>Einsatzprüfung</span><span>Abtransport</span></div>
+              <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-xs text-gray-500 uppercase tracking-[0.18em]"><span>Standort</span><span>Einsatzprüfung</span><span>Koordination</span></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="bg-[#071827] border-y border-white/5 py-3 sm:py-5 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
-      <div class="flex w-max animate-marquee whitespace-nowrap select-none">
-        {Array.from({length: 2}).map(() => <div class="flex flex-none items-center gap-7 sm:gap-12 px-4 sm:px-6">{['Privatparkplatz blockiert','Einfahrt zugeparkt','Kundenparkplatz besetzt','Tiefgarage prüfen','Hausverwaltung & Gewerbe','München im Fokus','Bayern nach Prüfung'].map(item => <span class="text-gray-500 text-xs sm:text-sm font-medium tracking-wide">{item}</span>)}</div>)}
+    <div class="bg-[#071827] border-y border-white/5 py-4 sm:py-5 px-5 sm:px-8">
+      <div class="max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-3 text-center">
+        {['Privatparkplatz blockiert','Einfahrt zugeparkt','Kundenparkplatz besetzt','Hausverwaltung & Gewerbe'].map(item => <span class="glass rounded-full px-3 py-2 text-gray-300 text-xs sm:text-sm font-semibold tracking-wide">{item}</span>)}
       </div>
     </div>
 
@@ -253,17 +257,17 @@ const serviceSchema = {
       </div>
     </aside>
 
-    <section id="sofort" class="py-14 sm:py-20 lg:py-24 px-5 sm:px-8">
-      <div class="max-w-7xl mx-auto grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-center">
-        <div class="reveal-left">
+    <section id="sofort" class="py-14 sm:py-20 lg:py-20 px-5 sm:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal text-center max-w-3xl mx-auto">
           <span class="gradient-text font-bold text-sm uppercase tracking-widest">Sofort-Hilfe für Falschparker</span>
           <h2 class="text-[1.75rem] min-[390px]:text-[1.875rem] sm:text-5xl font-black leading-[1.12] sm:leading-[1.05] tracking-[-0.025em] mt-3 mb-4 sm:mb-6">Blockierter Stellplatz? Wir prüfen den Einsatz direkt.</h2>
           <p class="text-gray-400 text-base sm:text-lg leading-[1.65] mb-6">Ob Privatparkplatz, Einfahrt, Firmenparkplatz oder Tiefgarage: Entscheidend ist die konkrete Situation. KOKAJ verbindet schnelle Erreichbarkeit mit professioneller Dokumentation und klarer Abstimmung.</p>
-          <div class="glass-ice rounded-2xl p-5 border border-cyan-400/20">
+          <div class="glass-ice rounded-2xl p-5 border border-cyan-400/20 text-left">
             <p class="text-cyan-50 font-semibold">Wichtig: Ob eine Abschleppung möglich ist, hängt von Berechtigung, Beschilderung, Zugänglichkeit, Verfügbarkeit und der Lage vor Ort ab. Wir geben keine pauschalen Garantien, sondern prüfen Ihren Fall seriös.</p>
           </div>
         </div>
-        <div class="reveal-right grid sm:grid-cols-3 gap-4">
+        <div class="reveal grid sm:grid-cols-3 gap-4 mt-10">
           {[
             ['01','Fotos sichern','Fahrzeugposition, Kennzeichen, Beschilderung und Blockade dokumentieren.'],
             ['02','Anrufen','Standort und Situation telefonisch oder per WhatsApp durchgeben.'],
@@ -273,20 +277,20 @@ const serviceSchema = {
       </div>
     </section>
 
-    <section id="leistungen" class="py-14 sm:py-20 lg:py-24 px-5 sm:px-8 bg-[#071827]">
-      <div class="max-w-7xl mx-auto">
+    <section id="leistungen" class="py-14 sm:py-20 lg:py-20 px-5 sm:px-8 bg-[#071827]">
+      <div class="max-w-6xl mx-auto">
         <div class="text-center mb-9 sm:mb-12 lg:mb-16 reveal">
           <span class="gradient-text font-bold text-sm uppercase tracking-widest">Leistungsbereiche</span>
           <h2 class="text-[1.75rem] min-[390px]:text-[1.875rem] sm:text-5xl font-black leading-[1.12] sm:leading-[1.05] tracking-[-0.025em] mt-3 mb-3 sm:mb-4">Falschparker abschleppen lassen: Fälle, bei denen KOKAJ hilft</h2>
           <p class="text-gray-400 max-w-3xl mx-auto text-base sm:text-lg leading-[1.65]">Für private Stellplätze, Gewerbeflächen, Wohnanlagen und Objekte mit wiederkehrenden Parkplatzproblemen in München und Bayern.</p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {services.map((s, i) => <div class="reveal border-gradient p-px rounded-2xl" style={`transition-delay:${i*55}ms`}><div class="bg-[#0b2135] hover:bg-[#0f2d46] rounded-2xl p-4 sm:p-6 h-full transition-all duration-300 hover:-translate-y-1"><div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-3 sm:mb-5 text-cyan-300 font-black">{String(i+1).padStart(2,'0')}</div><h3 class="text-white font-bold text-lg mb-3">{s[0]}</h3><p class="text-gray-500 text-sm leading-relaxed">{s[1]}</p></div></div>)}
         </div>
       </div>
     </section>
 
-    <section id="ablauf" class="py-14 sm:py-20 lg:py-24 px-5 sm:px-8">
+    <section id="ablauf" class="py-14 sm:py-20 lg:py-20 px-5 sm:px-8">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-9 sm:mb-12 lg:mb-16 reveal">
           <span class="gradient-text font-bold text-sm uppercase tracking-widest">Ablauf</span>
@@ -298,8 +302,8 @@ const serviceSchema = {
       </div>
     </section>
 
-    <section id="muenchen" class="py-14 sm:py-20 lg:py-24 px-5 sm:px-8 bg-[#071827] overflow-hidden">
-      <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-7 lg:gap-12 items-center">
+    <section id="muenchen" class="py-14 sm:py-20 lg:py-20 px-5 sm:px-8 bg-[#071827] overflow-hidden">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-7 lg:gap-12 items-center">
         <div class="reveal-left">
           <span class="gradient-text font-bold text-sm uppercase tracking-widest">Lokaler Fokus</span>
           <h2 class="text-[1.75rem] min-[390px]:text-[1.875rem] sm:text-5xl font-black leading-[1.12] sm:leading-[1.05] tracking-[-0.025em] mt-3 mb-4 sm:mb-6">Falschparker abschleppen in München</h2>
@@ -308,10 +312,10 @@ const serviceSchema = {
         </div>
         <div class="reveal-right glass rounded-[1.5rem] sm:rounded-[2rem] p-4 sm:p-6 relative overflow-hidden">
           <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,.14),transparent_46%)]"></div>
-          <div class="relative lg:hidden">
+          <div class="relative">
             <div class="mb-5">
               <div class="text-cyan-200 text-sm font-black uppercase tracking-[0.18em] mb-2">Stadtteile & Bereiche</div>
-              <p class="text-gray-500 text-sm leading-relaxed">Einsatzprüfung in München – lesbar, ruhig und ohne überladene Karte.</p>
+              <p class="text-gray-500 text-sm leading-relaxed">Einsatzprüfung in München – klar, lesbar und ohne überladene Karte.</p>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
               {munichDistricts.map((d) => <span class="min-h-[42px] flex items-center justify-center text-center text-xs sm:text-sm font-semibold text-gray-200 bg-white/[0.055] border border-white/10 rounded-xl px-3 py-2.5 backdrop-blur-sm">{d}</span>)}
@@ -320,28 +324,11 @@ const serviceSchema = {
               <p class="text-cyan-50 text-sm font-semibold leading-relaxed">Schwerpunkt: München Stadtgebiet und Umland – jeder Einsatz wird nach Standort, Zufahrt und Situation geprüft.</p>
             </div>
           </div>
-          <div class="relative hidden lg:block aspect-square rounded-[1.5rem] bg-[#06111f] border border-white/10 overflow-hidden">
-            <div class="absolute inset-8 rounded-full border border-cyan-400/20"></div>
-            <div class="absolute inset-20 rounded-full border border-cyan-400/30"></div>
-            <div class="absolute inset-32 rounded-full border border-cyan-400/15"></div>
-            <div class="absolute left-1/2 top-1/2 w-24 h-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-300/10 border border-cyan-300/30 flex items-center justify-center shadow-[0_0_55px_rgba(34,211,238,.45)]"><div class="text-center"><div class="text-cyan-200 font-black text-sm">München</div><div class="text-gray-500 text-[10px] uppercase tracking-[0.18em] mt-1">24/7 Prüfung</div></div></div>
-            {[
-              ['Innenstadt', 'Maxvorstadt', 'Glockenbachviertel'],
-              ['Schwabing', 'Milbertshofen', 'Freimann'],
-              ['Bogenhausen', 'Haidhausen', 'Ramersdorf'],
-              ['Giesing', 'Sendling', 'Obersendling'],
-              ['Neuhausen', 'Nymphenburg', 'Moosach'],
-              ['Pasing', 'Laim', 'Trudering'],
-            ].map((group, i) => {
-              const positions = ['left:50%;top:8%;transform:translateX(-50%)','right:6%;top:25%','right:6%;bottom:25%','left:50%;bottom:8%;transform:translateX(-50%)','left:6%;bottom:25%','left:6%;top:25%'];
-              return <div class="absolute w-[150px] rounded-2xl bg-white/[0.055] border border-white/10 backdrop-blur px-3 py-2.5 shadow-lg shadow-black/20" style={positions[i]}><div class="flex flex-col gap-1.5">{group.map((d) => <span class="text-center text-[11px] font-semibold text-gray-300 leading-tight">{d}</span>)}</div></div>;
-            })}
-          </div>
         </div>
       </div>
     </section>
 
-    <section id="bayern" class="py-14 sm:py-20 lg:py-24 px-5 sm:px-8">
+    <section id="bayern" class="py-14 sm:py-20 lg:py-20 px-5 sm:px-8">
       <div class="max-w-6xl mx-auto text-center reveal">
         <span class="gradient-text font-bold text-sm uppercase tracking-widest">Bayern</span>
         <h2 class="text-[1.75rem] min-[390px]:text-[1.875rem] sm:text-5xl font-black leading-[1.12] sm:leading-[1.05] tracking-[-0.025em] mt-3 mb-4 sm:mb-6">Abschleppdienst für Falschparker in Bayern</h2>
@@ -352,7 +339,7 @@ const serviceSchema = {
       </div>
     </section>
 
-    <section id="trust" class="py-14 sm:py-20 lg:py-24 px-5 sm:px-8 bg-[#071827]">
+    <section id="trust" class="py-14 sm:py-20 lg:py-20 px-5 sm:px-8 bg-[#071827]">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-9 sm:mb-12 lg:mb-14 reveal"><span class="gradient-text font-bold text-sm uppercase tracking-widest">Vertrauen</span><h2 class="text-[1.75rem] min-[390px]:text-[1.875rem] sm:text-5xl font-black leading-[1.12] sm:leading-[1.05] tracking-[-0.025em] mt-3">Seriös statt laut. Schnell statt unklar.</h2></div>
         <div class="grid md:grid-cols-4 gap-5">
@@ -366,7 +353,7 @@ const serviceSchema = {
       </div>
     </section>
 
-    <section id="faq" class="py-14 sm:py-20 lg:py-24 px-5 sm:px-8">
+    <section id="faq" class="py-14 sm:py-20 lg:py-20 px-5 sm:px-8">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-9 sm:mb-12 lg:mb-16 reveal"><span class="gradient-text font-bold text-sm uppercase tracking-widest">FAQ</span><h2 class="text-[1.75rem] min-[390px]:text-[1.875rem] sm:text-5xl font-black leading-[1.12] sm:leading-[1.05] tracking-[-0.025em] mt-3 mb-3 sm:mb-4">Häufige Fragen zu Falschparkern</h2></div>
         <div class="space-y-3 reveal">
@@ -375,7 +362,7 @@ const serviceSchema = {
       </div>
     </section>
 
-    <section id="kontakt" class="py-14 sm:py-20 lg:py-24 px-5 sm:px-8 bg-[#071827] relative overflow-hidden">
+    <section id="kontakt" class="py-14 sm:py-20 lg:py-20 px-5 sm:px-8 bg-[#071827] relative overflow-hidden">
       <div class="absolute inset-0 grid-bg opacity-30"></div>
       <div class="relative max-w-5xl mx-auto text-center reveal">
         <span class="gradient-text font-bold text-sm uppercase tracking-widest">Einsatz prüfen</span>
@@ -425,15 +412,18 @@ const serviceSchema = {
     .fp-premium::after { content:""; position:absolute; inset:auto -10% 0 -10%; height:42%; background: linear-gradient(180deg, transparent, rgba(13,148,136,.08) 46%, #06111f); pointer-events:none; }
     .glass-ice { background: linear-gradient(135deg, rgba(224,247,255,.13), rgba(59,130,246,.07)); border: 1px solid rgba(125,211,252,.22); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 18px 70px rgba(14,165,233,.08); backdrop-filter: blur(18px); }
     .parking-stage-pro { box-shadow: 0 42px 120px rgba(0,0,0,.46), 0 0 0 1px rgba(125,211,252,.08), inset 0 1px 0 rgba(255,255,255,.12); }
+    .desktop-status-panel div { min-height: 66px; border-radius: 16px; border: 1px solid rgba(125,211,252,.16); background: rgba(255,255,255,.055); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; backdrop-filter: blur(12px); }
+    .desktop-status-panel span { color:#67e8f9; font-size:12px; font-weight:1000; letter-spacing:.12em; }
+    .desktop-status-panel strong { color:#e0f7ff; font-size:13px; font-weight:900; }
 
     .mobile-conversion-card { display: none; }
     .mobile-parking-scene { display: none; }
-    .parking-stage-pro::after { content:""; position:absolute; inset:0; pointer-events:none; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.13) 38%, transparent 52%); transform: translateX(-120%); animation: stageSheen 7s cubic-bezier(.2,.8,.2,1) infinite; }
+    .parking-stage-pro::after { content:""; position:absolute; inset:0; pointer-events:none; background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.08) 42%, transparent 55%); opacity:.35; }
     @keyframes stageSheen { 0%,42%{transform:translateX(-120%)} 72%,100%{transform:translateX(120%)} }
     @keyframes towFlashA { 0%,45%,100%{opacity:1;filter:drop-shadow(0 0 10px #22D3EE)} 50%,95%{opacity:.2;filter:none} }
     @keyframes towFlashB { 0%,45%,100%{opacity:.2;filter:none} 50%,95%{opacity:1;filter:drop-shadow(0 0 10px #22D3EE)} }
-    .tow-flash-a { animation: towFlashA .72s ease-in-out infinite; }
-    .tow-flash-b { animation: towFlashB .72s ease-in-out infinite; }
+    .tow-flash-a { opacity: .95; }
+    .tow-flash-b { opacity: .45; }
     @media (max-width: 768px) {
       :global(.wa-btn) { display: none !important; }
       :global(.reveal), :global(.reveal-left), :global(.reveal-right) { opacity: 1; transform: none; }
@@ -493,102 +483,31 @@ const serviceSchema = {
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.set(['#hero-badge', '#hero-headline', '#hero-sub', '#hero-ctas', '#hero-trust'], { opacity: 0, y: 24 });
-    const heroTl = gsap.timeline({ delay: 0.12 });
-    heroTl.to('#hero-badge',{opacity:1,y:0,duration:.55,ease:'power2.out'}).to('#hero-headline',{opacity:1,y:0,duration:.72,ease:'power3.out'},'-=.25').to('#hero-sub',{opacity:1,y:0,duration:.58,ease:'power2.out'},'-=.35').to('#hero-ctas',{opacity:1,y:0,duration:.55,ease:'power2.out'},'-=.28').to('#hero-trust',{opacity:1,y:0,duration:.5,ease:'power2.out'},'-=.2');
-
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const desktopMotion = window.matchMedia('(min-width: 1024px)').matches;
-    if (!reduceMotion && desktopMotion) {
-      const heroCopy = ['hero-badge','hero-headline','hero-sub','hero-ctas','hero-trust']
-        .map(id => document.getElementById(id))
-        .filter(Boolean);
-      let ticking = false;
-      const updateHeroCopy = () => {
-        const p = Math.min(Math.max((window.scrollY - 70) / 170, 0), 1);
-        heroCopy.forEach((el) => {
-          el.style.opacity = String(1 - p);
-          el.style.transform = `translate3d(0, ${-26 * p}px, 0)`;
-          el.style.pointerEvents = p > 0.82 ? 'none' : '';
-        });
-      };
-      const onHeroScroll = () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => { updateHeroCopy(); ticking = false; });
-      };
-      window.addEventListener('scroll', onHeroScroll, { passive: true });
-      window.addEventListener('resize', onHeroScroll, { passive: true });
-      requestAnimationFrame(updateHeroCopy);
-    }
     const stage = document.getElementById('parking-stage');
     const tow = document.getElementById('tow-svg');
     const car = document.getElementById('wrong-car');
     const cable = document.getElementById('tow-cable');
     const lines = document.getElementById('road-lines');
-    const isMobileScene = window.matchMedia('(max-width: 767px)').matches;
-    if (stage && tow && car && !reduceMotion) {
-      const wheels = tow.querySelectorAll('circle');
-      if (isMobileScene) {
-        const mobileScene = document.getElementById('mobile-parking-scene');
-        const mobileBay = mobileScene?.querySelector('.mobile-parking-bay');
-        const mobileCar = mobileScene?.querySelector('.mobile-blocked-car');
-        const mobileTruck = mobileScene?.querySelector('.mobile-tow-truck');
-        const mobileCable = mobileScene?.querySelector('.mobile-tow-cable');
-        const blockedChip = mobileScene?.querySelector('.mobile-warning-chip');
-        const clearChip = mobileScene?.querySelector('.mobile-clear-chip');
-        const routeSweep = mobileScene?.querySelector('.mobile-route');
-        const responsePill = mobileScene?.querySelector('.mobile-truck-pill');
-        if (mobileBay && mobileCar && mobileTruck && mobileCable && blockedChip && clearChip && routeSweep) {
-          gsap.set(mobileCar, { xPercent: -50, x: 0, y: 0, rotation: 0, autoAlpha: 1, force3D: true, transformOrigin: '50% 80%' });
-          gsap.set(mobileTruck, { x: -165, y: 0, autoAlpha: 1, force3D: true });
-          gsap.set(mobileCable, { scaleX: 0, autoAlpha: 0, force3D: true });
-          gsap.set(blockedChip, { autoAlpha: 1, scale: 1, y: 0 });
-          gsap.set(clearChip, { autoAlpha: 0, scale: .94, y: 6 });
-          gsap.set(routeSweep, { '--route-progress': '0%' });
-          const mobileTowDistance = () => Math.min(mobileBay.getBoundingClientRect().width * 0.58, 218);
-          const mobileTruckExit = () => Math.min(mobileBay.getBoundingClientRect().width + 42, 356);
-          const mobileTl = gsap.timeline({
-            defaults: { ease: 'none' },
-            scrollTrigger: {
-              trigger: '#parking-stage',
-              start: 'top 78%',
-              end: 'top 18%',
-              scrub: 1.05,
-              invalidateOnRefresh: true,
-            },
-          });
-          mobileTl
-            .to(responsePill, { x: 14, autoAlpha: 1, duration: .16 }, 0)
-            .to(mobileTruck, { x: () => Math.min(mobileBay.getBoundingClientRect().width * 0.42, 138), duration: .28, ease: 'power1.out' }, 0)
-            .to(mobileCable, { scaleX: 1, autoAlpha: 1, duration: .14, ease: 'power1.out' }, .18)
-            .to(blockedChip, { autoAlpha: 0, scale: .86, y: -6, duration: .14 }, .26)
-            .to(mobileCar, { y: -12, rotation: -3, duration: .18, ease: 'sine.inOut' }, .30)
-            .to([mobileTruck, mobileCar], { x: () => mobileTowDistance(), duration: .42, ease: 'power1.inOut' }, .46)
-            .to(mobileCable, { x: () => mobileTowDistance() * .86, duration: .42, ease: 'power1.inOut' }, .46)
-            .to(mobileCar, { y: -8, rotation: -1.4, autoAlpha: .82, duration: .24, ease: 'sine.inOut' }, .58)
-            .to([mobileTruck, mobileCar], { x: () => mobileTruckExit(), autoAlpha: 0, duration: .22, ease: 'power1.in' }, .82)
-            .to(mobileCable, { x: () => mobileTruckExit() * .86, autoAlpha: 0, duration: .22, ease: 'power1.in' }, .82)
-            .to(clearChip, { autoAlpha: 1, scale: 1, y: 0, duration: .16, ease: 'power2.out' }, .88)
-            .to(routeSweep, { '--route-progress': '330%', duration: 1 }, 0);
-        }
-      } else {
-        const stageWidth = () => stage.getBoundingClientRect().width;
-        gsap.set(tow, { x: 0, y: 6, autoAlpha: 0.92, force3D: true, transformOrigin: '50% 80%' });
-        gsap.set(car, { x: 0, y: 0, rotation: 0, force3D: true, transformOrigin: '50% 82%' });
-        gsap.set(cable, { opacity: 0, strokeDasharray: 238, strokeDashoffset: 238 });
-        gsap.to(tow, { y: '+=4', duration: 2.1, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-        const tl = gsap.timeline({ defaults: { ease: 'power1.inOut' }, scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 2.8, invalidateOnRefresh: true } });
-        tl.to(tow, { x: () => stageWidth() * 0.36, autoAlpha: 1, duration: .42 }, 0)
-          .to(wheels, { rotation: 360, svgOrigin: '50% 50%', duration: .42 }, 0)
-          .to(cable, { opacity: 1, strokeDashoffset: 0, duration: .10, ease: 'power2.out' }, .28)
-          .to(car, { y: -28, rotation: -3.2, duration: .18, ease: 'sine.inOut' }, .36)
-          .to([tow, car], { x: () => `+=${stageWidth() * 0.66}`, duration: .46, ease: 'power1.inOut' }, .54)
-          .to(wheels, { rotation: 840, svgOrigin: '50% 50%', duration: .46 }, .54)
-          .to(car, { y: -20, rotation: -1.4, opacity: .9, duration: .26, ease: 'sine.inOut' }, .72);
-        gsap.to('#parking-lines', { y: 20, scale: .985, opacity: .72, scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 2.4 } });
-        if (lines) gsap.to(lines, { xPercent: -50, duration: .95, repeat: -1, ease: 'linear' });
-      }
+    const mobileScene = document.getElementById('mobile-parking-scene');
+    if (stage && tow && car) {
+      gsap.set(tow, { x: 0, y: 6, autoAlpha: 1, force3D: true, transformOrigin: '50% 80%' });
+      gsap.set(car, { x: 0, y: 0, rotation: 0, autoAlpha: 1, force3D: true, transformOrigin: '50% 82%' });
+      gsap.set(cable, { opacity: 0 });
+    }
+    if (mobileScene) {
+      const mobileCar = mobileScene.querySelector('.mobile-blocked-car');
+      const mobileTruck = mobileScene.querySelector('.mobile-tow-truck');
+      const mobileCable = mobileScene.querySelector('.mobile-tow-cable');
+      const blockedChip = mobileScene.querySelector('.mobile-warning-chip');
+      const clearChip = mobileScene.querySelector('.mobile-clear-chip');
+      const routeSweep = mobileScene.querySelector('.mobile-route');
+      gsap.set(mobileCar, { xPercent: -50, x: 0, y: 0, rotation: 0, autoAlpha: 1, force3D: true });
+      gsap.set(mobileTruck, { x: 18, y: 0, autoAlpha: 1, force3D: true });
+      gsap.set(mobileCable, { scaleX: 0, autoAlpha: 0 });
+      gsap.set(blockedChip, { autoAlpha: 1, scale: 1, y: 0 });
+      gsap.set(clearChip, { autoAlpha: 0, scale: .94, y: 6 });
+      gsap.set(routeSweep, { '--route-progress': '0%' });
     }
 
     const header = document.getElementById('header');
