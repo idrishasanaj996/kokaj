@@ -445,10 +445,12 @@ const serviceSchema = {
       .mobile-blocked-car::before { left:26px; } .mobile-blocked-car::after { right:26px; }
       .mobile-blocked-car span { color:#22d3ee; font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:.08em; }
       .mobile-warning-chip { position: absolute; right: 10px; top: 10px; color:#06111f; background: linear-gradient(90deg,#67e8f9,#60a5fa); font-size:10px; font-weight:900; padding:6px 8px; border-radius:999px; }
-      .mobile-route { position: relative; z-index:2; height:22px; margin:8px 24px 4px; border-bottom:1px dashed rgba(125,211,252,.36); }
-      .mobile-route span { position:absolute; right:-2px; bottom:-4px; width:8px; height:8px; border-right:2px solid rgba(125,211,252,.75); border-top:2px solid rgba(125,211,252,.75); transform: rotate(45deg); }
+      .mobile-route { position: relative; z-index:2; height:22px; margin:8px 24px 4px; border-bottom:1px dashed rgba(125,211,252,.36); overflow:hidden; }
+      .mobile-route::before { content:""; position:absolute; left:-42%; right:auto; bottom:-1px; width:42%; height:2px; border-radius:999px; background:linear-gradient(90deg, transparent, rgba(34,211,238,.95), transparent); animation: mobileRouteSweep 4.8s cubic-bezier(.45,0,.2,1) infinite; }
+      .mobile-route span { position:absolute; right:-2px; bottom:-4px; width:8px; height:8px; border-right:2px solid rgba(125,211,252,.75); border-top:2px solid rgba(125,211,252,.75); transform: rotate(45deg); animation: mobileArrowPulse 4.8s ease-in-out infinite; }
       .mobile-response-row { position:relative; z-index:2; display:flex; gap:8px; align-items:center; justify-content:space-between; }
       .mobile-truck-pill, .mobile-status-pill { display:inline-flex; align-items:center; gap:8px; min-height:38px; border-radius:14px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.06); color:white; font-size:11px; font-weight:800; padding:8px 10px; backdrop-filter:blur(14px); }
+      .mobile-truck-pill { animation: mobileTruckDrive 4.8s cubic-bezier(.45,0,.2,1) infinite; will-change: transform, opacity; }
       .mobile-truck-icon { width:24px; height:24px; border-radius:9px; display:grid; place-items:center; background:linear-gradient(135deg,#67e8f9,#2563eb); color:#020617; font-weight:1000; }
       .mobile-status-pill { color:rgba(224,247,255,.78); }
       .mobile-process { position:absolute; left:18px; right:18px; bottom:15px; display:flex; justify-content:space-between; gap:6px; color:rgba(148,163,184,.78); font-size:9px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
@@ -465,8 +467,16 @@ const serviceSchema = {
     @media (max-width: 360px) {
       #hero-trust span:nth-child(n+3) { display: none; }
     }
+    @keyframes mobileCarTow { 0%,18%{ transform:translateX(-50%) translateY(0) rotate(0); opacity:1; } 34%{ transform:translateX(-50%) translateY(-9px) rotate(-2deg); opacity:1; } 64%{ transform:translateX(7%) translateY(-9px) rotate(-1deg); opacity:.9; } 78%,100%{ transform:translateX(-50%) translateY(0) rotate(0); opacity:1; } }
+    @keyframes mobileTruckDrive { 0%,18%{ transform:translateX(-10px); opacity:.78; } 46%{ transform:translateX(18px); opacity:1; } 68%{ transform:translateX(42px); opacity:.96; } 78%,100%{ transform:translateX(-10px); opacity:.78; } }
+    @keyframes mobileRouteSweep { 0%,20%{ transform:translateX(0); opacity:0; } 36%{ opacity:1; } 70%{ transform:translateX(330%); opacity:1; } 78%,100%{ transform:translateX(330%); opacity:0; } }
+    @keyframes mobileArrowPulse { 0%,26%,100%{ opacity:.45; } 56%,72%{ opacity:1; filter:drop-shadow(0 0 8px rgba(34,211,238,.9)); } }
     @keyframes mobilePulse { 0%,100%{ opacity:.65; transform:scale(.92); } 50%{ opacity:1; transform:scale(1.15); } }
-    @media (prefers-reduced-motion: reduce) { .btn-pulse, .float, .animate-marquee, .tow-flash-a, .tow-flash-b { animation: none !important; } }
+    @media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+      .mobile-blocked-car { animation: mobileCarTow 4.8s cubic-bezier(.45,0,.2,1) infinite; will-change: transform, opacity; }
+      .mobile-warning-chip { animation: mobileArrowPulse 4.8s ease-in-out infinite; }
+    }
+    @media (prefers-reduced-motion: reduce) { .btn-pulse, .float, .animate-marquee, .tow-flash-a, .tow-flash-b, .mobile-live-dot, .mobile-blocked-car, .mobile-truck-pill, .mobile-route::before, .mobile-route span, .mobile-warning-chip { animation: none !important; } }
   </style>
 
   <script>
