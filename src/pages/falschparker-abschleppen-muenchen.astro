@@ -139,11 +139,11 @@ const serviceSchema = {
             <p id="hero-badge" class="text-cyan-200/85 text-xs sm:text-sm font-bold tracking-[0.18em] uppercase mb-5">
               Falschparker abschleppen · München
             </p>
-            <h1 id="hero-headline" class="text-[2.45rem] min-[390px]:text-[2.8rem] sm:text-6xl lg:text-6xl xl:text-7xl font-black leading-[0.98] tracking-[-0.055em] mb-5 sm:mb-6">
-              Stellplatz blockiert?
+            <h1 id="hero-headline" class="text-[2.35rem] min-[390px]:text-[2.65rem] sm:text-6xl lg:text-6xl xl:text-7xl font-black leading-[0.98] tracking-[-0.055em] mb-5 sm:mb-6">
+              Falschparker blockiert Ihren Stellplatz?
             </h1>
             <p id="hero-sub" class="text-slate-200/90 text-lg sm:text-2xl max-w-xl mb-7 leading-snug tracking-[-0.015em]">
-              KOKAJ prüft Falschparker auf Privatparkplätzen, Einfahrten und Kundenparkplätzen in München — direkt, seriös, ohne unnötiges Gerede.
+              Rufen Sie KOKAJ an oder senden Sie ein Foto per WhatsApp. Wir prüfen in München, ob eine Abschleppung möglich ist.
             </p>
             <div id="hero-ctas" class="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <a href={phoneMobileHref} class="btn-pulse inline-flex items-center justify-center bg-gradient-to-r from-cyan-300 to-blue-500 hover:from-cyan-200 hover:to-blue-400 text-black font-black text-base sm:text-lg px-6 xl:px-8 py-4 rounded-2xl transition-all hover:scale-[1.02] shadow-2xl shadow-cyan-500/25 whitespace-nowrap">
@@ -188,26 +188,15 @@ const serviceSchema = {
             </div>
           </div>
 
-          <div class="relative lg:hidden" aria-label="Mobile Einsatzprüfung bei blockiertem Privatparkplatz">
-            <div id="parking-stage" class="parking-stage-pro relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#092033]/85 shadow-2xl shadow-black/40 min-h-[310px]">
-              <div class="absolute inset-0 opacity-60" style="background:linear-gradient(115deg,rgba(255,255,255,0.05),transparent 35%),repeating-linear-gradient(90deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 90px);"></div>
-              <div id="mobile-parking-scene" class="mobile-parking-scene" aria-hidden="true">
-                <div class="mobile-scene-header"><span class="mobile-live-dot"></span><span>Privatparkplatz · München</span></div>
-                <div class="mobile-parking-bay">
-                  <span class="mobile-bay-label">Reserviert</span>
-                  <span class="mobile-scroll-chip">Einsatz prüfen</span>
-                  <div class="mobile-blocked-car"><span>Falschparker</span></div>
-                  <div class="mobile-tow-truck" aria-hidden="true"><span>K</span><b>ABSCHLEPP</b></div>
-                  <div class="mobile-tow-cable" aria-hidden="true"></div>
-                  <div class="mobile-warning-chip">Blockiert</div>
-                  <div class="mobile-clear-chip">Stellplatz frei</div>
-                </div>
-                <div class="mobile-route"><span></span></div>
-                <div class="mobile-response-row">
-                  <div class="mobile-truck-pill"><span class="mobile-truck-icon">K</span><span>KOKAJ Einsatzprüfung</span></div>
-                  <div class="mobile-status-pill">24/7</div>
-                </div>
-                <div class="mobile-process"><span>Standort</span><span>Prüfung</span><span>Lösung</span></div>
+          <div class="relative lg:hidden" aria-label="Einfache Einsatzprüfung bei blockiertem Stellplatz">
+            <div id="parking-stage" class="mobile-clarity-card">
+              <div class="mobile-clarity-card__eyebrow">Was jetzt wichtig ist</div>
+              <h2>Foto + Standort senden</h2>
+              <p>Wir prüfen direkt, ob der Falschparker auf Ihrem Privatparkplatz, Ihrer Einfahrt oder Ihrem Kundenparkplatz entfernt werden kann.</p>
+              <div class="mobile-clarity-card__list">
+                <div><span>1</span><strong>Foto vom Fahrzeug</strong></div>
+                <div><span>2</span><strong>Adresse in München</strong></div>
+                <div><span>3</span><strong>Rückruf zur Einsatzprüfung</strong></div>
               </div>
             </div>
           </div>
@@ -215,18 +204,7 @@ const serviceSchema = {
       </div>
     </section>
 
-    <aside class="mobile-conversion-card sm:hidden" aria-label="Schnelle Kontaktoptionen">
-      <div class="mobile-conversion-card__eyebrow">24/7 Einsatzprüfung</div>
-      <div class="mobile-conversion-card__title">Falschparker blockiert Ihren Stellplatz?</div>
-      <p class="mobile-conversion-card__text">Direkt anrufen oder die Situation per WhatsApp senden.</p>
-      <div class="mobile-conversion-card__actions">
-        <a href={phoneMobileHref} class="mobile-conversion-card__primary"><span>Jetzt anrufen</span><strong>{phoneMobile}</strong></a>
-        <div class="mobile-conversion-card__secondary-row">
-          <a href={whatsappUrl} target="_blank" rel="noopener" class="mobile-conversion-card__secondary">Falschparker melden</a>
-          <a href="#sofort" class="mobile-conversion-card__secondary">Einsatz prüfen</a>
-        </div>
-      </div>
-    </aside>
+
 
     <section id="sofort" class="py-12 sm:py-16 lg:py-16 px-5 sm:px-8">
       <div class="max-w-4xl mx-auto text-center reveal">
@@ -368,6 +346,16 @@ const serviceSchema = {
     .hero-clean-row a, .hero-clean-row strong { color:white; font-size:18px; font-weight:900; letter-spacing:-.02em; text-align:right; }
     .hero-clean-row a { color:#a5f3fc; }
     .parking-stage-pro { box-shadow: 0 42px 120px rgba(0,0,0,.46), 0 0 0 1px rgba(125,211,252,.08), inset 0 1px 0 rgba(255,255,255,.12); }
+    .mobile-clarity-card { position:relative; overflow:hidden; border-radius:1.75rem; border:1px solid rgba(125,211,252,.18); background:radial-gradient(circle at 16% 0%, rgba(34,211,238,.20), transparent 35%), linear-gradient(145deg, rgba(9,32,51,.92), rgba(3,11,20,.98)); box-shadow:0 32px 90px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.10); padding:1.2rem; }
+    .mobile-clarity-card::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(115deg,rgba(255,255,255,.07),transparent 42%); opacity:.55; }
+    .mobile-clarity-card > * { position:relative; z-index:1; }
+    .mobile-clarity-card__eyebrow { color:#67e8f9; font-size:.68rem; font-weight:950; letter-spacing:.18em; text-transform:uppercase; margin-bottom:.7rem; }
+    .mobile-clarity-card h2 { color:#fff; font-size:1.45rem; line-height:1.05; letter-spacing:-.035em; font-weight:950; margin:0 0 .65rem; }
+    .mobile-clarity-card p { color:rgba(203,213,225,.84); font-size:.95rem; line-height:1.5; margin:0 0 1rem; }
+    .mobile-clarity-card__list { display:grid; gap:.65rem; }
+    .mobile-clarity-card__list div { display:flex; align-items:center; gap:.75rem; min-height:3rem; padding:.75rem; border-radius:1rem; background:rgba(255,255,255,.055); border:1px solid rgba(125,211,252,.12); }
+    .mobile-clarity-card__list span { width:1.65rem; height:1.65rem; border-radius:.65rem; display:grid; place-items:center; flex:0 0 auto; background:linear-gradient(135deg,#67e8f9,#2563eb); color:#020617; font-size:.78rem; font-weight:1000; }
+    .mobile-clarity-card__list strong { color:#e0f7ff; font-size:.9rem; line-height:1.15; font-weight:900; }
     .desktop-status-panel div { min-height: 66px; border-radius: 16px; border: 1px solid rgba(125,211,252,.16); background: rgba(255,255,255,.055); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; backdrop-filter: blur(12px); }
     .desktop-status-panel span { color:#67e8f9; font-size:12px; font-weight:1000; letter-spacing:.12em; }
     .desktop-status-panel strong { color:#e0f7ff; font-size:13px; font-weight:900; }
@@ -384,6 +372,7 @@ const serviceSchema = {
       :global(.wa-btn) { display: none !important; }
       :global(.reveal), :global(.reveal-left), :global(.reveal-right) { opacity: 1; transform: none; }
       #parking-stage { min-height: 310px; border-radius: 1.75rem; }
+      #parking-stage.mobile-clarity-card { min-height: 0; }
       #parking-lines, #wrong-car, #tow-svg, #parking-stage > .absolute.left-0.right-0.bottom-0, #parking-stage > .absolute.bottom-6 { display: none !important; }
       #mobile-parking-scene { display: block; position: absolute; inset: 0; padding: 18px; overflow: hidden; }
       .mobile-scene-header { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 8px; color: rgba(224,247,255,.78); font-size: 10px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; background: rgba(255,255,255,.06); border: 1px solid rgba(125,211,252,.18); border-radius: 999px; padding: 8px 10px; backdrop-filter: blur(14px); }
